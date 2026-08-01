@@ -1,8 +1,8 @@
-import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SECDisclosureFooter } from "@/components/SECDisclosureFooter";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy | 928 Lending",
   description:
     "Data Privacy Policy of 928 Credit Concept Lending Corp. compliant with Philippine Republic Act No. 10173 (Data Privacy Act of 2012).",
