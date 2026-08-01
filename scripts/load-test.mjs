@@ -4,15 +4,16 @@
  * to verify throughput, rate-limiting guards, and error responses.
  *
  * Usage:
- *   node scripts/load-test.js [target_url] [concurrency] [total_requests]
+ *   node scripts/load-test.mjs [target_url] [concurrency] [total_requests]
  *   npm run test:load
  */
 
-const http = require("http");
-const https = require("https");
-const { URL } = require("url");
+import http from "node:http";
+import https from "node:https";
+import { URL } from "node:url";
 
-const TARGET_URL = process.argv[2] || "http://localhost:3000/api/submit-application";
+const TARGET_URL =
+  process.argv[2] || "http://localhost:3000/api/submit-application";
 const CONCURRENCY = parseInt(process.argv[3] || "10", 10);
 const TOTAL_REQUESTS = parseInt(process.argv[4] || "50", 10);
 
@@ -48,7 +49,6 @@ async function runLoadTest() {
   };
 
   const startTime = Date.now();
-  let completed = 0;
 
   function sendRequest(index) {
     return new Promise((resolve) => {
@@ -65,7 +65,9 @@ async function runLoadTest() {
         },
         (res) => {
           let body = "";
-          res.on("data", (chunk) => (body += chunk));
+          res.on("data", (chunk) => {
+            body += chunk;
+          });
           res.on("end", () => {
             const latency = Date.now() - reqStart;
             results.latenciesMs.push(latency);
@@ -76,15 +78,15 @@ async function runLoadTest() {
             else if (res.statusCode === 429) results.status429++;
             else results.otherError++;
 
-            resolve();
+            resolve(body);
           });
         }
       );
 
-      req.on("error", (err) => {
+      req.on("error", () => {
         results.total++;
         results.otherError++;
-        resolve();
+        resolve(null);
       });
 
       req.write(samplePayload);
@@ -108,13 +110,20 @@ async function runLoadTest() {
 
   const avgLatency =
     results.latenciesMs.reduce((a, b) => a + b, 0) / results.latenciesMs.length;
-  const p50 = results.latenciesMs[Math.floor(results.latenciesMs.length * 0.5)] || 0;
-  const p95 = results.latenciesMs[Math.floor(results.latenciesMs.length * 0.95)] || 0;
+  const p50 =
+    results.latenciesMs[Math.floor(results.latenciesMs.length * 0.5)] || 0;
+  const p95 =
+    results.latenciesMs[Math.floor(results.latenciesMs.length * 0.95)] || 0;
 
   console.log("📊 LOAD TEST RESULTS SUMMARY:");
   console.log(`Total Completed Requests : ${results.total}`);
   console.log(`Total Time Elapsed       : ${totalTimeMs} ms`);
-  console.log(`Requests / Sec (RPS)     : ${((results.total / totalTimeMs) * 1000).toFixed(2)}`);
+  console.log(
+    `Requests / Sec (RPS)     : ${(
+      (results.total / totalTimeMs) *
+      1000
+    ).toFixed(2)}`
+  );
   console.log("--------------------------------------------------");
   console.log(`HTTP 200 OK (Success)    : ${results.status200}`);
   console.log(`HTTP 400 Bad Request     : ${results.status400}`);
