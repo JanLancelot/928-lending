@@ -5,11 +5,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://static.cloudflareinsights.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: blob: https:",
-      "connect-src 'self' https://challenges.cloudflare.com https://*.sentry.io",
+      "connect-src 'self' ws: wss: https://challenges.cloudflare.com https://*.sentry.io",
       "frame-src 'self' https://challenges.cloudflare.com",
       "object-src 'none'",
       "base-uri 'self'",
@@ -43,6 +43,10 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   output: "standalone",
   async headers() {
+    // Only enforce strict headers in production or allow dev HMR / styles
+    if (process.env.NODE_ENV === "development") {
+      return [];
+    }
     return [
       {
         source: "/:path*",
