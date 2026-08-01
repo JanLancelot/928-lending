@@ -5,9 +5,24 @@ import { checkRateLimit, getClientIp } from "@/lib/ratelimit";
 
 export async function POST(request: Request) {
   const clientIp = getClientIp(request);
+  const configuredLimit = Number.parseInt(process.env.RATE_LIMIT_MAX_REQUESTS ?? "5", 10);
+  const configuredWindowSeconds = Number.parseInt(
+    process.env.RATE_LIMIT_WINDOW_SECONDS ?? "60",
+    10
+  );
+  const rateLimitMaxRequests = Number.isFinite(configuredLimit) && configuredLimit > 0
+    ? configuredLimit
+    : 5;
+  const rateLimitWindowSeconds =
+    Number.isFinite(configuredWindowSeconds) && configuredWindowSeconds > 0
+      ? configuredWindowSeconds
+      : 60;
 
-  // 1. Rate Limiting Check (5 requests per 60s per IP)
-  const rateLimit = checkRateLimit(clientIp, { limit: 5, windowMs: 60 * 1000 });
+  // 1. Rate Limiting Check (defaults to 5 requests per 60s per IP)
+  const rateLimit = checkRateLimit(clientIp, {
+    limit: rateLimitMaxRequests,
+    windowMs: rateLimitWindowSeconds * 1000,
+  });
   const rateLimitHeaders = {
     "X-RateLimit-Limit": String(rateLimit.limit),
     "X-RateLimit-Remaining": String(rateLimit.remaining),
@@ -78,4 +93,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

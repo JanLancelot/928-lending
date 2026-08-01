@@ -16,6 +16,7 @@ interface RateLimitRecord {
   timestamps: number[];
 }
 
+// In-memory store: suitable for single-instance deployments only.
 const rateLimitStore = new Map<string, RateLimitRecord>();
 
 // Periodic cleanup to avoid memory leaks (runs every 5 minutes)
@@ -99,12 +100,13 @@ export function checkRateLimit(
   rateLimitStore.set(identifier, { timestamps: activeTimestamps });
 
   const remaining = limit - activeTimestamps.length;
-  const reset = Math.ceil(windowMs / 1000);
+  const oldestTimestamp = activeTimestamps[0];
+  const reset = Math.ceil((oldestTimestamp + windowMs - now) / 1000);
 
   return {
     success: true,
     limit,
     remaining,
-    reset,
+    reset: Math.max(reset, 1),
   };
 }

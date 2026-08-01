@@ -29,7 +29,7 @@ export async function verifyTurnstileToken(
   const skipTurnstile = process.env.SKIP_TURNSTILE === "true";
 
   // Allow development bypass if explicitly configured or using Cloudflare test tokens
-  if (skipTurnstile || (isDev && (!secretKey || secretKey === "dummy-secret-key"))) {
+  if ((isDev && skipTurnstile) || (isDev && (!secretKey || secretKey === "dummy-secret-key"))) {
     return {
       success: true,
       message: "Turnstile verification bypassed for local development",
@@ -97,7 +97,7 @@ export async function verifyTurnstileToken(
     return {
       success: false,
       errorCodes: ["internal-error"],
-      message: errorMessage,
+      message: isDev ? errorMessage : "Unable to verify Turnstile token",
     };
   }
 }
