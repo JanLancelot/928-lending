@@ -6,13 +6,13 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     // 1. Server-side Zod validation
-    const validatedData = loanApplicationSchema.parse(body);
+    loanApplicationSchema.parse(body);
 
     // 2. TODO: Verify Cloudflare Turnstile token
-    // 3. TODO: Generate branded PDF & AES-256 encrypt (e.g. using pdf-lib)
+    // 3. TODO: Generate branded PDF & AES-256 encrypt and password protected
     // 4. TODO: Deliver PDF via SES / Resend to business owner
-    // 5. TODO: Deliver PDF password via Twilio SMS to pre-registered phone number
-    // 6. TODO: Record immutable audit log entry (Vercel Postgres / Supabase / DynamoDB)
+    // 5. TODO: Deliver PDF password via Twilio SMS (ikaw bahala na Ady) to pre-registered phone number
+    // 6. TODO (OPTIONAL): Record immutable audit log entry (Vercel Postgres / Supabase / DynamoDB)
 
     return NextResponse.json(
       {
@@ -21,11 +21,14 @@ export async function POST(request: Request) {
       },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Invalid payload";
+
     return NextResponse.json(
       {
         message: "Validation or processing error",
-        error: error.message || "Invalid payload",
+        error: errorMessage,
       },
       { status: 400 }
     );
