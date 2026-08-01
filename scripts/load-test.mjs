@@ -16,6 +16,15 @@ const TARGET_URL =
   process.argv[2] || "http://localhost:3000/api/submit-application";
 const CONCURRENCY = parseInt(process.argv[3] || "10", 10);
 const TOTAL_REQUESTS = parseInt(process.argv[4] || "50", 10);
+const REQUEST_TIMEOUT_MS = 10000;
+
+if (!Number.isInteger(CONCURRENCY) || CONCURRENCY <= 0) {
+  throw new Error("Invalid concurrency. Provide a positive integer.");
+}
+
+if (!Number.isInteger(TOTAL_REQUESTS) || TOTAL_REQUESTS <= 0) {
+  throw new Error("Invalid total_requests. Provide a positive integer.");
+}
 
 const samplePayload = JSON.stringify({
   fullName: "Load Test Applicant",
@@ -88,6 +97,9 @@ async function runLoadTest() {
         results.otherError++;
         resolve(null);
       });
+      req.setTimeout(REQUEST_TIMEOUT_MS, () => {
+        req.destroy(new Error(`Request timed out after ${REQUEST_TIMEOUT_MS}ms`));
+      });
 
       req.write(samplePayload);
       req.end();
@@ -109,21 +121,21 @@ async function runLoadTest() {
   results.latenciesMs.sort((a, b) => a - b);
 
   const avgLatency =
-    results.latenciesMs.reduce((a, b) => a + b, 0) / results.latenciesMs.length;
+    results.latenciesMs.length === 0
+      ? 0
+      : results.latenciesMs.reduce((a, b) => a + b, 0) /
+        results.latenciesMs.length;
   const p50 =
     results.latenciesMs[Math.floor(results.latenciesMs.length * 0.5)] || 0;
   const p95 =
     results.latenciesMs[Math.floor(results.latenciesMs.length * 0.95)] || 0;
+  const rps =
+    totalTimeMs === 0 ? 0 : ((results.total / totalTimeMs) * 1000).toFixed(2);
 
   console.log("📊 LOAD TEST RESULTS SUMMARY:");
   console.log(`Total Completed Requests : ${results.total}`);
   console.log(`Total Time Elapsed       : ${totalTimeMs} ms`);
-  console.log(
-    `Requests / Sec (RPS)     : ${(
-      (results.total / totalTimeMs) *
-      1000
-    ).toFixed(2)}`
-  );
+  console.log(`Requests / Sec (RPS)     : ${rps}`);
   console.log("--------------------------------------------------");
   console.log(`HTTP 200 OK (Success)    : ${results.status200}`);
   console.log(`HTTP 400 Bad Request     : ${results.status400}`);
