@@ -1,22 +1,19 @@
-import { LoanApplicationForm } from "@/components/loan-application-form";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center mb-8">
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10 dark:bg-blue-900/30 dark:text-blue-400 mb-3">
-          928 Lending Platform
-        </span>
-        <h1 className="text-3xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">
-          Commercial Loan Application
-        </h1>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          Fast, flexible financing solutions for your business.
-        </p>
-      </div>
-
-      <div className="w-full max-w-xl mx-auto">
-        <LoanApplicationForm />
+    <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-6">
+      <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+        Welcome to 928 Lending
+      </h1>
+      <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Your trusted partner for commercial loans and business financing solutions.
+      </p>
+      <div>
+        <Button asChild size="lg">
+          <Link href="/apply-now">Apply Now</Link>
+        </Button>
       </div>
     </div>
   );
