@@ -93,7 +93,9 @@ export async function verifyTurnstileToken(
     };
   } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown verification error";
+      process.env.NODE_ENV === "development" && error instanceof Error
+        ? error.message
+        : "Turnstile verification failed";
     return {
       success: false,
       errorCodes: ["internal-error"],
