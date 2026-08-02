@@ -94,7 +94,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-3 sm:mt-4">
+      <section className="relative z-30 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 mt-2 sm:mt-3">
         <div className="bg-[#0B192C] text-white rounded-lg shadow-2xl p-6 sm:p-8 lg:p-10 border border-slate-800">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 divide-y md:divide-y-0 lg:divide-x divide-slate-800">
             
@@ -142,73 +142,76 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="py-8 sm:py-12 lg:py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
-            <div className="lg:col-span-5">
-              <div className="relative rounded-lg overflow-hidden shadow-xl border border-slate-200 group transition-all duration-500 hover:shadow-2xl">
+            {/* Left Column: Portrait Storefront Image */}
+            <div className="lg:col-span-5 flex">
+              <div className="relative w-full h-[440px] sm:h-[480px] lg:h-full min-h-[440px] rounded-2xl overflow-hidden shadow-lg border border-slate-100">
                 <Image
                   src="/images/building.png"
-                  alt="928 Credit Concept Lending Plaza Storefront"
-                  width={600}
-                  height={750}
-                  className="w-full h-[450px] lg:h-[520px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  alt="928 Credit Concept Lending Storefront Unit E"
+                  fill
+                  className="object-cover object-center rounded-2xl"
+                  priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/40 via-transparent to-transparent"></div>
               </div>
             </div>
 
-            <div className="lg:col-span-7 space-y-6">
+            {/* Right Column: Text & Values Aligned with Image */}
+            <div className="lg:col-span-7 flex flex-col justify-between py-1 space-y-4 sm:space-y-5">
+              
               <div>
-                <span className="text-[#E87722] font-extrabold text-sm uppercase tracking-wider">
+                <span className="text-[#E87722] font-extrabold text-base sm:text-lg">
                   About Us
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-[#0B192C] mt-2 tracking-tight">
-                  Supporting Businesses, Building Futures
+                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#0B192C] leading-tight tracking-tight mt-1">
+                  Supporting Businesses <br className="hidden sm:inline" />
+                  Building Futures
                 </h2>
               </div>
 
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
                 Established in 2020, 928 Credit Concept Lending Investor Corporation is an SEC-registered lending company in the Philippines. Our goal is to be the premier financial partner for Small and Medium Enterprises (SMEs) by operating with unwavering honesty, integrity, quality, and accountability.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
-                <div className="group text-center sm:text-left space-y-2 transition-transform duration-300 hover:-translate-y-0.5">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C] transition-all duration-300 group-hover:bg-[#0B192C] group-hover:text-white group-hover:border-[#0B192C] group-hover:scale-110">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+                <div className="text-center sm:text-left space-y-1.5">
+                  <div className="w-12 h-12 rounded-full border-2 border-[#0B192C] flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
                     <Shield className="w-6 h-6" />
                   </div>
-                  <h4 className="font-bold text-sm text-[#0B192C]">Honesty and Integrity</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">
+                  <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Honesty and Integrity</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-500 leading-normal">
                     We uphold the highest standard of integrity and honesty in all our actions.
                   </p>
                 </div>
 
-                <div className="group text-center sm:text-left space-y-2 transition-transform duration-300 hover:-translate-y-0.5">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C] transition-all duration-300 group-hover:bg-[#0B192C] group-hover:text-white group-hover:border-[#0B192C] group-hover:scale-110">
+                <div className="text-center sm:text-left space-y-1.5">
+                  <div className="w-12 h-12 rounded-full border-2 border-[#0B192C] flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
                     <Award className="w-6 h-6" />
                   </div>
-                  <h4 className="font-bold text-sm text-[#0B192C]">Quality</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">
+                  <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Quality</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-500 leading-normal">
                     We provide outstanding products and deliver premium services.
                   </p>
                 </div>
 
-                <div className="group text-center sm:text-left space-y-2 transition-transform duration-300 hover:-translate-y-0.5">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C] transition-all duration-300 group-hover:bg-[#0B192C] group-hover:text-white group-hover:border-[#0B192C] group-hover:scale-110">
+                <div className="text-center sm:text-left space-y-1.5">
+                  <div className="w-12 h-12 rounded-full border-2 border-[#0B192C] flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
-                  <h4 className="font-bold text-sm text-[#0B192C]">Accountability</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">
+                  <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Accountability</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-500 leading-normal">
                     We guarantee our accountability in delivering our commitments.
                   </p>
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-2">
                 <Button
                   asChild
-                  className="bg-[#0B192C] hover:bg-slate-800 text-white text-sm font-bold px-8 py-3.5 rounded-md shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="bg-[#0B192C] hover:bg-[#060e18] text-white text-xs sm:text-sm font-bold px-8 py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <Link href="/about-us">Learn More About Us</Link>
                 </Button>
