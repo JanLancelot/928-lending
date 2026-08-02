@@ -5,9 +5,6 @@ export interface VerifyHmacResult {
   reason?: string;
 }
 
-/**
- * Generates an HMAC-SHA256 signature for a given payload and timestamp string.
- */
 export function generateHmacSignature(
   payload: string,
   secret: string,
@@ -18,13 +15,8 @@ export function generateHmacSignature(
 }
 
 /**
- * Verifies an incoming HMAC-SHA256 signature against timestamp and payload.
- * Uses timing-safe string comparison to prevent timing attacks.
- *
- * @param payload - Raw request body string
- * @param signature - Signature header value (e.g. X-Signature)
- * @param timestampStr - Timestamp header value (e.g. X-Timestamp)
- * @param maxAgeMs - Maximum allowed age of request in ms (default 5 minutes)
+ * Validates request payload integrity using HMAC-SHA256 and timing-safe comparison.
+ * Rejects requests older than maxAgeMs to mitigate replay attacks.
  */
 export function verifyHmacSignature(
   payload: string,
@@ -59,7 +51,6 @@ export function verifyHmacSignature(
     return { valid: false, reason: "Invalid timestamp header format" };
   }
 
-  // Prevent replay attacks by checking timestamp window
   const now = Date.now();
   if (Math.abs(now - timestamp) > maxAgeMs) {
     return { valid: false, reason: "Request timestamp outside allowed window" };

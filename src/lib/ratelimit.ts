@@ -1,7 +1,5 @@
 export interface RateLimitOptions {
-  /** Maximum number of allowed requests in the window */
   limit?: number;
-  /** Sliding window duration in milliseconds */
   windowMs?: number;
 }
 
@@ -16,16 +14,14 @@ interface RateLimitRecord {
   timestamps: number[];
 }
 
-// In-memory store: suitable for single-instance deployments only.
 const rateLimitStore = new Map<string, RateLimitRecord>();
 
-// Periodic cleanup to avoid memory leaks (runs every 5 minutes)
+// TTL garbage collection for stale IP rate limit buckets
 if (typeof setInterval !== "undefined") {
   const CLEANUP_INTERVAL = 5 * 60 * 1000;
   const timer = setInterval(() => {
     const now = Date.now();
     for (const [key, record] of rateLimitStore.entries()) {
-      // Remove timestamps older than 1 hour
       const valid = record.timestamps.filter((ts) => now - ts < 3600 * 1000);
       if (valid.length === 0) {
         rateLimitStore.delete(key);
@@ -41,7 +37,7 @@ if (typeof setInterval !== "undefined") {
 }
 
 /**
- * Extracts client IP address from incoming Request headers.
+ * Resolves the client IP address, prioritizing Cloudflare's proxy header.
  */
 export function getClientIp(request: Request): string {
   const headers = request.headers;
@@ -65,23 +61,18 @@ export function getClientIp(request: Request): string {
 }
 
 /**
- * Evaluates rate limit for a given identifier using a sliding window algorithm.
- *
- * @param identifier - Unique client identifier (e.g. IP address)
- * @param options - Configuration options for limit and window duration
+ * Sliding-window rate limiter.
  */
 export function checkRateLimit(
   identifier: string,
   options: RateLimitOptions = {}
 ): RateLimitResult {
   const limit = options.limit ?? 5;
-  const windowMs = options.windowMs ?? 60 * 1000; // Default 1 minute
+  const windowMs = options.windowMs ?? 60 * 1000;
   const now = Date.now();
   const windowStart = now - windowMs;
 
   const record = rateLimitStore.get(identifier) ?? { timestamps: [] };
-
-  // Filter out timestamps outside the active sliding window
   const activeTimestamps = record.timestamps.filter((ts) => ts > windowStart);
 
   if (activeTimestamps.length >= limit) {

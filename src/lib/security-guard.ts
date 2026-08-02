@@ -17,9 +17,8 @@ export type SecureRouteHandler<T = unknown> = (
 ) => Promise<NextResponse>;
 
 /**
- * Higher-Order Security Guard for API Routes.
- * Automatically enforces Rate Limiting, Turnstile CAPTCHA, HMAC Signatures,
- * and Input Sanitization before executing the route handler logic.
+ * Route wrapper that enforces rate-limiting, CAPTCHA validation, HMAC signing,
+ * and payload sanitization prior to delegating to the route handler.
  */
 export function withSecurityGuard<T = unknown>(
   handler: SecureRouteHandler<T>,
@@ -34,7 +33,6 @@ export function withSecurityGuard<T = unknown>(
       options.rateLimitWindowSec ??
       Number.parseInt(process.env.RATE_LIMIT_WINDOW_SECONDS ?? "60", 10);
 
-    // 1. Rate Limiting Check
     const rateLimit = checkRateLimit(clientIp, {
       limit,
       windowMs: windowSec * 1000,
@@ -77,7 +75,6 @@ export function withSecurityGuard<T = unknown>(
         }
       }
 
-      // 2. HMAC Signature Verification (if enabled)
       if (options.requireHmac) {
         const signature = request.headers.get("x-signature") ?? "";
         const timestamp = request.headers.get("x-timestamp") ?? "";
@@ -91,7 +88,6 @@ export function withSecurityGuard<T = unknown>(
         }
       }
 
-      // 3. Turnstile CAPTCHA Verification (if enabled)
       if (options.requireTurnstile) {
         const turnstileToken = (bodyData as Record<string, unknown>)
           ?.turnstileToken as string;
@@ -113,10 +109,8 @@ export function withSecurityGuard<T = unknown>(
         }
       }
 
-      // Execute primary route handler
       const response = await handler(request, { clientIp, body: bodyData });
 
-      // Attach rate limit response headers
       for (const [key, value] of Object.entries(rateLimitHeaders)) {
         response.headers.set(key, value);
       }

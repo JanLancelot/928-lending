@@ -6,10 +6,10 @@ export interface IdempotencyRecord {
 
 const idempotencyStore = new Map<string, IdempotencyRecord>();
 
-// Periodic cleanup of expired records (older than 24 hours)
+// TTL garbage collection for expired idempotency records
 if (typeof setInterval !== "undefined") {
-  const CLEANUP_INTERVAL = 15 * 60 * 1000; // Every 15 minutes
-  const MAX_AGE = 24 * 60 * 60 * 1000; // 24 hours
+  const CLEANUP_INTERVAL = 15 * 60 * 1000;
+  const MAX_AGE = 24 * 60 * 60 * 1000;
 
   const timer = setInterval(() => {
     const now = Date.now();
@@ -25,9 +25,6 @@ if (typeof setInterval !== "undefined") {
   }
 }
 
-/**
- * Retrieves a cached response for an idempotency key if present and unexpired.
- */
 export function getIdempotencyRecord(
   key: string,
   maxAgeMs = 24 * 60 * 60 * 1000
@@ -49,9 +46,6 @@ export function getIdempotencyRecord(
   return record;
 }
 
-/**
- * Saves an idempotency record for duplicate submission prevention.
- */
 export function saveIdempotencyRecord(
   key: string,
   statusCode: number,

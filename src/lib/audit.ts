@@ -16,46 +16,34 @@ export interface AuditLogEntry {
   success: boolean;
 }
 
-/**
- * Hashes an IP address using SHA-256 for privacy-preserving audit logs.
- */
 function hashIp(ip: string): string {
   return crypto.createHash("sha256").update(ip || "127.0.0.1").digest("hex").slice(0, 16);
 }
 
-/**
- * Hashes an arbitrary payload object using SHA-256 for tamper-evidence.
- */
 function hashPayload(payload: unknown): string {
   const serialized = typeof payload === "string" ? payload : JSON.stringify(payload || {});
   return crypto.createHash("sha256").update(serialized).digest("hex");
 }
 
 /**
- * Creates a structured, zero-PII security audit log entry.
- */
+  * Emits a privacy-preserving security audit log entry.
+  * IP addresses and payloads are hashed to avoid persisting raw PII.
+  */
 export function createAuditLogEntry(
   eventType: AuditEventType,
   clientIp: string,
   payload?: unknown,
   success = true
 ): AuditLogEntry {
-  const timestamp = new Date().toISOString();
-  const payloadHash = hashPayload(payload);
-  const clientIpHash = hashIp(clientIp);
-  const id = crypto.randomUUID();
-
   const entry: AuditLogEntry = {
-    id,
+    id: crypto.randomUUID(),
     eventType,
-    timestamp,
-    payloadHash,
-    clientIpHash,
+    timestamp: new Date().toISOString(),
+    payloadHash: hashPayload(payload),
+    clientIpHash: hashIp(clientIp),
     success,
   };
 
-  // Structured security audit log output (can be shipped to CloudWatch / Sentry / Datadog)
   console.log(`[AUDIT_LOG] ${JSON.stringify(entry)}`);
-
   return entry;
 }
