@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -14,7 +15,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="w-full bg-white relative z-50">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md overflow-x-clip">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-8">
         
         <div className="flex items-center h-full shrink-0 pr-18 sm:pr-28 lg:pr-36 py-2 z-10 my-auto">
@@ -79,12 +80,12 @@ export function Navbar() {
               })}
             </nav>
 
-            <Link
-              href="/apply-now"
-              className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm lg:text-base font-bold px-6 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] shrink-0"
+            <Button
+              asChild
+              className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm lg:text-base font-bold px-6 py-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] shrink-0"
             >
-              Apply Now
-            </Link>
+              <Link href="/apply-now">Apply Now</Link>
+            </Button>
 
           </div>
         </div>

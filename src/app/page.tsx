@@ -1,92 +1,104 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Zap, Target, ShieldCheck, TrendingUp, CheckCircle2, Award, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative pt-12 pb-24 lg:pt-16 lg:pb-36">
-        <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
-          <svg className="w-full h-full" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M-100 200 L300 600 L700 200" stroke="#0B192C" strokeWidth="80" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M-100 400 L300 800 L700 400" stroke="#E87722" strokeWidth="80" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
+      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[420px] lg:min-h-[460px] flex items-center overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
+            <Image
+              src="/images/bg.jpg"
+              alt="Hero Background"
+              fill
+              className="object-cover object-left"
+              priority
+            />
+          </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-5 space-y-5 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
               <div className="space-y-1">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
                   We Listen
                 </h1>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#E87722] leading-none">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#E87722] leading-none">
                   We Work
                 </h1>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
                   We Lend
                 </h1>
               </div>
 
-              <div className="w-16 h-1.5 bg-[#E87722] rounded-full"></div>
+              <div className="w-14 h-1 bg-[#E87722] rounded-full"></div>
 
-              <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 max-w-sm leading-relaxed">
                 To provide our Small and Medium Enterprises partners alternative sources of funds through high-quality lending facilities with efficient loan processing system to bridge their capital funding requirements.
               </p>
 
               <div className="pt-2">
-                <Link
-                  href="/apply-now"
-                  className="inline-block bg-[#E87722] hover:bg-[#d46716] text-white text-base font-bold px-8 py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+                <Button
+                  asChild
+                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm font-bold px-7 py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Apply Now
-                </Link>
+                  <Link href="/apply-now">Apply Now</Link>
+                </Button>
               </div>
             </div>
 
-            <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-lg lg:max-w-none">
-                
-                <div className="absolute -top-8 -right-8 w-56 h-56 z-20 pointer-events-none">
-                  <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                    <path d="M45 0 H200 V150 C195 80 130 15 45 0 Z" fill="#0B192C" />
-                    <path d="M75 0 H200 V105 C198 55 145 12 75 0 Z" fill="#E87722" />
-                  </svg>
-                </div>
-
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-200/80">
-                  <Image
-                    src="/images/hero_meeting.png"
-                    alt="928 Credit Concept Lending Team Meeting"
-                    width={700}
-                    height={520}
-                    className="w-full h-[400px] sm:h-[460px] object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/50 to-transparent"></div>
-                </div>
-
-                <div className="absolute -bottom-8 -right-8 w-72 h-44 z-20 pointer-events-none">
-                  <svg viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-md">
-                    <path d="M20 180 C140 180 300 110 300 10 L300 180 Z" fill="#E87722" />
-                    <path d="M70 180 C170 180 300 130 300 50 L300 180 Z" fill="#0B192C" opacity="0.9" />
-                  </svg>
-                </div>
-
+            <div className="lg:col-span-7 relative min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] flex items-center justify-end">
+              <div 
+                className="absolute inset-0 z-10 overflow-hidden"
+                style={{
+                  WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
+                  maskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
+                }}
+              >
+                <Image
+                  src="/images/hero_meeting.png"
+                  alt="928 Credit Concept Lending Team Meeting"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
               </div>
             </div>
 
           </div>
+
+          <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-[48%] sm:w-[42%] lg:w-[36%] max-w-[470px] pointer-events-none z-20">
+            <Image
+              src="/images/overlay top.png"
+              alt="Top Overlay"
+              width={632}
+              height={385}
+              className="w-full h-auto object-contain object-right-top"
+              priority
+            />
+          </div>
+
+          <div className="absolute bottom-0 right-4 sm:right-6 lg:right-8 w-[48%] sm:w-[42%] lg:w-[36%] max-w-[470px] pointer-events-none z-30">
+            <Image
+              src="/images/overlay bottom.png"
+              alt="Bottom Overlay"
+              width={632}
+              height={385}
+              className="w-full h-auto object-contain object-right-bottom"
+              priority
+            />
+          </div>
         </div>
       </section>
 
-      <section className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 sm:-mt-20">
-        <div className="bg-[#0B192C] text-white rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-10 border border-slate-800">
+      <section className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-3 sm:mt-4">
+        <div className="bg-[#0B192C] text-white rounded-lg shadow-2xl p-6 sm:p-8 lg:p-10 border border-slate-800">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 divide-y md:divide-y-0 lg:divide-x divide-slate-800">
             
-            <div className="flex flex-col items-center text-center px-4 pt-4 md:pt-0">
-              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md">
+            <div className="group flex flex-col items-center text-center px-4 pt-4 md:pt-0 transition-transform duration-300 hover:-translate-y-1 cursor-default">
+              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E87722] group-hover:text-white">
                 <Zap className="w-7 h-7" />
               </div>
               <h3 className="text-lg font-bold text-white mb-2">Fast and Reliable</h3>
@@ -95,8 +107,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center px-4 pt-6 md:pt-0">
-              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md">
+            <div className="group flex flex-col items-center text-center px-4 pt-6 md:pt-0 transition-transform duration-300 hover:-translate-y-1 cursor-default">
+              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E87722] group-hover:text-white">
                 <Target className="w-7 h-7" />
               </div>
               <h3 className="text-lg font-bold text-white mb-2">SME Focused</h3>
@@ -105,8 +117,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center px-4 pt-6 md:pt-0">
-              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md">
+            <div className="group flex flex-col items-center text-center px-4 pt-6 md:pt-0 transition-transform duration-300 hover:-translate-y-1 cursor-default">
+              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E87722] group-hover:text-white">
                 <ShieldCheck className="w-7 h-7" />
               </div>
               <h3 className="text-lg font-bold text-white mb-2">Trusted Partner</h3>
@@ -115,8 +127,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center px-4 pt-6 md:pt-0">
-              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md">
+            <div className="group flex flex-col items-center text-center px-4 pt-6 md:pt-0 transition-transform duration-300 hover:-translate-y-1 cursor-default">
+              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E87722] group-hover:text-white">
                 <TrendingUp className="w-7 h-7" />
               </div>
               <h3 className="text-lg font-bold text-white mb-2">Growth Driven</h3>
@@ -134,7 +146,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-5">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 group">
+              <div className="relative rounded-lg overflow-hidden shadow-xl border border-slate-200 group transition-all duration-500 hover:shadow-2xl">
                 <Image
                   src="/images/building.png"
                   alt="928 Credit Concept Lending Plaza Storefront"
@@ -161,8 +173,8 @@ export default function Home() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
-                <div className="text-center sm:text-left space-y-2">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
+                <div className="group text-center sm:text-left space-y-2 transition-transform duration-300 hover:-translate-y-0.5">
+                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C] transition-all duration-300 group-hover:bg-[#0B192C] group-hover:text-white group-hover:border-[#0B192C] group-hover:scale-110">
                     <Shield className="w-6 h-6" />
                   </div>
                   <h4 className="font-bold text-sm text-[#0B192C]">Honesty and Integrity</h4>
@@ -171,8 +183,8 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="text-center sm:text-left space-y-2">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
+                <div className="group text-center sm:text-left space-y-2 transition-transform duration-300 hover:-translate-y-0.5">
+                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C] transition-all duration-300 group-hover:bg-[#0B192C] group-hover:text-white group-hover:border-[#0B192C] group-hover:scale-110">
                     <Award className="w-6 h-6" />
                   </div>
                   <h4 className="font-bold text-sm text-[#0B192C]">Quality</h4>
@@ -181,8 +193,8 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="text-center sm:text-left space-y-2">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
+                <div className="group text-center sm:text-left space-y-2 transition-transform duration-300 hover:-translate-y-0.5">
+                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C] transition-all duration-300 group-hover:bg-[#0B192C] group-hover:text-white group-hover:border-[#0B192C] group-hover:scale-110">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h4 className="font-bold text-sm text-[#0B192C]">Accountability</h4>
@@ -193,12 +205,12 @@ export default function Home() {
               </div>
 
               <div className="pt-4">
-                <Link
-                  href="/about-us"
-                  className="inline-block bg-[#0B192C] hover:bg-slate-800 text-white text-sm font-bold px-8 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all"
+                <Button
+                  asChild
+                  className="bg-[#0B192C] hover:bg-slate-800 text-white text-sm font-bold px-8 py-3.5 rounded-md shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Learn More About Us
-                </Link>
+                  <Link href="/about-us">Learn More About Us</Link>
+                </Button>
               </div>
 
             </div>
