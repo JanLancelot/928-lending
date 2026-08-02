@@ -128,11 +128,11 @@ export default function OurServicesPage() {
         </div>
       </section>
 
-      <section className="py-10 sm:py-14 lg:py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-14 sm:space-y-16">
+      <section className="py-6 sm:py-8 lg:py-10 bg-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-10 sm:space-y-12">
 
           {/* Section 1: Main Service */}
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 space-y-6">
+          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 space-y-5 shadow-xl border border-slate-800">
             <div className="space-y-2">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Main Service</span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
@@ -143,7 +143,7 @@ export default function OurServicesPage() {
               </p>
             </div>
 
-            <div className="space-y-3 pt-2">
+            <div className="space-y-2.5 pt-2">
               <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#E87722]">Ideal for</p>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-200 font-medium">
                 <span>Working Capital</span>
@@ -160,17 +160,17 @@ export default function OurServicesPage() {
           </div>
 
           {/* Section 2: Why Businesses Choose Us */}
-          <div className="space-y-10">
+          <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Advantages</span>
               <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Why Businesses Choose Us</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
               {advantages.map(({ icon: Icon, title, desc }) => (
                 <div key={title}>
-                  <Icon className="w-5 h-5 text-[#E87722] mb-3" strokeWidth={1.5} />
-                  <h4 className="font-bold text-sm text-[#0B192C] mb-1.5">{title}</h4>
+                  <Icon className="w-5 h-5 text-[#E87722] mb-2.5" strokeWidth={1.5} />
+                  <h4 className="font-bold text-sm text-[#0B192C] mb-1">{title}</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
                 </div>
               ))}
@@ -178,7 +178,7 @@ export default function OurServicesPage() {
           </div>
 
           {/* Section 3: Loan Process */}
-          <div className="space-y-10">
+          <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Step-by-Step</span>
               <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Loan Process</h2>
@@ -189,7 +189,7 @@ export default function OurServicesPage() {
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-4 relative">
                 {process.map((step) => (
                   <div key={step.n} className="text-center">
-                    <div className="relative z-10 w-8 h-8 mx-auto rounded-full border border-[#0B192C] bg-white text-[#0B192C] text-xs font-bold flex items-center justify-center mb-2.5">
+                    <div className="relative z-10 w-8 h-8 mx-auto rounded-full border border-[#0B192C] bg-white text-[#0B192C] text-xs font-bold flex items-center justify-center mb-2 shadow-sm">
                       {step.n}
                     </div>
                     <div className="font-bold text-xs text-[#0B192C]">{step.title}</div>
@@ -200,13 +200,13 @@ export default function OurServicesPage() {
           </div>
 
           {/* Section 4: Eligibility & Requirements */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="border-t border-slate-200 pt-6 space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+            <div className="space-y-3">
               <div className="flex items-center gap-2.5 text-[#0B192C]">
                 <BadgeCheck className="w-4 h-4 text-[#E87722]" strokeWidth={1.5} />
                 <h3 className="text-lg font-bold text-[#0B192C]">Eligibility</h3>
               </div>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600">
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
                 {eligibility.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="text-[#E87722]">—</span>
@@ -216,12 +216,12 @@ export default function OurServicesPage() {
               </ul>
             </div>
 
-            <div className="border-t border-slate-200 pt-6 space-y-4">
+            <div className="space-y-3">
               <div className="flex items-center gap-2.5 text-[#0B192C]">
                 <FileText className="w-4 h-4 text-[#E87722]" strokeWidth={1.5} />
                 <h3 className="text-lg font-bold text-[#0B192C]">Requirements</h3>
               </div>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600">
+              <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
                 {requirements.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="text-[#E87722]">—</span>
@@ -233,15 +233,15 @@ export default function OurServicesPage() {
           </div>
 
           {/* Section 5: Frequently Asked Questions */}
-          <div className="space-y-10">
+          <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Questions & Answers</span>
               <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Frequently Asked Questions</h2>
             </div>
 
-            <div className="max-w-3xl mx-auto divide-y divide-slate-200 border-t border-b border-slate-200">
+            <div className="max-w-3xl mx-auto divide-y divide-slate-200">
               {faqs.map(({ q, a }) => (
-                <div key={q} className="py-5">
+                <div key={q} className="py-4 first:pt-0">
                   <h4 className="font-bold text-sm text-[#0B192C] mb-1">{q}</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">{a}</p>
                 </div>
@@ -250,7 +250,7 @@ export default function OurServicesPage() {
           </div>
 
           {/* Section 6: Contact CTA Banner */}
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
             <div className="space-y-2 text-center md:text-left">
               <h3 className="text-2xl sm:text-3xl font-bold">Need Financing?</h3>
               <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
@@ -259,7 +259,7 @@ export default function OurServicesPage() {
             </div>
             <Button
               asChild
-              className="bg-[#E87722] hover:bg-[#d46716] text-white font-bold text-sm px-8 py-3.5 rounded-md shrink-0 transition-colors duration-300"
+              className="bg-[#E87722] hover:bg-[#d46716] text-white font-bold text-sm px-8 py-3.5 rounded-md shadow-md shrink-0 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
             >
               <Link href="/apply-now" className="flex items-center gap-2">
                 Apply Now <ChevronRight className="w-4 h-4" />
