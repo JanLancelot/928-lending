@@ -12,6 +12,7 @@ export const loanApplicationSchema = z.object({
   requestedAmount: z.number().positive("Loan amount must be positive"),
   annualRevenue: z.number().nonnegative("Annual revenue must be non-negative"),
   purposeOfLoan: z.string().min(2, "Purpose of loan is required"),
+  agreedToTerms: z.boolean().refine(val => val === true, "You must agree to the terms and conditions"),
   turnstileToken: z.string().min(1, "CAPTCHA verification is required"),
 });
 
