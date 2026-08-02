@@ -40,7 +40,6 @@ const goals = [
 export default function AboutUsPage() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      {/* Compact Page Header */}
       <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[140px] sm:min-h-[160px] flex items-center overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
@@ -116,7 +115,6 @@ export default function AboutUsPage() {
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-10 sm:space-y-12">
           
-          {/* Section 1: Company Overview */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             <div className="lg:col-span-5 flex">
               <div className="relative w-full h-[380px] sm:h-[420px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-100 shadow-md">
@@ -160,7 +158,6 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* Section 2: Company Timeline */}
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Our Journey</span>
@@ -184,7 +181,6 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* Section 3: Vision & Mission */}
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Purpose & Direction</span>
@@ -212,7 +208,6 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* Section 4: Core Values */}
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Guided Principles</span>
@@ -230,7 +225,6 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* Section 5: Operations, Areas of Operation & Business Partners */}
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             <div className="py-5 md:py-2 md:px-6 md:first:pl-0 space-y-1.5">
               <h4 className="font-bold text-sm text-[#0B192C]">Company Operations</h4>
@@ -254,7 +248,6 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* Section 6: Future Expansion */}
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 space-y-5 border border-slate-800 shadow-xl">
             <div className="space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Strategic Goals</span>

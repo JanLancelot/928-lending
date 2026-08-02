@@ -55,7 +55,6 @@ const faqs = [
 export default function OurServicesPage() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      {/* Compact Page Header */}
       <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[140px] sm:min-h-[160px] flex items-center overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
@@ -131,7 +130,6 @@ export default function OurServicesPage() {
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-10 sm:space-y-12">
 
-          {/* Section 1: Main Service */}
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 space-y-5 shadow-xl border border-slate-800">
             <div className="space-y-2">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Main Service</span>
@@ -159,7 +157,6 @@ export default function OurServicesPage() {
             </div>
           </div>
 
-          {/* Section 2: Why Businesses Choose Us */}
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Advantages</span>
@@ -177,7 +174,6 @@ export default function OurServicesPage() {
             </div>
           </div>
 
-          {/* Section 3: Loan Process */}
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Step-by-Step</span>
@@ -199,7 +195,6 @@ export default function OurServicesPage() {
             </div>
           </div>
 
-          {/* Section 4: Eligibility & Requirements */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
             <div className="space-y-3">
               <div className="flex items-center gap-2.5 text-[#0B192C]">
@@ -232,7 +227,6 @@ export default function OurServicesPage() {
             </div>
           </div>
 
-          {/* Section 5: Frequently Asked Questions */}
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Questions & Answers</span>
@@ -249,7 +243,6 @@ export default function OurServicesPage() {
             </div>
           </div>
 
-          {/* Section 6: Contact CTA Banner */}
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
             <div className="space-y-2 text-center md:text-left">
               <h3 className="text-2xl sm:text-3xl font-bold">Need Financing?</h3>

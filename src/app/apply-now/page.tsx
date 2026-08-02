@@ -4,7 +4,6 @@ import { LoanApplicationForm } from "@/components/loan-application-form";
 export default function ApplyNowPage() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      {/* Compact Page Header */}
       <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[140px] sm:min-h-[160px] flex items-center overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
@@ -77,7 +76,6 @@ export default function ApplyNowPage() {
         </div>
       </section>
 
-      {/* Main Page Content Container */}
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <LoanApplicationForm />

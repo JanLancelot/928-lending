@@ -44,7 +44,6 @@ const steps = [
 export default function Home() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      {/* Hero Section */}
       <section className="relative w-full bg-white pt-0 pb-4 lg:pb-6 min-h-[400px] lg:min-h-[440px] flex items-center overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
@@ -139,7 +138,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 1: Why Choose 928 Credit? */}
       <section className="relative z-30 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 my-4 sm:my-6">
         <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 shadow-xl border border-slate-800">
           <div className="text-center max-w-xl mx-auto mb-8">
@@ -158,7 +156,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 2: About Preview (Compact Vertical Spacing, No Lines) */}
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
@@ -206,7 +203,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 3: Our Loan Product */}
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
@@ -246,7 +242,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 4: How It Works */}
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-8">
           <div className="text-center max-w-xl mx-auto space-y-1">
@@ -272,7 +267,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 5: CTA Banner */}
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
