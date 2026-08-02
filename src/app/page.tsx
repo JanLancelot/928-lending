@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="w-full bg-white overflow-hidden">
       {/* ================= HERO SECTION ================= */}
-      <section className="relative pt-12 pb-24 lg:pt-16 lg:pb-36 bg-gradient-to-b from-slate-50 to-white">
+      <section className="relative pt-12 pb-24 lg:pt-16 lg:pb-36">
         {/* Background Geometric Watermark Pattern (Chevron) */}
         <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
           <svg className="w-full h-full" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,6 +32,9 @@ export default function Home() {
                 </h1>
               </div>
 
+              {/* Accent Dash */}
+              <div className="w-16 h-1.5 bg-[#E87722] rounded-full"></div>
+
               <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
                 To provide our Small and Medium Enterprises partners alternative sources of funds through high-quality lending facilities with efficient loan processing system to bridge their capital funding requirements.
               </p>
@@ -50,11 +53,11 @@ export default function Home() {
             <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
               <div className="relative w-full max-w-lg lg:max-w-none">
                 
-                {/* Top-Right Decorative Swoosh Overlay */}
-                <div className="absolute -top-10 -right-8 w-64 h-64 z-20 pointer-events-none">
+                {/* Top-Right Decorative Ribbon Overlay */}
+                <div className="absolute -top-8 -right-8 w-56 h-56 z-20 pointer-events-none">
                   <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                    <path d="M50 0 C120 0 200 80 200 150 L200 0 Z" fill="#0B192C" />
-                    <path d="M70 0 C140 0 200 60 200 130 C200 100 130 0 70 0 Z" fill="#E87722" />
+                    <path d="M45 0 H200 V150 C195 80 130 15 45 0 Z" fill="#0B192C" />
+                    <path d="M75 0 H200 V105 C198 55 145 12 75 0 Z" fill="#E87722" />
                   </svg>
                 </div>
 
@@ -72,11 +75,11 @@ export default function Home() {
                   <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/50 to-transparent"></div>
                 </div>
 
-                {/* Bottom-Right Decorative Curved Swoosh Overlay */}
-                <div className="absolute -bottom-8 -right-6 w-72 h-44 z-20 pointer-events-none">
+                {/* Bottom-Right Decorative Curved Ribbon Overlay */}
+                <div className="absolute -bottom-8 -right-8 w-72 h-44 z-20 pointer-events-none">
                   <svg viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-md">
-                    <path d="M30 180 C120 180 300 120 300 20 L300 180 Z" fill="#E87722" />
-                    <path d="M80 180 C160 180 300 140 300 60 L300 180 Z" fill="#0B192C" opacity="0.9" />
+                    <path d="M20 180 C140 180 300 110 300 10 L300 180 Z" fill="#E87722" />
+                    <path d="M70 180 C170 180 300 130 300 50 L300 180 Z" fill="#0B192C" opacity="0.9" />
                   </svg>
                 </div>
 
