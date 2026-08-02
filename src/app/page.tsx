@@ -2,19 +2,44 @@ import Link from "next/link";
 import Image from "next/image";
 import { 
   Zap, 
-  Target, 
   ShieldCheck, 
   TrendingUp, 
-  CheckCircle2, 
-  ChevronRight, 
+  Target, 
   ArrowRight,
-  FileText,
-  Search,
-  FileCheck,
-  CheckCircle,
-  Banknote
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const whyChooseUs = [
+  {
+    icon: Zap,
+    title: "Streamlined Processing",
+    desc: "Quick and efficient loan evaluation designed to serve urgent needs.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Non-Collateralized Loans",
+    desc: "Accessible business funding without requiring traditional collateral.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Trusted Lending Partner",
+    desc: "Operating with honesty, integrity, and accountability since 2020.",
+  },
+  {
+    icon: Target,
+    title: "SME Focused",
+    desc: "Helping businesses secure the capital they need to grow.",
+  },
+];
+
+const steps = [
+  { n: "1", title: "Submit Application", desc: "Complete the online form with your business details." },
+  { n: "2", title: "Evaluation", desc: "Our team reviews your application promptly." },
+  { n: "3", title: "Document Verification", desc: "Submitted documents are checked and confirmed." },
+  { n: "4", title: "Loan Approval", desc: "You're notified once your loan is approved." },
+  { n: "5", title: "Fund Release", desc: "Capital is delivered directly to your business." },
+];
 
 export default function Home() {
   return (
@@ -114,66 +139,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 1: Why Choose 928 Credit? (4 cards) */}
+      {/* Section 1: Why Choose 928 Credit? */}
       <section className="relative z-30 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 mt-2 sm:mt-3">
-        <div className="bg-[#0B192C] text-white rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-10 border border-slate-800">
-          <div className="text-center max-w-xl mx-auto mb-6">
-            <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">Why Choose Us</span>
-            <h2 className="text-xl sm:text-2xl font-black text-white mt-1">Why Choose 928 Credit?</h2>
+        <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12">
+          <div className="text-center max-w-xl mx-auto mb-10">
+            <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Why Choose Us</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mt-2">Why Choose 928 Credit?</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 divide-y md:divide-y-0 lg:divide-x divide-slate-800">
-            
-            <div className="group flex flex-col items-center text-center px-4 pt-4 md:pt-0 cursor-default">
-              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E87722] group-hover:text-white">
-                <Zap className="w-7 h-7" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-800">
+            {whyChooseUs.map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="py-6 first:pt-0 lg:py-0 lg:px-8 lg:first:pl-0 lg:last:pr-0">
+                <Icon className="w-5 h-5 text-[#E87722] mb-3" strokeWidth={1.5} />
+                <h3 className="text-sm font-bold text-white mb-1.5">{title}</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">{desc}</p>
               </div>
-              <h3 className="text-base font-bold text-white mb-1.5">Streamlined Processing</h3>
-              <p className="text-xs text-slate-300 leading-relaxed max-w-xs">
-                Quick and efficient loan evaluation designed to serve urgent needs.
-              </p>
-            </div>
-
-            <div className="group flex flex-col items-center text-center px-4 pt-6 md:pt-0 cursor-default">
-              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E87722] group-hover:text-white">
-                <ShieldCheck className="w-7 h-7" />
-              </div>
-              <h3 className="text-base font-bold text-white mb-1.5">Non-Collateralized Loans</h3>
-              <p className="text-xs text-slate-300 leading-relaxed max-w-xs">
-                Accessible business funding without requiring traditional collateral.
-              </p>
-            </div>
-
-            <div className="group flex flex-col items-center text-center px-4 pt-6 md:pt-0 cursor-default">
-              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E87722] group-hover:text-white">
-                <TrendingUp className="w-7 h-7" />
-              </div>
-              <h3 className="text-base font-bold text-white mb-1.5">Trusted Lending Partner</h3>
-              <p className="text-xs text-slate-300 leading-relaxed max-w-xs">
-                Operating with honesty, integrity, and accountability since 2020.
-              </p>
-            </div>
-
-            <div className="group flex flex-col items-center text-center px-4 pt-6 md:pt-0 cursor-default">
-              <div className="w-14 h-14 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-4 text-[#E87722] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E87722] group-hover:text-white">
-                <Target className="w-7 h-7" />
-              </div>
-              <h3 className="text-base font-bold text-white mb-1.5">SME Focused</h3>
-              <p className="text-xs text-slate-300 leading-relaxed max-w-xs">
-                Helping businesses secure the capital they need to grow.
-              </p>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
 
       {/* Section 2: About Preview */}
-      <section className="py-8 sm:py-12 lg:py-14 bg-white">
+      <section className="py-10 sm:py-14 lg:py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
             <div className="lg:col-span-5 flex">
-              <div className="relative w-full h-[400px] sm:h-[450px] lg:h-full min-h-[400px] rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+              <div className="relative w-full h-[400px] sm:h-[450px] lg:h-full min-h-[400px] rounded-2xl overflow-hidden border border-slate-100">
                 <Image
                   src="/images/building.png"
                   alt="928 Credit Concept Lending Storefront Unit E"
@@ -186,10 +177,10 @@ export default function Home() {
 
             <div className="lg:col-span-7 flex flex-col justify-between py-1 space-y-4 sm:space-y-5">
               <div>
-                <span className="text-[#E87722] font-extrabold text-base sm:text-lg">
-                  About Preview
+                <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">
+                  About Us
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#0B192C] leading-tight tracking-tight mt-1">
+                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#0B192C] leading-tight tracking-tight mt-2">
                   About 928 Credit Concept Lending
                 </h2>
               </div>
@@ -201,7 +192,7 @@ export default function Home() {
               <div className="pt-2">
                 <Button
                   asChild
-                  className="bg-[#0B192C] hover:bg-[#060e18] text-white text-xs sm:text-sm font-bold px-8 py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="bg-[#0B192C] hover:bg-[#060e18] text-white text-xs sm:text-sm font-bold px-8 py-3 rounded-md transition-colors duration-300"
                 >
                   <Link href="/about-us" className="flex items-center gap-2">
                     Learn More <ArrowRight className="w-4 h-4" />
@@ -215,14 +206,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 3: Our Loan Product (Large Card) */}
-      <section className="py-8 sm:py-12 bg-white">
+      {/* Section 3: Our Loan Product */}
+      <section className="py-10 sm:py-14 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 shadow-xl border border-slate-800 relative overflow-hidden">
+          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
               
               <div className="lg:col-span-8 space-y-4">
-                <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">
+                <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">
                   Our Primary Loan Product
                 </span>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
@@ -232,26 +223,19 @@ export default function Home() {
                   Designed for registered businesses looking for flexible financing without requiring collateral.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                  <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
-                    <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
-                    <span className="font-semibold">Fast Processing</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
-                    <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
-                    <span className="font-semibold">Competitive Lending</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
-                    <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
-                    <span className="font-semibold">Business Growth Support</span>
-                  </div>
+                <div className="flex flex-wrap gap-x-6 gap-y-2 pt-3 text-xs sm:text-sm text-slate-300 font-medium">
+                  <span>Fast Processing</span>
+                  <span className="text-slate-600">/</span>
+                  <span>Competitive Lending</span>
+                  <span className="text-slate-600">/</span>
+                  <span>Business Growth Support</span>
                 </div>
               </div>
 
               <div className="lg:col-span-4 flex items-center lg:justify-end">
                 <Button
                   asChild
-                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm font-bold px-8 py-3.5 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm font-bold px-8 py-3.5 rounded-md transition-colors duration-300"
                 >
                   <Link href="/apply-now">Apply for Loan</Link>
                 </Button>
@@ -262,58 +246,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 4: How It Works (5 Steps Timeline) */}
-      <section className="py-8 sm:py-12 lg:py-14 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-8">
+      {/* Section 4: How It Works */}
+      <section className="py-10 sm:py-14 lg:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-10">
           <div className="text-center max-w-xl mx-auto space-y-1">
-            <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">Simple Step-by-Step</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C]">How It Works</h2>
+            <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Simple Step-by-Step</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">How It Works</h2>
             <p className="text-xs text-slate-500">From application to fund release in 5 simple steps.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-2">
-              <div className="w-10 h-10 rounded-full bg-[#0B192C] text-[#E87722] font-black text-sm flex items-center justify-center mx-auto">1</div>
-              <FileText className="w-5 h-5 mx-auto text-[#0B192C]" />
-              <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Submit Application</h4>
-              <p className="text-[11px] text-slate-500">Complete online form details.</p>
-            </div>
-
-            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-2">
-              <div className="w-10 h-10 rounded-full bg-[#0B192C] text-[#E87722] font-black text-sm flex items-center justify-center mx-auto">2</div>
-              <Search className="w-5 h-5 mx-auto text-[#0B192C]" />
-              <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Evaluation</h4>
-              <p className="text-[11px] text-slate-500">Fast credit evaluation.</p>
-            </div>
-
-            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-2">
-              <div className="w-10 h-10 rounded-full bg-[#0B192C] text-[#E87722] font-black text-sm flex items-center justify-center mx-auto">3</div>
-              <FileCheck className="w-5 h-5 mx-auto text-[#0B192C]" />
-              <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Document Verification</h4>
-              <p className="text-[11px] text-slate-500">Review submitted docs.</p>
-            </div>
-
-            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-2">
-              <div className="w-10 h-10 rounded-full bg-[#0B192C] text-[#E87722] font-black text-sm flex items-center justify-center mx-auto">4</div>
-              <CheckCircle className="w-5 h-5 mx-auto text-[#0B192C]" />
-              <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Loan Approval</h4>
-              <p className="text-[11px] text-slate-500">Notice of approval.</p>
-            </div>
-
-            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-2">
-              <div className="w-10 h-10 rounded-full bg-[#0B192C] text-[#E87722] font-black text-sm flex items-center justify-center mx-auto">5</div>
-              <Banknote className="w-5 h-5 mx-auto text-[#0B192C]" />
-              <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Fund Release</h4>
-              <p className="text-[11px] text-slate-500">Capital delivered.</p>
+          <div className="relative">
+            <div className="hidden lg:block absolute left-0 right-0 top-4 h-px bg-slate-200" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-8 gap-x-4 relative">
+              {steps.map((step) => (
+                <div key={step.n} className="text-left sm:text-center">
+                  <div className="relative z-10 w-8 h-8 sm:mx-auto rounded-full border border-[#0B192C] bg-white text-[#0B192C] text-xs font-bold flex items-center justify-center mb-3">
+                    {step.n}
+                  </div>
+                  <h4 className="font-bold text-xs sm:text-sm text-[#0B192C] mb-1">{step.title}</h4>
+                  <p className="text-[11px] text-slate-500 leading-relaxed">{step.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Section 5: CTA Banner */}
-      <section className="py-8 sm:py-12 bg-white">
+      <section className="py-10 sm:py-14 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
+          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="space-y-2 text-center md:text-left">
               <h3 className="text-2xl sm:text-3xl font-bold">Ready to Grow Your Business?</h3>
               <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
@@ -322,7 +284,7 @@ export default function Home() {
             </div>
             <Button
               asChild
-              className="bg-[#E87722] hover:bg-[#d46716] text-white font-bold text-sm px-8 py-3.5 rounded-md shadow-md shrink-0 transition-all duration-300 transform hover:-translate-y-0.5"
+              className="bg-[#E87722] hover:bg-[#d46716] text-white font-bold text-sm px-8 py-3.5 rounded-md shrink-0 transition-colors duration-300"
             >
               <Link href="/apply-now" className="flex items-center gap-2">
                 Apply Now <ChevronRight className="w-4 h-4" />
