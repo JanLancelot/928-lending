@@ -1,20 +1,93 @@
-import { LoanApplicationForm } from"@/components/loan-application-form";
+import Image from "next/image";
+import { LoanApplicationForm } from "@/components/loan-application-form";
 
 export default function ApplyNowPage() {
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 bg-white min-h-screen">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center mb-8">
-        <h1 className="text-3xl font-extrabold text-[#0A1A2F] tracking-tight">
-          Commercial Loan Application
-        </h1>
-        <p className="mt-2 text-sm text-slate-600">
-          Fast, flexible financing solutions for your business.
-        </p>
-      </div>
+    <div className="w-full bg-white overflow-hidden">
+      {/* Compact Page Header Label (Signature Design System) */}
+      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[140px] sm:min-h-[160px] flex items-center overflow-hidden">
+        {/* Banner Content, Background & Overlays Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          {/* Background image bg.jpg constrained within max-w-7xl width */}
+          <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
+            <Image
+              src="/images/bg.jpg"
+              alt="Background Pattern"
+              fill
+              className="object-cover object-left"
+              priority
+            />
+          </div>
 
-      <div className="w-full max-w-4xl mx-auto">
-        <LoanApplicationForm />
-      </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center relative z-10">
+            
+            {/* Left Column: Page Title & Subtext */}
+            <div className="lg:col-span-6 space-y-2 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+              <div className="space-y-1">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-none">
+                  Loan Application
+                </h1>
+              </div>
+
+              <div className="w-12 h-1 bg-[#E87722] rounded-full"></div>
+
+              <p className="text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed">
+                Fill out the form below to start your commercial loan application. Our team will review your information and get in touch as soon as possible.
+              </p>
+            </div>
+
+            {/* Right Column: Compact Feathered Image Placeholder */}
+            <div className="lg:col-span-6 relative min-h-[140px] sm:min-h-[160px] lg:min-h-[180px] flex items-center justify-end">
+              <div 
+                className="absolute inset-0 z-10 overflow-hidden"
+                style={{
+                  WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
+                  maskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
+                }}
+              >
+                <Image
+                  src="/images/building.jpg"
+                  alt="928 Credit Concept Lending Application Portal"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
+              </div>
+            </div>
+
+          </div>
+
+          {/* Connected Overlays (Compact scale matching site design system) */}
+          <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-[20%] sm:w-[15%] lg:w-[12%] max-w-[150px] pointer-events-none z-20">
+            <Image
+              src="/images/overlay top.png"
+              alt="Top Overlay"
+              width={632}
+              height={385}
+              className="w-full h-auto object-contain object-right-top"
+              priority
+            />
+          </div>
+
+          <div className="absolute bottom-0 right-4 sm:right-6 lg:right-8 w-[20%] sm:w-[15%] lg:w-[12%] max-w-[150px] pointer-events-none z-30">
+            <Image
+              src="/images/overlay bottom.png"
+              alt="Bottom Overlay"
+              width={632}
+              height={385}
+              className="w-full h-auto object-contain object-right-bottom"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Main Form Container (Matching max-w-6xl margin spacing) */}
+      <section className="py-8 sm:py-12 lg:py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+          <LoanApplicationForm />
+        </div>
+      </section>
     </div>
   );
 }

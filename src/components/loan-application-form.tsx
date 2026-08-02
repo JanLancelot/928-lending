@@ -183,23 +183,23 @@ export function LoanApplicationForm() {
               <div className="flex items-center w-full">
                 <div className={cn("h-[2px] w-full",
                   idx === 0 ?"opacity-0" :"opacity-100",
-                  currentStep >= step.id ?"bg-[#0A1A2F]" :"bg-slate-200"
+                  currentStep >= step.id ?"bg-[#0B192C]" :"bg-slate-200"
                 )} />
 
-                <div className={cn("flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full border-2 z-10",
-                  currentStep > step.id ?"bg-[#0A1A2F] border-[#0A1A2F] text-white" :
-                  currentStep === step.id ?"bg-primary border-primary text-white" :"bg-white  border-slate-300  text-slate-400"
+                <div className={cn("flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full border-2 z-10 transition-all duration-300",
+                  currentStep > step.id ?"bg-[#0B192C] border-[#0B192C] text-white" :
+                  currentStep === step.id ?"bg-[#E87722] border-[#E87722] text-white shadow-md" :"bg-white border-slate-300 text-slate-400"
                 )}>
                   {currentStep > step.id ? <Check className="w-5 h-5" /> : <span className="font-semibold">{step.id}</span>}
                 </div>
 
                 <div className={cn("h-[2px] w-full",
                   idx === steps.length - 1 ?"opacity-0" :"opacity-100",
-                  currentStep > step.id ?"bg-[#0A1A2F]" :"bg-slate-200"
+                  currentStep > step.id ?"bg-[#0B192C]" :"bg-slate-200"
                 )} />
               </div>
-              <span className={cn("absolute top-12 text-xs font-semibold whitespace-nowrap text-center",
-                currentStep >= step.id ? (currentStep === step.id && step.id === steps.length ?"text-primary" :"text-[#0A1A2F]") :"text-slate-400"
+              <span className={cn("absolute top-12 text-xs font-semibold whitespace-nowrap text-center transition-colors duration-300",
+                currentStep >= step.id ? (currentStep === step.id ?"text-[#E87722]" :"text-[#0B192C]") :"text-slate-400"
               )}>
                 {step.title}
               </span>
@@ -215,8 +215,8 @@ export function LoanApplicationForm() {
             {currentStep === 1 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-[#0A1A2F]">Loan Details</h2>
-                  <p className="text-muted-foreground mt-1">Tell us about the loan you are requesting.</p>
+                  <h2 className="text-2xl font-bold text-[#0B192C]">Loan Details</h2>
+                  <p className="text-slate-500 text-xs sm:text-sm mt-1">Tell us about the loan facility you are requesting.</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
@@ -229,7 +229,7 @@ export function LoanApplicationForm() {
                           <Input
                             type="number"
                             placeholder="e.g., 50000"
-                            className="h-12 border-slate-300"
+                            className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]"
                             {...field}
                             value={field.value ?? ""}
                             onChange={(e) =>
@@ -250,17 +250,11 @@ export function LoanApplicationForm() {
                       <FormItem>
                         <FormLabel className="text-slate-700">Purpose of Loan</FormLabel>
                         <FormControl>
-                          <select
-                            className="flex h-12 w-full rounded-md border border-slate-300 bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50"
+                          <Input
+                            placeholder="e.g., Working Capital, Inventory Purchase"
+                            className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]"
                             {...field}
-                          >
-                            <option value="">Select a purpose...</option>
-                            <option value="Working Capital">Working Capital</option>
-                            <option value="Equipment">Equipment Purchase</option>
-                            <option value="Expansion">Business Expansion</option>
-                            <option value="Inventory">Inventory</option>
-                            <option value="Other">Other</option>
-                          </select>
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -273,49 +267,51 @@ export function LoanApplicationForm() {
             {currentStep === 2 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-[#0A1A2F]">Personal Info</h2>
-                  <p className="text-muted-foreground mt-1">Provide your personal contact information.</p>
+                  <h2 className="text-2xl font-bold text-[#0B192C]">Personal Information</h2>
+                  <p className="text-slate-500 text-xs sm:text-sm mt-1">Provide your primary contact details.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <FormField
                     control={form.control}
                     name="fullName"
                     render={({ field }) => (
-                      <FormItem className="md:col-span-2">
-                        <FormLabel className="text-slate-700">Applicant Full Name</FormLabel>
-                        <FormControl>
-                          <Input className="h-12 border-slate-300" placeholder="John Doe" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Email Address</FormLabel>
+                        <FormLabel className="text-slate-700">Full Name</FormLabel>
                         <FormControl>
-                          <Input className="h-12 border-slate-300" type="email" placeholder="john@example.com" {...field} />
+                          <Input placeholder="e.g., Juan Dela Cruz" className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-slate-700">Phone Number</FormLabel>
-                        <FormControl>
-                          <Input className="h-12 border-slate-300" type="tel" placeholder="(555) 000-0000" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700">Email Address</FormLabel>
+                          <FormControl>
+                            <Input placeholder="juan@example.com" type="email" className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700">Mobile Phone Number</FormLabel>
+                          <FormControl>
+                            <Input placeholder="09171234567" className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
               </div>
             )}
@@ -323,8 +319,8 @@ export function LoanApplicationForm() {
             {currentStep === 3 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-[#0A1A2F]">Financial Info</h2>
-                  <p className="text-muted-foreground mt-1">Provide your business and financial details.</p>
+                  <h2 className="text-2xl font-bold text-[#0B192C]">Business Financial Information</h2>
+                  <p className="text-slate-500 text-xs sm:text-sm mt-1">Tell us about your registered enterprise.</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
@@ -334,7 +330,7 @@ export function LoanApplicationForm() {
                       <FormItem>
                         <FormLabel className="text-slate-700">Business Name</FormLabel>
                         <FormControl>
-                          <Input className="h-12 border-slate-300" placeholder="Acme Inc." {...field} />
+                          <Input placeholder="e.g., Dela Cruz Trading Corp." className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -345,22 +341,9 @@ export function LoanApplicationForm() {
                     name="tinNumber"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Registration No. / TIN</FormLabel>
+                        <FormLabel className="text-slate-700">TIN Number</FormLabel>
                         <FormControl>
-                          <Input className="h-12 border-slate-300" placeholder="e.g. 123-456-789" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="businessAddress"
-                    render={({ field }) => (
-                      <FormItem className="md:col-span-2">
-                        <FormLabel className="text-slate-700">Business Address</FormLabel>
-                        <FormControl>
-                          <Input className="h-12 border-slate-300" placeholder="123 Main St, City, Province" {...field} />
+                          <Input placeholder="000-000-000-000" className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -371,42 +354,9 @@ export function LoanApplicationForm() {
                     name="businessType"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Business Type</FormLabel>
+                        <FormLabel className="text-slate-700">Business Structure</FormLabel>
                         <FormControl>
-                          <select
-                            className="flex h-12 w-full rounded-md border border-slate-300 bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50"
-                            {...field}
-                          >
-                            <option value="">Select a type...</option>
-                            <option value="Sole Proprietorship">Sole Proprietorship</option>
-                            <option value="Partnership">Partnership</option>
-                            <option value="Corporation">Corporation</option>
-                            <option value="LLC">LLC</option>
-                          </select>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="annualRevenue"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-slate-700">Annual Revenue (₱)</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="number"
-                            placeholder="e.g., 250000"
-                            className="h-12 border-slate-300"
-                            {...field}
-                            value={field.value ?? ""}
-                            onChange={(e) =>
-                              field.onChange(
-                                e.target.value ==="" ? undefined : Number(e.target.value)
-                              )
-                            }
-                          />
+                          <Input placeholder="e.g., Sole Proprietorship, Corporation" className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -417,12 +367,12 @@ export function LoanApplicationForm() {
                     name="yearsInBusiness"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Years in Business</FormLabel>
+                        <FormLabel className="text-slate-700">Years in Operation</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
-                            placeholder="e.g. 5"
-                            className="h-12 border-slate-300"
+                            placeholder="e.g., 3"
+                            className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]"
                             {...field}
                             value={field.value ?? ""}
                             onChange={(e) =>
@@ -436,64 +386,98 @@ export function LoanApplicationForm() {
                       </FormItem>
                     )}
                   />
+                  <div className="md:col-span-2">
+                    <FormField
+                      control={form.control}
+                      name="businessAddress"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700">Business Address</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Building/Street, Barangay, City, Province" className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="md:col-span-2">
+                    <FormField
+                      control={form.control}
+                      name="annualRevenue"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700">Estimated Annual Gross Revenue (₱)</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="number"
+                              placeholder="e.g., 2000000"
+                              className="h-12 border-slate-300 rounded-md focus-visible:ring-[#E87722]"
+                              {...field}
+                              value={field.value ?? ""}
+                              onChange={(e) =>
+                                field.onChange(
+                                  e.target.value ==="" ? undefined : Number(e.target.value)
+                                )
+                              }
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
               </div>
             )}
 
             {currentStep === 4 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-                <div className="mb-4">
-                  <h2 className="text-2xl font-bold text-[#0A1A2F]">Document Upload</h2>
-                  <p className="text-muted-foreground mt-1">Upload a valid government-issued ID (JPG, PNG, or PDF — max 5MB).</p>
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-[#0B192C]">Upload Documents & Submit</h2>
+                  <p className="text-slate-500 text-xs sm:text-sm mt-1">Upload supporting business registration documents (optional) and confirm.</p>
                 </div>
 
-                <div className="relative flex flex-col items-center justify-center p-12 border-2 border-dashed border-slate-300  rounded-xl bg-slate-50  hover:bg-slate-100  transition-colors">
-                  <Input
-                    type="file"
-                    multiple
-                    accept=".pdf,.png,.jpg,.jpeg"
-                    id="documents-upload"
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                    onChange={(e) => {
-                      if (e.target.files) {
-                        setUploadedFiles(Array.from(e.target.files));
-                      }
-                    }}
-                  />
-                  <Paperclip className="h-12 w-12 text-primary mb-4" />
-                  <p className="text-lg font-semibold text-[#0A1A2F]">Drag & drop your ID here</p>
-                  <p className="text-sm text-slate-500 mt-1">or <span className="text-primary underline">browse file</span> - JPG, PNG, PDF - Max 5MB</p>
-                </div>
-
-                {uploadedFiles.length > 0 && (
-                  <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-lg flex flex-col space-y-2">
-                    <p className="text-sm font-semibold text-emerald-800 flex items-center">
-                      <CheckCircle2 className="w-4 h-4 mr-2" />
-                      {uploadedFiles.length} file(s) selected
-                    </p>
-                    <div className="space-y-1">
-                      {uploadedFiles.map((file, idx) => (
-                        <div key={idx} className="text-xs text-emerald-700 flex items-center justify-between bg-white px-3 py-2 rounded border border-emerald-100">
-                          <span className="truncate max-w-[200px] sm:max-w-[300px]">{file.name}</span>
-                          <span className="text-emerald-500 font-medium">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
-                        </div>
-                      ))}
-                    </div>
+                <div className="space-y-4">
+                  <FormLabel className="text-slate-700">Supporting Business Documents (DTI/SEC, Mayor's Permit, Bank Statements)</FormLabel>
+                  <div className="relative flex flex-col items-center justify-center p-8 border-2 border-dashed border-slate-300 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer">
+                    <Paperclip className="w-8 h-8 text-[#E87722] mb-2" />
+                    <p className="text-xs sm:text-sm font-semibold text-slate-700">Click or drag files to upload</p>
+                    <p className="text-[11px] text-slate-500 mt-1">PDF, PNG, JPG up to 10MB per file</p>
+                    <input
+                      id="documents-upload"
+                      type="file"
+                      multiple
+                      className="absolute inset-0 opacity-0 cursor-pointer"
+                      onChange={(e) => {
+                        if (e.target.files) {
+                          setUploadedFiles(Array.from(e.target.files));
+                        }
+                      }}
+                    />
                   </div>
-                )}
 
-                <div className="bg-slate-100  p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-[#0A1A2F]  mb-2">Accepted Government IDs:</p>
-                  <p className="text-sm text-slate-600">
-                    National ID · Passport · Driver's License · SSS / GSIS · PhilHealth · Voter's ID · PRC ID · TIN ID
-                  </p>
+                  {uploadedFiles.length > 0 && (
+                    <div className="space-y-2 pt-2">
+                      <p className="text-xs font-bold text-[#0B192C]">Selected Files ({uploadedFiles.length}):</p>
+                      <div className="space-y-1">
+                        {uploadedFiles.map((file, idx) => (
+                          <div key={idx} className="flex items-center text-xs text-slate-600 bg-white p-2 rounded-md border border-slate-200">
+                            <CheckCircle2 className="w-4 h-4 text-emerald-500 mr-2 shrink-0" />
+                            <span className="truncate">{file.name}</span>
+                            <span className="ml-auto text-slate-400 text-[10px]">({(file.size / 1024 / 1024).toFixed(2)} MB)</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <FormField
                   control={form.control}
                   name="agreedToTerms"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md py-4">
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-lg border border-slate-200 p-4 bg-slate-50">
                       <FormControl>
                         <Checkbox
                           checked={field.value}
@@ -502,8 +486,8 @@ export function LoanApplicationForm() {
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm text-slate-600  font-normal leading-relaxed">
-                          I agree to the <a href="#" className="text-primary hover:underline">Terms & Conditions</a> and <a href="#" className="text-primary hover:underline">Privacy Policy</a>. I authorize 928 Credit Concept Lending Investor Corp. to verify my information and contact me regarding my application.
+                        <FormLabel className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
+                          I agree to the <a href="#" className="text-[#E87722] font-semibold hover:underline">Terms & Conditions</a> and <a href="#" className="text-[#E87722] font-semibold hover:underline">Privacy Policy</a>. I authorize 928 Credit Concept Lending Investor Corp. to verify my information and contact me regarding my application.
                         </FormLabel>
                         <FormMessage />
                       </div>
@@ -515,7 +499,7 @@ export function LoanApplicationForm() {
 
             <div className="flex justify-between items-center pt-8 mt-8 border-t border-slate-200">
               {currentStep > 1 ? (
-                <Button type="button" variant="outline" onClick={prevStep} className="h-12 px-8 text-[#0A1A2F] border-[#D99026] text-[#D99026] hover:bg-[#D99026]/10">
+                <Button type="button" variant="outline" onClick={prevStep} className="h-11 px-7 text-[#0B192C] border-slate-300 hover:bg-slate-100 rounded-md font-semibold text-xs sm:text-sm">
                   ← Back
                 </Button>
               ) : (
@@ -523,18 +507,18 @@ export function LoanApplicationForm() {
               )}
               
               {currentStep < 4 ? (
-                <Button type="button" onClick={nextStep} className="h-12 px-8 bg-[#D99026] hover:bg-[#c27c20] text-white">
+                <Button type="button" onClick={nextStep} className="h-11 px-8 bg-[#E87722] hover:bg-[#d46716] text-white font-bold rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm">
                   Next Step →
                 </Button>
               ) : (
                 <Button
                   type="submit"
-                  className="h-12 px-8 bg-[#D99026] hover:bg-[#c27c20] text-white font-semibold flex items-center"
+                  className="h-11 px-8 bg-[#E87722] hover:bg-[#d46716] text-white font-bold rounded-md shadow-md flex items-center transition-all duration-300 transform hover:-translate-y-0.5 text-xs sm:text-sm"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       Submitting...
                     </>
                   ) : (
