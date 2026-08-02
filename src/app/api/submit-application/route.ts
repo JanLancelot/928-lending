@@ -18,7 +18,6 @@ export async function POST(request: Request) {
       ? configuredWindowSeconds
       : 60;
 
-  // 1. Rate Limiting Check (defaults to 5 requests per 60s per IP)
   const rateLimit = checkRateLimit(clientIp, {
     limit: rateLimitMaxRequests,
     windowMs: rateLimitWindowSeconds * 1000,
@@ -47,11 +46,8 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-
-    // 2. Server-side Zod validation
     const validatedData = loanApplicationSchema.parse(body);
 
-    // 3. Server-side Cloudflare Turnstile token verification
     const turnstileResult = await verifyTurnstileToken(
       validatedData.turnstileToken,
       clientIp
@@ -68,10 +64,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // 4. TODO (Dev 2): Generate branded PDF & AES-256 encrypt with password protection
-    // 5. TODO (Dev 2): Deliver PDF via SES / Resend to business owner
-    // 6. TODO (Dev 2): Deliver PDF password via Twilio SMS to pre-registered phone number
-    // 7. TODO (OPTIONAL): Record immutable audit log entry
+    // Pipeline: PDF generation -> encryption -> email delivery -> SMS key delivery
 
     return NextResponse.json(
       {
