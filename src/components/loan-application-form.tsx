@@ -177,18 +177,15 @@ export function LoanApplicationForm() {
   return (
     <Card className="w-full max-w-4xl mx-auto shadow-2xl border-0 rounded-2xl bg-white">
       <CardHeader className="px-8 pt-8 pb-4">
-        {/* Stepper */}
         <div className="flex items-center justify-between w-full mb-8">
           {steps.map((step, idx) => (
             <div key={step.id} className="flex flex-col items-center relative flex-1">
               <div className="flex items-center w-full">
-                {/* Connector Line (Left) */}
                 <div className={cn("h-[2px] w-full",
                   idx === 0 ?"opacity-0" :"opacity-100",
                   currentStep >= step.id ?"bg-[#0A1A2F]" :"bg-slate-200"
                 )} />
 
-                {/* Step Circle */}
                 <div className={cn("flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full border-2 z-10",
                   currentStep > step.id ?"bg-[#0A1A2F] border-[#0A1A2F] text-white" :
                   currentStep === step.id ?"bg-primary border-primary text-white" :"bg-white  border-slate-300  text-slate-400"
@@ -196,7 +193,6 @@ export function LoanApplicationForm() {
                   {currentStep > step.id ? <Check className="w-5 h-5" /> : <span className="font-semibold">{step.id}</span>}
                 </div>
 
-                {/* Connector Line (Right) */}
                 <div className={cn("h-[2px] w-full",
                   idx === steps.length - 1 ?"opacity-0" :"opacity-100",
                   currentStep > step.id ?"bg-[#0A1A2F]" :"bg-slate-200"
@@ -216,7 +212,6 @@ export function LoanApplicationForm() {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             
-            {/* Step 1: Loan Details */}
             {currentStep === 1 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="mb-6">
@@ -275,7 +270,6 @@ export function LoanApplicationForm() {
               </div>
             )}
 
-            {/* Step 2: Personal Info */}
             {currentStep === 2 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="mb-6">
@@ -326,7 +320,6 @@ export function LoanApplicationForm() {
               </div>
             )}
 
-            {/* Step 3: Financial Info */}
             {currentStep === 3 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="mb-6">
@@ -447,7 +440,6 @@ export function LoanApplicationForm() {
               </div>
             )}
 
-            {/* Step 4: Upload & Submit */}
             {currentStep === 4 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="mb-4">
@@ -521,14 +513,13 @@ export function LoanApplicationForm() {
               </div>
             )}
 
-            {/* Navigation Buttons */}
             <div className="flex justify-between items-center pt-8 mt-8 border-t border-slate-200">
               {currentStep > 1 ? (
                 <Button type="button" variant="outline" onClick={prevStep} className="h-12 px-8 text-[#0A1A2F] border-[#D99026] text-[#D99026] hover:bg-[#D99026]/10">
                   ← Back
                 </Button>
               ) : (
-                <div /> // Placeholder for alignment
+                <div />
               )}
               
               {currentStep < 4 ? (

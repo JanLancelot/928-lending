@@ -17,7 +17,6 @@ export function Navbar() {
     <header className="w-full bg-white relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-8">
         
-        {/* Left: 928 Logo on White Background - Prominent Space & Vertically Centered */}
         <div className="flex items-center h-full shrink-0 pr-18 sm:pr-28 lg:pr-36 py-2 z-10 my-auto">
           <Link href="/" className="flex items-center justify-center h-full group">
             <Image
@@ -31,11 +30,9 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Right: Dark Navy Container with Nav Links */}
         <div className="relative flex-1 h-full flex items-center justify-end">
           <div className="relative flex items-center justify-between h-full w-full bg-[#0B192C] text-white pl-16 sm:pl-24 lg:pl-32 pr-5 sm:pr-6 shadow-md rounded-none">
             
-            {/* Smooth Diagonal Curved Swoop Edge */}
             <div className="absolute -left-16 sm:-left-24 lg:-left-32 top-0 h-full w-16 sm:w-24 lg:w-32 pointer-events-none">
               <svg
                 viewBox="0 0 128 80"
@@ -51,7 +48,6 @@ export function Navbar() {
               </svg>
             </div>
 
-            {/* Nav Links - Wider Spacing */}
             <nav className="flex items-center space-x-8 sm:space-x-12 lg:space-x-16 ml-auto mr-8 sm:mr-10">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
@@ -61,7 +57,6 @@ export function Navbar() {
                     href={item.href}
                     className="relative group py-1.5 font-semibold text-xs sm:text-sm lg:text-base tracking-wide transition-all duration-300"
                   >
-                    {/* Text */}
                     <span
                       className={`inline-block transition-all duration-300 transform group-hover:-translate-y-0.5 ${
                         isActive
@@ -72,7 +67,6 @@ export function Navbar() {
                       {item.name}
                     </span>
 
-                    {/* Underline */}
                     <span
                       className={`absolute -bottom-0.5 left-0 h-[2.5px] bg-[#E87722] rounded-full transition-all duration-300 ease-out ${
                         isActive
@@ -85,7 +79,6 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Apply Now Orange Button */}
             <Link
               href="/apply-now"
               className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm lg:text-base font-bold px-6 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] shrink-0"
