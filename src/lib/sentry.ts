@@ -1,3 +1,5 @@
+import * as Sentry from "@sentry/nextjs";
+
 export interface SentryEventLike {
   extra?: Record<string, unknown>;
   request?: {
@@ -26,9 +28,6 @@ const PII_KEYS = new Set([
   "tin",
 ]);
 
-/**
- * Recursively redacts PII keys from event context objects before sending to error monitoring.
- */
 export function scrubPII<T>(data: T): T {
   if (data === null || data === undefined) {
     return data;
@@ -61,9 +60,6 @@ export function scrubPII<T>(data: T): T {
   return data;
 }
 
-/**
- * Sentry beforeSend hook to prevent applicant PII from reaching external servers.
- */
 export function beforeSendScrubber(event: SentryEventLike): SentryEventLike {
   if (event.extra) {
     event.extra = scrubPII(event.extra);
@@ -80,19 +76,13 @@ export function beforeSendScrubber(event: SentryEventLike): SentryEventLike {
   return event;
 }
 
-/**
- * Safe error logger that scrubs PII context before printing/logging.
- */
 export function captureSecurityError(
   error: unknown,
   context?: Record<string, unknown>
 ): void {
-  const errorMessage =
-    error instanceof Error ? error.message : "Unknown security exception";
   const sanitizedContext = context ? scrubPII(context) : {};
 
-  console.error(
-    `[SECURITY_ERROR] ${errorMessage}`,
-    JSON.stringify(sanitizedContext)
-  );
+  Sentry.captureException(error, {
+    extra: sanitizedContext,
+  });
 }
