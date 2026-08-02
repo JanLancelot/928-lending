@@ -5,17 +5,13 @@ import {
   Award, 
   CheckCircle2, 
   Target, 
-  HeartHandshake, 
   Building2, 
   ChevronRight, 
-  FileCheck, 
-  Users, 
-  TrendingUp, 
-  Briefcase,
-  BadgeCheck
+  BadgeCheck,
+  FileCheck,
+  Users
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function AboutUsPage() {
   return (
@@ -73,7 +69,7 @@ export default function AboutUsPage() {
 
           </div>
 
-          {/* Connected Overlays (Compact scale matching About Us) */}
+          {/* Connected Overlays (Compact scale matching site design system) */}
           <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-[20%] sm:w-[15%] lg:w-[12%] max-w-[150px] pointer-events-none z-20">
             <Image
               src="/images/overlay top.png"
@@ -98,29 +94,48 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Main Page Content */}
+      {/* Main Page Content (Professional Clean Style matching Home Page) */}
       <section className="py-8 sm:py-12 lg:py-14 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-12 sm:space-y-16">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-10 sm:space-y-14">
           
-          {/* Who We Are & Company Profile */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-6 space-y-5">
+          {/* Section 1: Company Profile (Grid matching Home page) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+            
+            {/* Left Column: Portrait Storefront Image */}
+            <div className="lg:col-span-5 flex">
+              <div className="relative w-full h-[400px] sm:h-[450px] lg:h-full min-h-[400px] rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+                <Image
+                  src="/images/building.png"
+                  alt="928 Credit Concept Lending Storefront Unit E"
+                  fill
+                  className="object-cover object-center rounded-2xl"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Right Column: Corporate History & Details */}
+            <div className="lg:col-span-7 flex flex-col justify-between py-1 space-y-4">
               <div>
-                <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">
+                <span className="text-[#E87722] font-extrabold text-base sm:text-lg">
                   Company Profile
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-[#0B192C] mt-1 tracking-tight">
-                  Who We Are
+                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#0B192C] leading-tight tracking-tight mt-1">
+                  SEC Registered <br className="hidden sm:inline" />
+                  Financial Partner
                 </h2>
               </div>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                Established in 2020, <strong>928 CREDIT CONCEPT LENDING INVESTOR CORPORATION</strong> is a Securities and Exchange Commission (SEC) registered corporation in the Philippines, incorporated on February 20, 2020 with Registration No. <strong>CS202002431</strong>.
-              </p>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                The company is granted Certificate of Authority No. <strong>3247</strong> under the Lending Company Regulation Act of 2007 (Republic Act No. 9474), authorizing operations at Unit E 2nd Floor Violago Plaza, Pagala, Baliwag City, Bulacan. We specialize in non-collateralized lending facilities tailored to satisfy the funding requirements of registered business owners across Luzon.
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Incorporated on February 20, 2020, <strong>928 CREDIT CONCEPT LENDING INVESTOR CORPORATION</strong> is a Securities and Exchange Commission registered corporation in the Philippines (SEC Reg. No. <strong>CS202002431</strong>).
               </p>
               
-              <div className="grid grid-cols-2 gap-4 pt-2">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                The company operates under Certificate of Authority No. <strong>3247</strong> pursuant to the Lending Company Regulation Act of 2007 (Republic Act No. 9474). Headquartered at Unit E 2nd Floor Violago Plaza, Pagala, Baliwag City, Bulacan, we specialize in non-collateralized business loans for registered enterprises across Luzon and Metro Manila.
+              </p>
+
+              {/* SEC Badges */}
+              <div className="grid grid-cols-2 gap-4 pt-1">
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                   <div className="flex items-center space-x-2 text-[#0B192C]">
                     <BadgeCheck className="w-5 h-5 text-[#E87722]" />
@@ -139,150 +154,97 @@ export default function AboutUsPage() {
                   <div className="text-[11px] text-slate-500 mt-0.5">Republic Act No. 9474</div>
                 </div>
               </div>
+
             </div>
 
-            {/* Side Image Showcase */}
-            <div className="lg:col-span-6">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-                <Image
-                  src="/images/hero_meeting.png"
-                  alt="928 Lending Team Discussion"
-                  width={600}
-                  height={450}
-                  className="w-full h-[360px] sm:h-[400px] object-cover rounded-2xl"
-                />
-              </div>
-            </div>
           </div>
 
-          {/* Mission & Vision Statements */}
-          <div className="space-y-6">
-            <div className="text-center max-w-2xl mx-auto space-y-2">
-              <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">
-                Purpose & Direction
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C]">Vision & Mission</h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Vision Card */}
-              <Card className="rounded-xl border-slate-200 shadow-sm hover:shadow-md transition-all duration-300">
-                <CardHeader className="flex flex-row items-center space-x-4 pb-2">
-                  <div className="p-3 rounded-full bg-slate-900 text-[#E87722]">
-                    <Building2 className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg font-bold text-[#0B192C]">Our Vision</CardTitle>
-                    <p className="text-xs text-slate-500">To be the leading financial partner for MSMEs</p>
-                  </div>
-                </CardHeader>
-                <CardContent className="text-slate-600 text-xs sm:text-sm leading-relaxed pt-2">
-                  To be the leading provider of financial products for Small and Medium Enterprises across the country, recognized for operating with unwavering honesty, integrity, quality, and accountability.
-                </CardContent>
-              </Card>
-
-              {/* Mission Card */}
-              <Card className="rounded-xl border-slate-200 shadow-sm hover:shadow-md transition-all duration-300">
-                <CardHeader className="flex flex-row items-center space-x-4 pb-2">
-                  <div className="p-3 rounded-full bg-slate-900 text-[#E87722]">
-                    <Target className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg font-bold text-[#0B192C]">Our Mission</CardTitle>
-                    <p className="text-xs text-slate-500">Commitment to partners, employees & shareholders</p>
-                  </div>
-                </CardHeader>
-                <CardContent className="text-slate-600 text-xs sm:text-sm space-y-2 pt-2 leading-relaxed">
-                  <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0 mt-0.5" />
-                    <span>To provide SME partners alternative sources of funds through high-quality lending facilities with efficient loan processing.</span>
-                  </div>
-                  <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0 mt-0.5" />
-                    <span>To provide employees competitive work environments with opportunities for professional growth and attractive compensation.</span>
-                  </div>
-                  <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0 mt-0.5" />
-                    <span>To provide shareholders optimum returns on investment through transparent financial reporting systems.</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Core Values */}
-          <div className="space-y-8">
-            <div className="text-center max-w-2xl mx-auto space-y-2">
+          {/* Section 2: Core Values (Clean 3-Column matching Home Page) */}
+          <div className="space-y-6 pt-2">
+            <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">
                 Guided Principles
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C]">Our Core Values</h2>
-              <p className="text-slate-600 text-xs sm:text-sm">
-                Every transaction and relationship at 928 Credit Concept is guided by our core pillars.
+              <p className="text-xs text-slate-500">
+                Every transaction and partnership at 928 Credit Concept is guided by our core pillars.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <Card className="rounded-xl border-slate-200 p-6 text-center space-y-3 shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mx-auto text-[#E87722]">
+              <div className="text-center sm:text-left space-y-2 p-6 rounded-2xl border border-slate-100 bg-slate-50/50">
+                <div className="w-12 h-12 rounded-full border-2 border-[#0B192C] flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
                   <Shield className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-sm text-[#0B192C]">Honesty and Integrity</h3>
+                <h4 className="font-bold text-sm text-[#0B192C]">Honesty and Integrity</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   We uphold the highest standard of integrity and honesty in all our actions.
                 </p>
-              </Card>
+              </div>
 
-              <Card className="rounded-xl border-slate-200 p-6 text-center space-y-3 shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mx-auto text-[#E87722]">
+              <div className="text-center sm:text-left space-y-2 p-6 rounded-2xl border border-slate-100 bg-slate-50/50">
+                <div className="w-12 h-12 rounded-full border-2 border-[#0B192C] flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
                   <Award className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-sm text-[#0B192C]">Quality</h3>
+                <h4 className="font-bold text-sm text-[#0B192C]">Quality</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   We provide outstanding products and deliver premium services.
                 </p>
-              </Card>
+              </div>
 
-              <Card className="rounded-xl border-slate-200 p-6 text-center space-y-3 shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mx-auto text-[#E87722]">
+              <div className="text-center sm:text-left space-y-2 p-6 rounded-2xl border border-slate-100 bg-slate-50/50">
+                <div className="w-12 h-12 rounded-full border-2 border-[#0B192C] flex items-center justify-center mx-auto sm:mx-0 text-[#0B192C]">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-sm text-[#0B192C]">Accountability</h3>
+                <h4 className="font-bold text-sm text-[#0B192C]">Accountability</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   We guarantee our accountability in delivering our commitments.
                 </p>
-              </Card>
+              </div>
             </div>
           </div>
 
-          {/* Operational Infrastructure Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-2">
-              <Briefcase className="w-6 h-6 text-[#E87722]" />
-              <h4 className="font-bold text-sm text-[#0B192C]">Streamlined Operations</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Since 2020, we continuously expand our lending operations by providing business loans to registered owners via efficient, accommodating loan processes.
-              </p>
-            </div>
+          {/* Section 3: Vision & Mission (Dark Navy Card Block matching Home page feature section) */}
+          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 border border-slate-800 shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-800">
+              
+              {/* Vision */}
+              <div className="space-y-3 pr-0 md:pr-6 pt-2 md:pt-0">
+                <div className="flex items-center space-x-3 text-[#E87722]">
+                  <Building2 className="w-6 h-6" />
+                  <h3 className="text-xl font-bold text-white">Our Vision</h3>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  To be the leading provider of financial products for Small and Medium Enterprises across the country, recognized for operating with unwavering honesty, integrity, quality, and accountability.
+                </p>
+              </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-2">
-              <TrendingUp className="w-6 h-6 text-[#E87722]" />
-              <h4 className="font-bold text-sm text-[#0B192C]">Strong Funding Partners</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                We source funds from individual creditors, business partners, and bank loans to sustain operational growth and increase partner profitability.
-              </p>
-            </div>
+              {/* Mission */}
+              <div className="space-y-3 pl-0 md:pl-6 pt-6 md:pt-0">
+                <div className="flex items-center space-x-3 text-[#E87722]">
+                  <Target className="w-6 h-6" />
+                  <h3 className="text-xl font-bold text-white">Our Mission</h3>
+                </div>
+                <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-[#E87722] font-bold">•</span>
+                    <span>To provide SME partners alternative sources of funds through high-quality lending facilities and efficient loan processing.</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-[#E87722] font-bold">•</span>
+                    <span>To provide employees competitive work environments with opportunities for professional growth and attractive compensation.</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-[#E87722] font-bold">•</span>
+                    <span>To provide shareholders optimum returns on investment through transparent financial reporting systems.</span>
+                  </li>
+                </ul>
+              </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-2">
-              <Users className="w-6 h-6 text-[#E87722]" />
-              <h4 className="font-bold text-sm text-[#0B192C]">Trained Professional Workforce</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Composed of highly trained office personnel operating under a professional development hierarchy to carry out dedicated operating functions.
-              </p>
             </div>
           </div>
 
-          {/* CTA Banner */}
+          {/* Section 4: CTA Banner */}
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
             <div className="space-y-2 text-center md:text-left">
               <h3 className="text-2xl sm:text-3xl font-bold">Bridge Your Capital Funding Needs</h3>
