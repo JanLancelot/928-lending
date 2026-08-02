@@ -8,8 +8,16 @@ import {
   ShieldCheck, 
   Users, 
   TrendingUp, 
-  MapPin, 
-  FileText
+  FileText,
+  Search,
+  FileCheck,
+  CheckCircle,
+  Banknote,
+  HelpCircle,
+  BadgeCheck,
+  Lock,
+  Clock,
+  Briefcase
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -37,14 +45,14 @@ export default function OurServicesPage() {
             <div className="lg:col-span-6 space-y-2 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
               <div className="space-y-1">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-none">
-                  Our Services
+                  Business Loan Solutions
                 </h1>
               </div>
 
               <div className="w-12 h-1 bg-[#E87722] rounded-full"></div>
 
               <p className="text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed">
-                High-quality non-collateralized business loans and financing facilities designed to satisfy the capital requirements of Small and Medium Enterprises.
+                Helping Businesses Move Forward.
               </p>
             </div>
 
@@ -94,196 +102,239 @@ export default function OurServicesPage() {
         </div>
       </section>
 
-      {/* Main Page Content (Professional Clean Style matching Home Page) */}
+      {/* Main Page Content (Matching max-w-6xl margin spacing) */}
       <section className="py-8 sm:py-12 lg:py-14 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-10 sm:space-y-14">
 
-          {/* Section 1: Featured Service (Grid matching Home Page layout) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-            
-            {/* Left Column: Real Office Photo */}
-            <div className="lg:col-span-5 flex">
-              <div className="relative w-full h-[400px] sm:h-[450px] lg:h-full min-h-[400px] rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-                <Image
-                  src="/images/hero_meeting.png"
-                  alt="928 Credit Concept Advisory Services"
-                  fill
-                  className="object-cover object-center rounded-2xl"
-                  priority
-                />
-              </div>
+          {/* Section 1: Main Service (Large Card) */}
+          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 shadow-xl border border-slate-800 space-y-6">
+            <div className="space-y-2">
+              <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">Main Service</span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+                Non-Collateralized Business Loan
+              </h2>
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
+                Provide financing without requiring traditional collateral.
+              </p>
             </div>
 
-            {/* Right Column: Service Details */}
-            <div className="lg:col-span-7 flex flex-col justify-between py-1 space-y-4">
-              <div>
-                <span className="text-[#E87722] font-extrabold text-base sm:text-lg">
-                  Primary Offering
+            <div className="space-y-3 pt-2">
+              <p className="text-xs font-extrabold uppercase tracking-wider text-[#E87722]">Ideal for:</p>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                <span className="bg-slate-900 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl">
+                  Working Capital
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#0B192C] leading-tight tracking-tight mt-1">
-                  Non-Collateralized <br className="hidden sm:inline" />
-                  Business Loan
-                </h2>
+                <span className="bg-slate-900 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl">
+                  Inventory
+                </span>
+                <span className="bg-slate-900 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl">
+                  Equipment
+                </span>
+                <span className="bg-slate-900 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl">
+                  Expansion
+                </span>
+                <span className="bg-slate-900 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl">
+                  Business Operations
+                </span>
               </div>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Our primary offering is the <strong>Non-Collateralized Business Loan</strong>. This accessible funding solution is designed specifically to fuel the growth of registered businesses without requiring traditional collateral assets.
-              </p>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Since beginning operations in 2020, we have continuously expanded our lending footprint to bridge the capital funding requirements of registered business owners across Luzon, with a primary client concentration in Metro Manila.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                <div className="flex items-center space-x-2.5 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
-                  <span className="font-semibold">No Traditional Collateral</span>
-                </div>
-                <div className="flex items-center space-x-2.5 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
-                  <span className="font-semibold">Streamlined Application Process</span>
-                </div>
-                <div className="flex items-center space-x-2.5 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
-                  <span className="font-semibold">Tailored Business Capital</span>
-                </div>
-                <div className="flex items-center space-x-2.5 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
-                  <span className="font-semibold">Transparent Rates & Terms</span>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Button
-                  asChild
-                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm font-bold px-8 py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <Link href="/apply-now">Apply For Loan</Link>
-                </Button>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* Section 2: Why Partner With Us (Clean Dark Navy Card Block matching Home Page) */}
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 border border-slate-800 shadow-xl">
-            <div className="text-center max-w-xl mx-auto space-y-1 mb-8">
-              <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">
-                Why Partner With Us
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white">Why Choose 928 Lending?</h2>
-              <p className="text-xs text-slate-300">
-                Partnering with us means you benefit from 4 dedicated corporate pillars.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 lg:divide-x divide-slate-800">
-              
-              <div className="flex flex-col items-center text-center px-3 pt-3 sm:pt-0 cursor-default">
-                <div className="w-12 h-12 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-3 text-[#E87722]">
-                  <Zap className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-sm text-white mb-1.5">Streamlined Processes</h3>
-                <p className="text-xs text-slate-300 leading-relaxed max-w-xs">
-                  Efficient loan processing systems designed to effectively accommodate urgent business capital needs.
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center px-3 pt-6 lg:pt-0 cursor-default">
-                <div className="w-12 h-12 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-3 text-[#E87722]">
-                  <Users className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-sm text-white mb-1.5">Professional Team</h3>
-                <p className="text-xs text-slate-300 leading-relaxed max-w-xs">
-                  Highly trained and reliable office personnel operating under professional corporate standards.
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center px-3 pt-6 lg:pt-0 cursor-default">
-                <div className="w-12 h-12 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-3 text-[#E87722]">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-sm text-white mb-1.5">Uncompromising Integrity</h3>
-                <p className="text-xs text-slate-300 leading-relaxed max-w-xs">
-                  SEC-registered corporation operating with unwavering honesty, quality, and accountability.
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center px-3 pt-6 lg:pt-0 cursor-default">
-                <div className="w-12 h-12 rounded-full bg-slate-900 border-2 border-[#E87722] flex items-center justify-center mb-3 text-[#E87722]">
-                  <TrendingUp className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-sm text-white mb-1.5">Future-Focused Growth</h3>
-                <p className="text-xs text-slate-300 leading-relaxed max-w-xs">
-                  Committed to empowering sustainable MSME business expansion across the country.
-                </p>
-              </div>
-
             </div>
           </div>
 
-          {/* Section 3: Future Expansion Roadmap */}
+          {/* Section 2: Why Businesses Choose Us (Grid of 6) */}
           <div className="space-y-6">
             <div className="text-center max-w-xl mx-auto space-y-1">
-              <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">
-                Strategic Goals
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C]">Future Expansion Roadmap</h2>
-              <p className="text-xs text-slate-500">
-                Over the succeeding years, 928 Credit Concept remains committed to expanding its footprint across the country.
-              </p>
+              <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">Advantages</span>
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C]">Why Businesses Choose Us</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
-                <div className="w-10 h-10 rounded-full border-2 border-[#0B192C] flex items-center justify-center text-[#0B192C]">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <h4 className="font-bold text-sm text-[#0B192C]">Provincial Expansion</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Expand business operations to rural areas in regional provinces.
-                </p>
+                <Zap className="w-6 h-6 text-[#E87722]" />
+                <h4 className="font-bold text-sm text-[#0B192C]">Fast Approval</h4>
+                <p className="text-xs text-slate-500">Quick turnaround times for business loan evaluations.</p>
               </div>
 
               <div className="p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
-                <div className="w-10 h-10 rounded-full border-2 border-[#0B192C] flex items-center justify-center text-[#0B192C]">
-                  <Users className="w-5 h-5" />
-                </div>
-                <h4 className="font-bold text-sm text-[#0B192C]">Increase MSME Reach</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Increase the present numbers of MSME borrowers and business partners.
-                </p>
+                <Users className="w-6 h-6 text-[#E87722]" />
+                <h4 className="font-bold text-sm text-[#0B192C]">Professional Team</h4>
+                <p className="text-xs text-slate-500">Dedicated specialists operating with full corporate standards.</p>
               </div>
 
               <div className="p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
-                <div className="w-10 h-10 rounded-full border-2 border-[#0B192C] flex items-center justify-center text-[#0B192C]">
-                  <FileText className="w-5 h-5" />
-                </div>
-                <h4 className="font-bold text-sm text-[#0B192C]">Custom Financial Packages</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Develop new financial loan packages tailored to business needs.
-                </p>
+                <TrendingUp className="w-6 h-6 text-[#E87722]" />
+                <h4 className="font-bold text-sm text-[#0B192C]">Flexible Financing</h4>
+                <p className="text-xs text-slate-500">Loan packages tailored to your exact capital requirements.</p>
               </div>
 
               <div className="p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
-                <div className="w-10 h-10 rounded-full border-2 border-[#0B192C] flex items-center justify-center text-[#0B192C]">
-                  <Building2 className="w-5 h-5" />
+                <BadgeCheck className="w-6 h-6 text-[#E87722]" />
+                <h4 className="font-bold text-sm text-[#0B192C]">Transparent Process</h4>
+                <p className="text-xs text-slate-500">Clear rates, zero hidden charges, and honest terms.</p>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
+                <ShieldCheck className="w-6 h-6 text-[#E87722]" />
+                <h4 className="font-bold text-sm text-[#0B192C]">Reliable Support</h4>
+                <p className="text-xs text-slate-500">Responsive customer service from application to release.</p>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
+                <Lock className="w-6 h-6 text-[#E87722]" />
+                <h4 className="font-bold text-sm text-[#0B192C]">Secure Transactions</h4>
+                <p className="text-xs text-slate-500">Encrypted information handling and strict privacy protection.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3: Loan Process (Timeline of 6) */}
+          <div className="space-y-6">
+            <div className="text-center max-w-xl mx-auto space-y-1">
+              <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">Step-by-Step</span>
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C]">Loan Process</h2>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                <div className="w-8 h-8 rounded-full bg-[#0B192C] text-[#E87722] font-bold text-xs flex items-center justify-center mx-auto">1</div>
+                <div className="font-bold text-xs text-[#0B192C]">Application</div>
+              </div>
+
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                <div className="w-8 h-8 rounded-full bg-[#0B192C] text-[#E87722] font-bold text-xs flex items-center justify-center mx-auto">2</div>
+                <div className="font-bold text-xs text-[#0B192C]">Initial Review</div>
+              </div>
+
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                <div className="w-8 h-8 rounded-full bg-[#0B192C] text-[#E87722] font-bold text-xs flex items-center justify-center mx-auto">3</div>
+                <div className="font-bold text-xs text-[#0B192C]">Document Submission</div>
+              </div>
+
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                <div className="w-8 h-8 rounded-full bg-[#0B192C] text-[#E87722] font-bold text-xs flex items-center justify-center mx-auto">4</div>
+                <div className="font-bold text-xs text-[#0B192C]">Evaluation</div>
+              </div>
+
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                <div className="w-8 h-8 rounded-full bg-[#0B192C] text-[#E87722] font-bold text-xs flex items-center justify-center mx-auto">5</div>
+                <div className="font-bold text-xs text-[#0B192C]">Approval</div>
+              </div>
+
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                <div className="w-8 h-8 rounded-full bg-[#0B192C] text-[#E87722] font-bold text-xs flex items-center justify-center mx-auto">6</div>
+                <div className="font-bold text-xs text-[#0B192C]">Release</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 4: Eligibility & Requirements */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Eligibility */}
+            <div className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 space-y-4">
+              <div className="flex items-center space-x-2 text-[#0B192C]">
+                <BadgeCheck className="w-5 h-5 text-[#E87722]" />
+                <h3 className="text-lg font-bold text-[#0B192C]">Eligibility</h3>
+              </div>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Registered Business</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Business Owner</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Valid Government IDs</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Business Registration</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Supporting Documents</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Requirements */}
+            <div className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 space-y-4">
+              <div className="flex items-center space-x-2 text-[#0B192C]">
+                <FileText className="w-5 h-5 text-[#E87722]" />
+                <h3 className="text-lg font-bold text-[#0B192C]">Requirements</h3>
+              </div>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Business Permit</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>DTI/SEC Registration</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Financial Statements</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Valid ID</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#E87722] shrink-0" />
+                  <span>Other Supporting Documents</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Section 5: Frequently Asked Questions */}
+          <div className="space-y-6">
+            <div className="text-center max-w-xl mx-auto space-y-1">
+              <span className="text-[#E87722] font-extrabold text-xs uppercase tracking-wider">Questions & Answers</span>
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C]">Frequently Asked Questions</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-2xl border border-slate-200 bg-white space-y-2 shadow-sm">
+                <div className="flex items-center space-x-2 text-[#0B192C]">
+                  <HelpCircle className="w-4 h-4 text-[#E87722]" />
+                  <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Who can apply?</h4>
                 </div>
-                <h4 className="font-bold text-sm text-[#0B192C]">Strategic Branches</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Open branches in strategic areas of Metro Manila.
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Registered business owners operating within Luzon.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-slate-200 bg-white space-y-2 shadow-sm">
+                <div className="flex items-center space-x-2 text-[#0B192C]">
+                  <HelpCircle className="w-4 h-4 text-[#E87722]" />
+                  <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">Do I need collateral?</h4>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  No. Our business loan is non-collateralized.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl border border-slate-200 bg-white space-y-2 shadow-sm">
+                <div className="flex items-center space-x-2 text-[#0B192C]">
+                  <HelpCircle className="w-4 h-4 text-[#E87722]" />
+                  <h4 className="font-bold text-xs sm:text-sm text-[#0B192C]">How long is processing?</h4>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Applications are evaluated as quickly as possible after complete document submission.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Section 4: CTA Banner */}
+          {/* Section 6: Contact CTA Banner */}
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
             <div className="space-y-2 text-center md:text-left">
-              <h3 className="text-2xl sm:text-3xl font-bold">Bridge Your Capital Requirements</h3>
+              <h3 className="text-2xl sm:text-3xl font-bold">Need Financing?</h3>
               <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
-                Apply for our Non-Collateralized Business Loan with fast turnaround times and transparent processing.
+                Apply today or contact our lending specialists.
               </p>
             </div>
             <Button
