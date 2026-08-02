@@ -147,7 +147,7 @@ export function LoanApplicationForm() {
             </div>
             <div className="flex justify-between items-center pb-2 border-b border-slate-200">
               <span className="text-muted-foreground text-base">Requested Amount:</span>
-              <span className="font-semibold text-base text-primary">${submittedData.requestedAmount?.toLocaleString()}</span>
+              <span className="font-semibold text-base text-primary">₱{submittedData.requestedAmount?.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground text-base">Purpose:</span>
@@ -229,7 +229,7 @@ export function LoanApplicationForm() {
                     name="requestedAmount"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Requested Amount ($)</FormLabel>
+                        <FormLabel className="text-slate-700">Requested Amount (₱)</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -400,7 +400,7 @@ export function LoanApplicationForm() {
                     name="annualRevenue"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Annual Revenue ($)</FormLabel>
+                        <FormLabel className="text-slate-700">Annual Revenue (₱)</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
