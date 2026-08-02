@@ -6,6 +6,6 @@ Sentry.init({
   tracesSampleRate: 0.1,
   debug: false,
   beforeSend(event) {
-    return beforeSendScrubber(event as unknown as SentryEventLike) as Sentry.Event;
+    return beforeSendScrubber(event as unknown as SentryEventLike) as unknown as Sentry.ErrorEvent;
   },
 });
