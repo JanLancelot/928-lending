@@ -3,6 +3,7 @@ import { checkRateLimit, getClientIp } from "@/lib/ratelimit";
 import { verifyTurnstileToken } from "@/lib/turnstile";
 import { verifyHmacSignature } from "@/lib/hmac";
 import { sanitizePayload } from "@/lib/sanitize";
+import { captureSecurityError } from "@/lib/sentry";
 
 export interface SecurityGuardOptions {
   requireTurnstile?: boolean;
@@ -117,6 +118,8 @@ export function withSecurityGuard<T = unknown>(
 
       return response;
     } catch (error) {
+      captureSecurityError(error, { clientIp });
+
       const isDev = process.env.NODE_ENV === "development";
       const message =
         isDev && error instanceof Error
