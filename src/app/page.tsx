@@ -69,7 +69,8 @@ export default function Home() {
 
           </div>
 
-          <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-[48%] sm:w-[42%] lg:w-[36%] max-w-[470px] pointer-events-none z-20">
+          {/* Connected Overlays (Smaller scale, connected along right edge) */}
+          <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-[38%] sm:w-[32%] lg:w-[26%] max-w-[340px] pointer-events-none z-20">
             <Image
               src="/images/overlay top.png"
               alt="Top Overlay"
@@ -80,7 +81,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="absolute bottom-0 right-4 sm:right-6 lg:right-8 w-[48%] sm:w-[42%] lg:w-[36%] max-w-[470px] pointer-events-none z-30">
+          <div className="absolute bottom-0 right-4 sm:right-6 lg:right-8 w-[38%] sm:w-[32%] lg:w-[26%] max-w-[340px] pointer-events-none z-30">
             <Image
               src="/images/overlay bottom.png"
               alt="Bottom Overlay"
