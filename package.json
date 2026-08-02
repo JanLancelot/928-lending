@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test:load": "node scripts/load-test.mjs",
-    "test:security": "node scripts/security-audit.mjs"
+    "test:security": "node scripts/security-audit.mjs",
+    "test:retention": "node scripts/test-retention.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.5.7",
