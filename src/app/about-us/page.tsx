@@ -40,9 +40,9 @@ const goals = [
 export default function AboutUsPage() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[140px] sm:min-h-[160px] flex items-center overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
+      <section className="relative w-full bg-white pt-0 pb-4 sm:pb-6 lg:pb-8 min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full my-auto">
+          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
               src="/images/bg.jpg"
               alt="Background Pattern"
@@ -52,11 +52,22 @@ export default function AboutUsPage() {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center relative z-10">
+          <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
+            <Image
+              src="/images/wholeoverlay.png"
+              alt="Decorative Header Overlay"
+              width={632}
+              height={770}
+              className="h-full w-auto object-right object-cover"
+              priority
+            />
+          </div>
+
+          <div className="grid grid-cols-12 gap-3 sm:gap-6 items-center relative z-10 px-0">
             
-            <div className="lg:col-span-6 space-y-2 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+            <div className="col-span-7 lg:col-span-6 space-y-2 sm:space-y-3 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-center">
               <div className="space-y-1">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-tight">
                   About 928 Credit Concept Lending
                 </h1>
               </div>
@@ -68,16 +79,16 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            <div className="lg:col-span-6 relative min-h-[140px] sm:min-h-[160px] lg:min-h-[180px] flex items-center justify-end">
+            <div className="col-span-5 lg:col-span-6 relative min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch justify-end z-0 self-stretch">
               <div 
-                className="absolute inset-0 z-10 overflow-hidden"
+                className="absolute inset-0 z-5 overflow-hidden"
                 style={{
-                  WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
-                  maskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
+                  WebkitMaskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
+                  maskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
                 }}
               >
                 <Image
-                  src="/images/building.jpg"
+                  src="/images/sqpicoverlay.png"
                   alt="928 Credit Concept Lending Headquarters"
                   fill
                   className="object-cover object-center"
@@ -86,28 +97,6 @@ export default function AboutUsPage() {
               </div>
             </div>
 
-          </div>
-
-          <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-[20%] sm:w-[15%] lg:w-[12%] max-w-[150px] pointer-events-none z-20">
-            <Image
-              src="/images/overlay top.png"
-              alt="Top Overlay"
-              width={632}
-              height={385}
-              className="w-full h-auto object-contain object-right-top"
-              priority
-            />
-          </div>
-
-          <div className="absolute bottom-0 right-4 sm:right-6 lg:right-8 w-[20%] sm:w-[15%] lg:w-[12%] max-w-[150px] pointer-events-none z-30">
-            <Image
-              src="/images/overlay bottom.png"
-              alt="Bottom Overlay"
-              width={632}
-              height={385}
-              className="w-full h-auto object-contain object-right-bottom"
-              priority
-            />
           </div>
         </div>
       </section>
@@ -119,7 +108,7 @@ export default function AboutUsPage() {
             <div className="lg:col-span-5 flex">
               <div className="relative w-full h-[380px] sm:h-[420px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-100 shadow-md">
                 <Image
-                  src="/images/building.png"
+                  src="/images/building.jpg"
                   alt="928 Credit Concept Storefront"
                   fill
                   className="object-cover object-center rounded-2xl"

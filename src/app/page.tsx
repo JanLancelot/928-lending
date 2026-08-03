@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Initial push to website
 const whyChooseUs = [
   {
     icon: Zap,
@@ -45,9 +44,9 @@ const steps = [
 export default function Home() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-4 lg:pb-6 min-h-[400px] lg:min-h-[440px] flex items-center overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
+      <section className="relative w-full bg-white pt-0 pb-4 lg:pb-8 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
+          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
               src="/images/bg.jpg"
               alt="Hero Background"
@@ -57,95 +56,84 @@ export default function Home() {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
+            <Image
+              src="/images/wholeoverlay.png"
+              alt="Decorative Header Overlay"
+              width={632}
+              height={770}
+              className="h-full w-auto object-right object-cover"
+              priority
+            />
+          </div>
+
+          <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10">
             
-            <div className="lg:col-span-5 space-y-5 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+            <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-30 relative px-4 sm:px-6 lg:px-10 pt-1 sm:pt-4 pb-3 sm:pb-6 flex flex-col justify-start">
               <div className="space-y-1">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
                   We Listen
                 </h1>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#E87722] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#E87722] leading-none">
                   We Work
                 </h1>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
                   We Lend
                 </h1>
               </div>
 
-              <div className="w-14 h-1 bg-[#E87722] rounded-full"></div>
+              <div className="w-10 sm:w-14 h-1 bg-[#E87722] rounded-full"></div>
 
-              <p className="text-xs sm:text-sm text-slate-600 max-w-sm leading-relaxed">
+              <p className="text-[11px] sm:text-sm text-slate-600 max-w-sm leading-relaxed">
                 Helping Small and Medium Enterprises across Luzon access fast, non-collateralized business financing through a streamlined and professional lending process.
               </p>
 
-              <div className="pt-2 flex flex-wrap gap-3">
+              <div className="pt-1 flex flex-nowrap items-center gap-1.5 sm:gap-3 whitespace-nowrap relative z-40">
                 <Button
                   asChild
-                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm font-bold px-7 py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-[10px] sm:text-sm font-bold px-3 sm:px-7 py-1.5 sm:py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
                 >
                   <Link href="/apply-now">Apply Now</Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="border-slate-300 text-[#0B192C] hover:bg-slate-100 text-xs sm:text-sm font-bold px-6 py-3 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="border-slate-300 text-[#0B192C] hover:bg-slate-100 text-[10px] sm:text-sm font-bold px-2.5 sm:px-6 py-1.5 sm:py-3 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
                 >
                   <Link href="/about-us">Learn More</Link>
                 </Button>
               </div>
             </div>
 
-            <div className="lg:col-span-7 relative min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] flex items-center justify-end">
+            <div className="col-span-5 lg:col-span-7 relative min-h-[220px] sm:min-h-[380px] lg:min-h-[520px] flex items-center justify-end z-0">
               <div 
-                className="absolute inset-0 z-10 overflow-hidden"
+                className="absolute inset-0 z-5 overflow-hidden"
                 style={{
-                  WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
-                  maskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
+                  WebkitMaskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
+                  maskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
                 }}
               >
                 <Image
-                  src="/images/hero_meeting.png"
+                  src="/images/sqpicoverlay.png"
                   alt="928 Credit Concept Lending Team Meeting"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center scale-110 sm:scale-105"
                   priority
                 />
               </div>
             </div>
 
           </div>
-
-          <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-[38%] sm:w-[32%] lg:w-[26%] max-w-[340px] pointer-events-none z-20">
-            <Image
-              src="/images/overlay top.png"
-              alt="Top Overlay"
-              width={632}
-              height={385}
-              className="w-full h-auto object-contain object-right-top"
-              priority
-            />
-          </div>
-
-          <div className="absolute bottom-0 right-4 sm:right-6 lg:right-8 w-[38%] sm:w-[32%] lg:w-[26%] max-w-[340px] pointer-events-none z-30">
-            <Image
-              src="/images/overlay bottom.png"
-              alt="Bottom Overlay"
-              width={632}
-              height={385}
-              className="w-full h-auto object-contain object-right-bottom"
-              priority
-            />
-          </div>
         </div>
       </section>
 
-      <section className="relative z-30 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 my-4 sm:my-6">
-        <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 shadow-xl border border-slate-800">
-          <div className="text-center max-w-xl mx-auto mb-8">
+      <section className="relative z-30 max-w-6xl mx-auto px-0 sm:px-10 lg:px-12 my-4 sm:my-6">
+        <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 lg:p-12 shadow-xl border-x-0 sm:border border-slate-800">
+          <div className="text-center max-w-xl mx-auto mb-8 px-4 sm:px-0">
             <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Why Choose Us</span>
             <h2 className="text-2xl sm:text-3xl font-black text-white mt-1.5">Why Choose 928 Credit?</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-800">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-800 px-4 sm:px-0">
             {whyChooseUs.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="py-5 first:pt-0 lg:py-0 lg:px-8 lg:first:pl-0 lg:last:pr-0">
                 <Icon className="w-5 h-5 text-[#E87722] mb-2.5" strokeWidth={1.5} />
@@ -158,13 +146,13 @@ export default function Home() {
       </section>
 
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
             <div className="lg:col-span-5 flex">
               <div className="relative w-full h-[380px] sm:h-[420px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-100 shadow-md">
                 <Image
-                  src="/images/building.png"
+                  src="/images/building.jpg"
                   alt="928 Credit Concept Lending Storefront Unit E"
                   fill
                   className="object-cover object-center rounded-2xl"
@@ -205,9 +193,9 @@ export default function Home() {
       </section>
 
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        <div className="max-w-6xl mx-auto px-0 sm:px-10 lg:px-12">
+          <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 lg:p-12 border-x-0 sm:border border-slate-800 shadow-xl relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 px-4 sm:px-0">
               
               <div className="lg:col-span-8 space-y-3.5">
                 <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">
@@ -244,7 +232,7 @@ export default function Home() {
       </section>
 
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-12 space-y-8">
           <div className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Simple Step-by-Step</span>
             <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">How It Works</h2>
@@ -269,8 +257,8 @@ export default function Home() {
       </section>
 
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
+        <div className="max-w-6xl mx-auto px-0 sm:px-10 lg:px-12">
+          <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border-x-0 sm:border border-slate-800 px-4 sm:px-10">
             <div className="space-y-2 text-center md:text-left">
               <h3 className="text-2xl sm:text-3xl font-bold">Ready to Grow Your Business?</h3>
               <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
