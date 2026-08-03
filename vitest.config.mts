@@ -3,7 +3,10 @@ import path from "node:path";
 
 export default defineConfig({
   test: {
-    environment: "jsdom",
+    environment: "node",
+    environmentMatchGlobs: [
+      ["src/**/*.test.tsx", "happy-dom"],
+    ],
     globals: true,
     setupFiles: ["./vitest.setup.ts"],
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
@@ -14,8 +17,11 @@ export default defineConfig({
         "node_modules/",
         ".next/",
         "vitest.config.ts",
+        "vitest.config.mts",
         "vitest.setup.ts",
         "scripts/",
+        "load-tests/",
+        "reports/",
       ],
       thresholds: {
         lines: 80,
