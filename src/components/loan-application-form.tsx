@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, Loader2, Send, Paperclip, Check, X, AlertCircle } from "lucide-react";
@@ -97,6 +97,16 @@ export function LoanApplicationForm() {
     },
     mode: "onTouched",
   });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const amtParam = params.get("amount");
+      if (amtParam && !isNaN(Number(amtParam))) {
+        form.setValue("requestedAmount", Number(amtParam));
+      }
+    }
+  }, [form]);
 
   const nextStep = async () => {
     let fieldsToValidate: (keyof LoanApplicationInput)[] = [];
