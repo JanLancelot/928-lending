@@ -31,7 +31,16 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} font-sans h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white text-slate-900 font-sans">
+      <body
+        className="min-h-full flex flex-col text-slate-900 font-sans"
+        style={{
+          backgroundImage: "url('/images/bg.jpg')",
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
