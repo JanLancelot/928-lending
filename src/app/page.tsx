@@ -45,31 +45,31 @@ const steps = [
 export default function Home() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[440px] flex items-center overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
-          {/* Background pattern matching Footer container width */}
-          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
-            <Image
-              src="/images/bg.jpg"
-              alt="Hero Background"
-              fill
-              className="object-cover object-left"
-              priority
-            />
-          </div>
+      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[440px] overflow-hidden">
+        {/* Background pattern anchored directly to top of section flush under navbar */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+          <Image
+            src="/images/bg.jpg"
+            alt="Hero Background"
+            fill
+            className="object-cover object-left"
+            priority
+          />
+        </div>
 
-          {/* Header Overlay matching Footer right edge */}
-          <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
-            <Image
-              src="/images/wholeoverlay.png"
-              alt="Decorative Header Overlay"
-              width={632}
-              height={770}
-              className="h-full w-auto object-right object-cover"
-              priority
-            />
-          </div>
+        {/* Header Overlay anchored directly to top of section flush under navbar */}
+        <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
+          <Image
+            src="/images/wholeoverlay.png"
+            alt="Decorative Header Overlay"
+            width={632}
+            height={770}
+            className="h-full w-auto object-right object-cover"
+            priority
+          />
+        </div>
 
+        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full pt-0 sm:pt-4">
           <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10 px-0">
             
             <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-20 pl-0 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
