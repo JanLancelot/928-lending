@@ -43,18 +43,10 @@ const steps = [
 
 export default function Home() {
   return (
-    <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-4 lg:pb-8 overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
-          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
-            <Image
-              src="/images/bg.jpg"
-              alt="Hero Background"
-              fill
-              className="object-cover object-left"
-              priority
-            />
-          </div>
+    <div className="w-full overflow-hidden">
+      <section className="relative w-full pt-0 pb-4 lg:pb-8 overflow-hidden">
+        <div className="relative  z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
+
 
           <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
             <Image
@@ -114,7 +106,7 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/images/sqpicoverlay.png"
+                  src="/images/loanpicc.png"
                   alt="928 Credit Concept Lending Team Meeting"
                   fill
                   className="object-cover object-center scale-110 sm:scale-105"
@@ -145,7 +137,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-6 sm:py-8 lg:py-10 bg-white">
+      <section className="py-6 sm:py-8 lg:py-10 ">
         <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
@@ -192,7 +184,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-6 sm:py-8 lg:py-10 bg-white">
+      <section className="py-6 sm:py-8 lg:py-10 ">
         <div className="max-w-6xl mx-auto px-0 sm:px-10 lg:px-12">
           <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 lg:p-12 border-x-0 sm:border border-slate-800 shadow-xl relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 px-4 sm:px-0">
@@ -231,7 +223,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-6 sm:py-8 lg:py-10 bg-white">
+      <section className="py-6 sm:py-8 lg:py-10 ">
         <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-12 space-y-8">
           <div className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Simple Step-by-Step</span>
@@ -244,7 +236,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-8 gap-x-4 relative">
               {steps.map((step) => (
                 <div key={step.n} className="text-left sm:text-center">
-                  <div className="relative z-10 w-8 h-8 sm:mx-auto rounded-full border border-[#0B192C] bg-white text-[#0B192C] text-xs font-bold flex items-center justify-center mb-2.5 shadow-sm">
+                  <div className="relative z-10 w-8 h-8 sm:mx-auto rounded-full border border-[#0B192C]  text-[#0B192C] text-xs font-bold flex items-center justify-center mb-2.5 shadow-sm">
                     {step.n}
                   </div>
                   <h4 className="font-bold text-xs sm:text-sm text-[#0B192C] mb-1">{step.title}</h4>
@@ -256,7 +248,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-6 sm:py-8 lg:py-10 bg-white">
+      <section className="py-6 sm:py-8 lg:py-10 ">
         <div className="max-w-6xl mx-auto px-0 sm:px-10 lg:px-12">
           <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border-x-0 sm:border border-slate-800 px-4 sm:px-10">
             <div className="space-y-2 text-center md:text-left">

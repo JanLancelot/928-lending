@@ -15,7 +15,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md overflow-x-clip">
+    <header className="sticky top-0 z-50 w-full bg-white/65 backdrop-blur-md overflow-x-clip">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20 px-0 sm:px-6 lg:px-8">
         
         <div className="flex items-center h-full shrink-0 pl-3 sm:pl-0 pr-12 sm:pr-28 lg:pr-36 py-2 z-10 my-auto">

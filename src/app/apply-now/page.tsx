@@ -3,8 +3,8 @@ import { LoanApplicationForm } from "@/components/loan-application-form";
 
 export default function ApplyNowPage() {
   return (
-    <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-4 sm:pb-6 lg:pb-8 min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch overflow-hidden">
+    <div className="w-full  overflow-hidden">
+      <section className="relative w-full  pt-0 pb-4 sm:pb-6 lg:pb-8 min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full my-auto">
           <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
@@ -65,7 +65,7 @@ export default function ApplyNowPage() {
         </div>
       </section>
 
-      <section className="py-6 sm:py-8 lg:py-10 bg-white">
+      <section className="py-6 sm:py-8 lg:py-10 ">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
           <LoanApplicationForm />
         </div>

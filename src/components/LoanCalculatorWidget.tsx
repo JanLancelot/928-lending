@@ -153,20 +153,21 @@ export function LoanCalculatorWidget() {
         <button
           onClick={() => updateState("isOpen", !state.isOpen)}
           aria-label="Toggle Loan Calculator"
-          className={`group flex items-center justify-center w-14 h-14 sm:w-auto sm:h-auto p-0 sm:px-4 sm:py-3.5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 border ${
+          className={`group flex items-center gap-2 px-4 py-3 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 ${
             state.isOpen
-              ? "bg-slate-900 border-slate-800 text-white hover:bg-slate-800"
-              : "bg-[#0B192C] border-[#0B192C] text-white hover:bg-[#12253f] ring-4 ring-[#0B192C]/20"
+              ? "bg-slate-900 border-[#E87722] text-white hover:bg-slate-800"
+              : "bg-[#0B192C] border-[#E87722] text-white hover:bg-[#12253f]"
           }`}
         >
           {state.isOpen ? (
-            <X className="w-6 h-6 text-slate-300 shrink-0" />
+            <>
+              <X className="w-5 h-5 text-slate-300 shrink-0" />
+              <span className="text-xs font-bold text-white tracking-wide">Close</span>
+            </>
           ) : (
             <>
-              <Calculator className="w-6 h-6 text-[#E87722] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
-              <span className="text-xs font-bold text-white tracking-wide ml-2 hidden sm:inline">
-                Loan Calculator
-              </span>
+              <Calculator className="w-5 h-5 text-[#E87722] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
+              <span className="text-xs font-bold text-white tracking-wide">Loan Calculator</span>
             </>
           )}
         </button>

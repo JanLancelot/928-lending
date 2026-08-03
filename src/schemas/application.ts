@@ -8,7 +8,7 @@ export const loanApplicationSchema = z.object({
   yearsInBusiness: z.number().nonnegative("Years in business must be non-negative"),
   tinNumber: z.string().min(5, "Registration No. / TIN is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Valid phone number required"),
+  phone: z.string().min(13, "Enter a valid Philippine mobile number"),
   requestedAmount: z.number().positive("Loan amount must be positive"),
   annualRevenue: z.number().nonnegative("Annual revenue must be non-negative"),
   purposeOfLoan: z.string().min(2, "Purpose of loan is required"),

@@ -88,7 +88,7 @@ export function LoanApplicationForm() {
       yearsInBusiness: undefined,
       tinNumber: "",
       email: "",
-      phone: "",
+      phone: "+63",
       requestedAmount: undefined,
       annualRevenue: undefined,
       purposeOfLoan: "",
@@ -342,7 +342,24 @@ export function LoanApplicationForm() {
                       <FormItem>
                         <FormLabel className="text-slate-700 font-semibold text-xs sm:text-sm">Phone Number</FormLabel>
                         <FormControl>
-                          <Input className="h-12 border-slate-300 focus-visible:ring-[#E87722] rounded-md text-sm" type="tel" placeholder="(555) 000-0000" {...field} />
+                          <div className="flex h-12 rounded-md border border-slate-300 focus-within:ring-2 focus-within:ring-[#E87722] focus-within:border-[#E87722] overflow-hidden transition-all">
+                            <span className="flex items-center px-3 bg-slate-50 border-r border-slate-300 text-slate-500 text-sm font-semibold select-none shrink-0">
+                              +63
+                            </span>
+                            <input
+                              type="tel"
+                              inputMode="numeric"
+                              maxLength={10}
+                              placeholder="XXX-XXX-XXXX"
+                              className="flex-1 px-3 text-sm bg-white outline-none text-slate-900 placeholder:text-slate-400"
+                              value={field.value.replace(/^\+63/, "")}
+                              onChange={(e) => {
+                                const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
+                                field.onChange(`+63${digits}`);
+                              }}
+                              onBlur={field.onBlur}
+                            />
+                          </div>
                         </FormControl>
                         <FormMessage />
                       </FormItem>

@@ -54,8 +54,8 @@ const faqs = [
 
 export default function OurServicesPage() {
   return (
-    <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-4 sm:pb-6 lg:pb-8 min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch overflow-hidden">
+    <div className="w-full  overflow-hidden">
+      <section className="relative w-full  pt-0 pb-4 sm:pb-6 lg:pb-8 min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full my-auto">
           <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
@@ -116,7 +116,7 @@ export default function OurServicesPage() {
         </div>
       </section>
 
-      <section className="py-6 sm:py-8 lg:py-10 bg-white">
+      <section className="py-6 sm:py-8 lg:py-10 ">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-10 sm:space-y-12">
 
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 space-y-5 shadow-xl border border-slate-800">
@@ -174,7 +174,7 @@ export default function OurServicesPage() {
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-4 relative">
                 {process.map((step) => (
                   <div key={step.n} className="text-center">
-                    <div className="relative z-10 w-8 h-8 mx-auto rounded-full border border-[#0B192C] bg-white text-[#0B192C] text-xs font-bold flex items-center justify-center mb-2 shadow-sm">
+                    <div className="relative z-10 w-8 h-8 mx-auto rounded-full border border-[#0B192C]  text-[#0B192C] text-xs font-bold flex items-center justify-center mb-2 shadow-sm">
                       {step.n}
                     </div>
                     <div className="font-bold text-xs text-[#0B192C]">{step.title}</div>
