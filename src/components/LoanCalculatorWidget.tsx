@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import {
   Calculator,
   X,
-  Sparkles,
   RotateCcw,
   HelpCircle,
   Percent,
@@ -56,41 +55,37 @@ const DEFAULT_STATE: CalculatorState = {
 };
 
 export function LoanCalculatorWidget() {
-  const [state, setState] = useState<CalculatorState>(DEFAULT_STATE);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [showSummaryModal, setShowSummaryModal] = useState(false);
-
-  // Load saved state from localStorage on mount
-  useEffect(() => {
+  const [state, setState] = useState<CalculatorState>(() => {
+    // Lazy initializer: read from localStorage once on first render (no effect needed)
     try {
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        setState((prev) => ({
-          ...prev,
+        return {
+          ...DEFAULT_STATE,
           ...parsed,
+          isOpen: false, // always start closed
           amount: Math.max(10000, Math.min(2000000, Number(parsed.amount) || 250000)),
           termMonths: Math.max(1, Math.min(36, Number(parsed.termMonths) || 12)),
           monthlyRate: Math.max(0.1, Math.min(10, Number(parsed.monthlyRate) || 2.5)),
           processingFeePercent: Math.max(0, Math.min(10, Number(parsed.processingFeePercent) || 2.5)),
-        }));
+        };
       }
     } catch {
-      // Fallback to default state if localStorage is unavailable
-    } finally {
-      setIsLoaded(true);
+      // Fallback to defaults if localStorage is unavailable
     }
-  }, []);
+    return DEFAULT_STATE;
+  });
+  const [showSummaryModal, setShowSummaryModal] = useState(false);
 
   // Persist state to localStorage whenever inputs change
   useEffect(() => {
-    if (!isLoaded) return;
     try {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
     } catch {
       // Ignore storage errors
     }
-  }, [state, isLoaded]);
+  }, [state]);
 
   // Calculations
   const calculations = useMemo(() => {
