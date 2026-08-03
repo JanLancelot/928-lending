@@ -14,7 +14,6 @@ import {
   ChevronUp,
 } from "lucide-react";
 
-// Payment Frequencies
 type Frequency = "monthly" | "semi-monthly" | "weekly" | "daily";
 
 interface FrequencyOption {
@@ -40,9 +39,9 @@ interface CalculatorState {
   isOpen: boolean;
   amount: number;
   termMonths: number;
-  monthlyRate: number; // e.g. 2.5%
+  monthlyRate: number;
   frequency: Frequency;
-  processingFeePercent: number; // e.g. 2.5%
+  processingFeePercent: number;
 }
 
 const DEFAULT_STATE: CalculatorState = {
@@ -56,7 +55,6 @@ const DEFAULT_STATE: CalculatorState = {
 
 export function LoanCalculatorWidget() {
   const [state, setState] = useState<CalculatorState>(() => {
-    // Lazy initializer: read from localStorage once on first render (no effect needed)
     try {
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (saved) {
@@ -64,7 +62,7 @@ export function LoanCalculatorWidget() {
         return {
           ...DEFAULT_STATE,
           ...parsed,
-          isOpen: false, // always start closed
+          isOpen: false,
           amount: Math.max(10000, Math.min(2000000, Number(parsed.amount) || 250000)),
           termMonths: Math.max(1, Math.min(36, Number(parsed.termMonths) || 12)),
           monthlyRate: Math.max(0.1, Math.min(10, Number(parsed.monthlyRate) || 2.5)),
@@ -72,41 +70,32 @@ export function LoanCalculatorWidget() {
         };
       }
     } catch {
-      // Fallback to defaults if localStorage is unavailable
     }
     return DEFAULT_STATE;
   });
   const [showSummaryModal, setShowSummaryModal] = useState(false);
 
-  // Persist state to localStorage whenever inputs change
   useEffect(() => {
     try {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
     } catch {
-      // Ignore storage errors
     }
   }, [state]);
 
-  // Calculations
   const calculations = useMemo(() => {
     const amount = Math.max(0, state.amount);
     const termMonths = Math.max(1, state.termMonths);
     const monthlyRate = Math.max(0, state.monthlyRate);
     const feePercent = Math.max(0, state.processingFeePercent);
 
-    // Total interest = Amount * (monthly rate / 100) * termMonths
     const totalInterest = amount * (monthlyRate / 100) * termMonths;
 
-    // Processing fee = Amount * (feePercent / 100)
     const processingFeeAmount = amount * (feePercent / 100);
 
-    // Net disbursement = Amount - Processing Fee
     const netDisbursement = Math.max(0, amount - processingFeeAmount);
 
-    // Total repayment = Amount + Total Interest
     const totalRepayment = amount + totalInterest;
 
-    // Payments frequency info
     const freqConfig = FREQUENCY_OPTIONS.find((f) => f.id === state.frequency) || FREQUENCY_OPTIONS[0];
     const totalPaymentsCount = termMonths * freqConfig.perMonth;
     const installmentPerPeriod = totalRepayment / Math.max(1, totalPaymentsCount);
@@ -137,7 +126,6 @@ export function LoanCalculatorWidget() {
     }));
   };
 
-  // Currency formatters
   const formatPHP = (val: number) => {
     return new Intl.NumberFormat("en-PH", {
       style: "currency",
@@ -154,17 +142,13 @@ export function LoanCalculatorWidget() {
     }).format(val);
   };
 
-  // Slider progress fill percentages
   const amountSliderPercent = Math.max(0, Math.min(100, ((state.amount - 10000) / (2000000 - 10000)) * 100));
   const termSliderPercent = Math.max(0, Math.min(100, ((state.termMonths - 1) / (36 - 1)) * 100));
   const rateSliderPercent = Math.max(0, Math.min(100, ((state.monthlyRate - 0.5) / (10.0 - 0.5)) * 100));
   const feeSliderPercent = Math.max(0, Math.min(100, ((state.processingFeePercent - 0.0) / (10.0 - 0.0)) * 100));
 
-  if (!isLoaded) return null;
-
   return (
     <>
-      {/* Floating Trigger Button on Bottom Right */}
       <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end pointer-events-auto">
         <button
           onClick={() => updateState("isOpen", !state.isOpen)}
@@ -188,11 +172,9 @@ export function LoanCalculatorWidget() {
         </button>
       </div>
 
-      {/* Floating Popup Modal Card (White Theme) */}
       {state.isOpen && (
         <div className="fixed bottom-20 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[420px] max-h-[85vh] z-50 bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200/90 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           
-          {/* Header */}
           <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-white">
             <div className="flex items-center space-x-2.5">
               <div className="p-2 bg-slate-100 text-[#0B192C] rounded-lg">
@@ -226,10 +208,8 @@ export function LoanCalculatorWidget() {
             </div>
           </div>
 
-          {/* Body (Scrollable Controls & Output) */}
           <div className="p-4 sm:p-5 overflow-y-auto space-y-5 flex-1 custom-scrollbar text-xs sm:text-sm">
             
-            {/* Primary Result Card */}
             <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 shadow-sm">
               <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1 flex items-center justify-between">
                 <span>Estimated {calculations.freqLabel} Payment</span>
@@ -254,10 +234,8 @@ export function LoanCalculatorWidget() {
               </div>
             </div>
 
-            {/* Adjustable Controls */}
             <div className="space-y-4">
               
-              {/* 1. Loan Amount */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-semibold">
                   <label className="text-slate-700 flex items-center gap-1.5">
@@ -288,7 +266,6 @@ export function LoanCalculatorWidget() {
                   }}
                 />
 
-                {/* Preset Chips */}
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {PRESET_AMOUNTS.map((amt) => (
                     <button
@@ -306,7 +283,6 @@ export function LoanCalculatorWidget() {
                 </div>
               </div>
 
-              {/* 2. Terms (Months) */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-semibold">
                   <label className="text-slate-700 flex items-center gap-1.5">
@@ -337,7 +313,6 @@ export function LoanCalculatorWidget() {
                   }}
                 />
 
-                {/* Term Chips */}
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {PRESET_TERMS.map((t) => (
                     <button
@@ -355,7 +330,6 @@ export function LoanCalculatorWidget() {
                 </div>
               </div>
 
-              {/* 3. Monthly Interest Rate */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-semibold">
                   <label className="text-slate-700 flex items-center gap-1.5">
@@ -387,7 +361,6 @@ export function LoanCalculatorWidget() {
                 />
               </div>
 
-              {/* 4. Payment Frequency */}
               <div className="space-y-2">
                 <label className="text-slate-700 text-xs font-semibold flex items-center gap-1.5">
                   <Briefcase className="w-3.5 h-3.5 text-slate-500" />
@@ -414,7 +387,6 @@ export function LoanCalculatorWidget() {
                 </div>
               </div>
 
-              {/* 5. Processing Fee */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-semibold">
                   <label className="text-slate-700 flex items-center gap-1.5">
@@ -443,7 +415,6 @@ export function LoanCalculatorWidget() {
 
             </div>
 
-            {/* Comprehensive Calculation Breakdown */}
             <div className="pt-2 border-t border-slate-100 space-y-2 text-xs">
               <button
                 onClick={() => setShowSummaryModal(!showSummaryModal)}
