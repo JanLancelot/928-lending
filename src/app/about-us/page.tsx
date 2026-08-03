@@ -40,7 +40,7 @@ const goals = [
 export default function AboutUsPage() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[140px] sm:min-h-[160px] flex items-center overflow-hidden">
+      <section className="relative w-full bg-white pt-4 lg:pt-0 pb-6 lg:pb-8 min-h-[120px] sm:min-h-[160px] flex items-center overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
@@ -56,7 +56,7 @@ export default function AboutUsPage() {
             
             <div className="lg:col-span-6 space-y-2 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
               <div className="space-y-1">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-tight">
                   About 928 Credit Concept Lending
                 </h1>
               </div>
@@ -68,7 +68,7 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            <div className="lg:col-span-6 relative min-h-[140px] sm:min-h-[160px] lg:min-h-[180px] flex items-center justify-end">
+            <div className="lg:col-span-6 relative min-h-[100px] sm:min-h-[160px] lg:min-h-[180px] flex items-center justify-end">
               <div 
                 className="absolute inset-0 z-10 overflow-hidden"
                 style={{
@@ -88,13 +88,13 @@ export default function AboutUsPage() {
 
           </div>
 
-          <div className="absolute inset-y-0 right-4 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end">
+          <div className="absolute inset-y-0 right-2 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end">
             <Image
               src="/images/wholeoverlay.png"
               alt="Decorative Header Overlay"
               width={632}
               height={770}
-              className="h-full w-auto object-right"
+              className="h-full w-auto max-w-[40vw] sm:max-w-none object-contain sm:object-cover object-right"
               priority
             />
           </div>
