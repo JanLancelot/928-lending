@@ -40,8 +40,8 @@ const goals = [
 export default function AboutUsPage() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[120px] sm:min-h-[160px] flex items-center overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
+      <section className="relative w-full bg-white pt-0 pb-4 sm:pb-6 lg:pb-8 min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full my-auto">
           {/* Background pattern matching Footer container width */}
           <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
@@ -65,9 +65,9 @@ export default function AboutUsPage() {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center relative z-10 px-0">
+          <div className="grid grid-cols-12 gap-3 sm:gap-6 items-center relative z-10 px-0">
             
-            <div className="lg:col-span-6 space-y-2 z-30 relative pl-0 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+            <div className="col-span-7 lg:col-span-6 space-y-2 sm:space-y-3 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-center">
               <div className="space-y-1">
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-tight">
                   About 928 Credit Concept Lending
@@ -81,13 +81,13 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            {/* Picture Column under wholeoverlay (z-5 layer) */}
-            <div className="lg:col-span-6 relative min-h-[100px] sm:min-h-[160px] lg:min-h-[180px] flex items-center justify-end z-0">
+            {/* Picture Column under wholeoverlay (z-5 layer) fitting full header height */}
+            <div className="col-span-5 lg:col-span-6 relative min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch justify-end z-0 self-stretch">
               <div 
                 className="absolute inset-0 z-5 overflow-hidden"
                 style={{
-                  WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
-                  maskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
+                  WebkitMaskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
+                  maskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
                 }}
               >
                 <Image

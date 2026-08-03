@@ -110,20 +110,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Picture Column under wholeoverlay (z-5 layer) */}
-            <div className="col-span-5 lg:col-span-7 relative min-h-[180px] sm:min-h-[340px] lg:min-h-[480px] flex items-center justify-end z-0">
+            {/* Picture Column under wholeoverlay (z-5 layer) - Larger Picture Size */}
+            <div className="col-span-5 lg:col-span-7 relative min-h-[220px] sm:min-h-[380px] lg:min-h-[520px] flex items-center justify-end z-0">
               <div 
                 className="absolute inset-0 z-5 overflow-hidden"
                 style={{
-                  WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
-                  maskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
+                  WebkitMaskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
+                  maskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
                 }}
               >
                 <Image
                   src="/images/hero_meeting.png"
                   alt="928 Credit Concept Lending Team Meeting"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center scale-110 sm:scale-105"
                   priority
                 />
               </div>
