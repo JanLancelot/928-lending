@@ -1,8 +1,9 @@
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import { encryptPDF } from "@pdfsmaller/pdf-encrypt";
+import type { LoanApplicationInput } from "@/schemas/application";
 
 export async function generateEncryptedApplication(
-  data: any,
+  data: LoanApplicationInput,
   documents: { filename: string; buffer: Buffer; mimeType: string }[],
   password: string
 ): Promise<Buffer> {

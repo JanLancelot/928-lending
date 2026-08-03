@@ -98,8 +98,9 @@ export async function submitApplication(formData: FormData) {
     await sendAdminNotification(refId, encryptedPdfBuffer);
 
     return { success: true, referenceId: refId };
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Submit application error:", err);
-    return { success: false, error: err.message || "An unexpected error occurred." };
+    const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred.";
+    return { success: false, error: errorMessage };
   }
 }

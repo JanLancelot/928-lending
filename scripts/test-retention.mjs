@@ -1,4 +1,4 @@
-import { evaluateRetentionStatus, anonymizeRecord, RETENTION_LIMITS } from "../src/lib/retention.ts";
+import { evaluateRetentionStatus, anonymizeRecord } from "../src/lib/retention.ts";
 
 console.log("==========================================");
 console.log(" 🧪 DATA RETENTION ENGINE VERIFICATION ");

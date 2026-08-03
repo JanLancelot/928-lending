@@ -24,7 +24,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -142,9 +141,10 @@ export function LoanApplicationForm() {
       } else {
         setSubmitError(result.error || "Failed to submit application.");
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
-      setSubmitError(error.message || "An unexpected error occurred. Please try again.");
+      const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred. Please try again.";
+      setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -546,7 +546,7 @@ export function LoanApplicationForm() {
                 <div className="bg-slate-100 p-4 rounded-lg">
                   <p className="text-sm font-semibold text-[#0B192C] mb-1.5">Accepted Government IDs:</p>
                   <p className="text-xs sm:text-sm text-slate-600">
-                    National ID · Passport · Driver's License · SSS / GSIS · PhilHealth · Voter's ID · PRC ID · TIN ID
+                    National ID · Passport · Driver&apos;s License · SSS / GSIS · PhilHealth · Voter&apos;s ID · PRC ID · TIN ID
                   </p>
                 </div>
 
