@@ -1,7 +1,7 @@
 /**
- * 928 Lending - Industry-Standard Pre-Launch Endpoint Load Testing Harness
+ * 928 Lending - Pre-Launch Endpoint Load Testing Harness
  * Executes concurrent HTTP requests against API endpoints, calculates latency percentiles,
- * evaluates SLA thresholds, and exports HTML & JSON performance reports.
+ * evaluates SLA thresholds, and exports timestamped text report files.
  *
  * Usage:
  *   node scripts/load-test.mjs [target_url] [concurrency] [total_requests] [--fail-on-threshold]
@@ -29,6 +29,18 @@ if (!Number.isInteger(CONCURRENCY) || CONCURRENCY <= 0) {
 
 if (!Number.isInteger(TOTAL_REQUESTS) || TOTAL_REQUESTS <= 0) {
   throw new Error("Invalid total_requests parameter. Must be a positive integer.");
+}
+
+function getTimestampString() {
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, "0");
+  const YYYY = now.getFullYear();
+  const MM = pad(now.getMonth() + 1);
+  const DD = pad(now.getDate());
+  const hh = pad(now.getHours());
+  const mm = pad(now.getMinutes());
+  const ss = pad(now.getSeconds());
+  return `${YYYY}-${MM}-${DD}_${hh}-${mm}-${ss}`;
 }
 
 const samplePayload = JSON.stringify({
@@ -119,7 +131,6 @@ async function runLoadTest() {
     });
   }
 
-  // Execute concurrent batch workloads
   const tasks = Array.from({ length: TOTAL_REQUESTS }, (_, i) => i);
   while (tasks.length > 0) {
     const batch = tasks.splice(0, CONCURRENCY);
@@ -155,73 +166,47 @@ async function runLoadTest() {
   console.log(`p99 Latency              : ${p99} ms`);
   console.log("==================================================\n");
 
-  // Save report exports
   const reportsDir = path.resolve(process.cwd(), "reports");
   if (!fs.existsSync(reportsDir)) {
     fs.mkdirSync(reportsDir, { recursive: true });
   }
 
-  const jsonSummary = {
-    targetUrl: TARGET_URL,
-    concurrency: CONCURRENCY,
-    totalRequests: results.total,
-    elapsedMs: totalTimeMs,
-    rps,
-    status200: results.status200,
-    status400: results.status400,
-    status429: results.status429,
-    otherError: results.otherError,
-    latency: {
-      avg: Number(avgLatency.toFixed(2)),
-      p50,
-      p90,
-      p95,
-      p99,
-    },
-    timestamp: new Date().toISOString(),
-  };
+  const timestampStr = getTimestampString();
+  const textReport = `===================================================================
+ 🚀 928 LENDING - API LOAD TEST BENCHMARK REPORT
+===================================================================
+ Timestamp       : ${new Date().toLocaleString()}
+ Target Endpoint : ${TARGET_URL}
+ Concurrency    : ${CONCURRENCY} parallel workers
+ Total Requests : ${results.total}
+-------------------------------------------------------------------
+ 📊 LATENCY & THROUGHPUT METRICS:
+   Requests / Sec (RPS) : ${rps} req/sec
+   Total Elapsed Time   : ${totalTimeMs} ms
+   Average Latency      : ${avgLatency.toFixed(2)} ms
+   p50 Latency (Median) : ${p50} ms
+   p90 Latency          : ${p90} ms
+   p95 Latency          : ${p95} ms
+   p99 Latency          : ${p99} ms
+-------------------------------------------------------------------
+ 🚥 HTTP RESPONSE BREAKDOWN:
+   HTTP 200 OK (Success) : ${results.status200}
+   HTTP 400 Bad Request  : ${results.status400}
+   HTTP 429 Rate Limited : ${results.status429}
+   Other Errors          : ${results.otherError}
+===================================================================
+ STATUS: ${p95 <= P95_SLA_THRESHOLD_MS && errorRate <= MAX_ALLOWED_ERROR_RATE ? "PASSED (SLA Threshold Met)" : "FAILED (SLA Violation Detected)"}
+===================================================================
+`;
 
-  fs.writeFileSync(
-    path.join(reportsDir, "load-test-summary.json"),
-    JSON.stringify(jsonSummary, null, 2)
-  );
+  const timestampedFilename = `load-test-report-${timestampStr}.txt`;
+  const latestFilename = `load-test-report.txt`;
 
-  const htmlReport = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>928 Lending - Load Test Report</title>
-  <style>
-    body { font-family: system-ui, -apple-system, sans-serif; background: #0f172a; color: #f8fafc; padding: 2rem; }
-    .card { background: #1e293b; border-radius: 12px; padding: 1.5rem; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.5); }
-    h1 { color: #38bdf8; margin-top: 0; }
-    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; }
-    .metric { background: #0f172a; padding: 1rem; border-radius: 8px; border: 1px solid #334155; }
-    .metric-title { font-size: 0.875rem; color: #94a3b8; }
-    .metric-value { font-size: 1.5rem; font-weight: bold; color: #f1f5f9; margin-top: 0.25rem; }
-    .pass { color: #4ade80; }
-    .fail { color: #f87171; }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h1>🚀 928 Lending API Load Benchmark</h1>
-    <p>Target: <code>${TARGET_URL}</code> | Executed: ${new Date().toLocaleString()}</p>
-    
-    <div class="grid">
-      <div class="metric"><div class="metric-title">Requests / Sec (RPS)</div><div class="metric-value">${rps}</div></div>
-      <div class="metric"><div class="metric-title">Total Requests</div><div class="metric-value">${results.total}</div></div>
-      <div class="metric"><div class="metric-title">p95 Latency</div><div class="metric-value ${p95 <= P95_SLA_THRESHOLD_MS ? "pass" : "fail"}">${p95} ms</div></div>
-      <div class="metric"><div class="metric-title">HTTP 200 OK</div><div class="metric-value pass">${results.status200}</div></div>
-      <div class="metric"><div class="metric-title">HTTP 429 Rate Limited</div><div class="metric-value">${results.status429}</div></div>
-      <div class="metric"><div class="metric-title">Other Errors</div><div class="metric-value ${results.otherError === 0 ? "pass" : "fail"}">${results.otherError}</div></div>
-    </div>
-  </div>
-</body>
-</html>`;
+  fs.writeFileSync(path.join(reportsDir, timestampedFilename), textReport);
+  fs.writeFileSync(path.join(reportsDir, latestFilename), textReport);
 
-  fs.writeFileSync(path.join(reportsDir, "load-test-report.html"), htmlReport);
-  console.log(`📄 Reports saved to ${path.join(reportsDir, "load-test-report.html")}`);
+  console.log(`📄 Timestamped text report saved to: ${path.join(reportsDir, timestampedFilename)}`);
+  console.log(`📄 Latest text report saved to: ${path.join(reportsDir, latestFilename)}`);
 
   if (FAIL_ON_THRESHOLD && (p95 > P95_SLA_THRESHOLD_MS || errorRate > MAX_ALLOWED_ERROR_RATE)) {
     console.error("❌ SLA Threshold Failed!");
