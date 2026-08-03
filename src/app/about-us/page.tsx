@@ -53,7 +53,7 @@ export default function AboutUsPage() {
             />
           </div>
 
-          {/* Header Overlay matching Footer right edge */}
+          {/* Header Overlay matching Footer right edge (z-20 layer over picture) */}
           <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
             <Image
               src="/images/wholeoverlay.png"
@@ -67,7 +67,7 @@ export default function AboutUsPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center relative z-10 px-0">
             
-            <div className="lg:col-span-6 space-y-2 z-20 pl-0 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+            <div className="lg:col-span-6 space-y-2 z-30 relative pl-0 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
               <div className="space-y-1">
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-tight">
                   About 928 Credit Concept Lending
@@ -81,9 +81,10 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            <div className="lg:col-span-6 relative min-h-[100px] sm:min-h-[160px] lg:min-h-[180px] flex items-center justify-end">
+            {/* Picture Column under wholeoverlay (z-5 layer) */}
+            <div className="lg:col-span-6 relative min-h-[100px] sm:min-h-[160px] lg:min-h-[180px] flex items-center justify-end z-0">
               <div 
-                className="absolute inset-0 z-10 overflow-hidden"
+                className="absolute inset-0 z-5 overflow-hidden"
                 style={{
                   WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
                   maskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",

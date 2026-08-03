@@ -45,34 +45,35 @@ const steps = [
 export default function Home() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[440px] overflow-hidden">
-        {/* Background pattern anchored directly to top of section flush under navbar */}
-        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
-          <Image
-            src="/images/bg.jpg"
-            alt="Hero Background"
-            fill
-            className="object-cover object-left"
-            priority
-          />
-        </div>
+      <section className="relative w-full bg-white pt-0 pb-4 lg:pb-8 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
+          {/* Background pattern matching Footer/Navbar container width */}
+          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
+            <Image
+              src="/images/bg.jpg"
+              alt="Hero Background"
+              fill
+              className="object-cover object-left"
+              priority
+            />
+          </div>
 
-        {/* Header Overlay anchored directly to top of section flush under navbar */}
-        <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
-          <Image
-            src="/images/wholeoverlay.png"
-            alt="Decorative Header Overlay"
-            width={632}
-            height={770}
-            className="h-full w-auto object-right object-cover"
-            priority
-          />
-        </div>
+          {/* Decorative Wholeoverlay anchored right edge (z-20 layer over picture) */}
+          <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
+            <Image
+              src="/images/wholeoverlay.png"
+              alt="Decorative Header Overlay"
+              width={632}
+              height={770}
+              className="h-full w-auto object-right object-cover"
+              priority
+            />
+          </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full pt-0 sm:pt-4">
-          <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10 px-0">
+          <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10">
             
-            <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-20 pl-0 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+            {/* Text Column flush under navbar with pt-1 sm:pt-4 */}
+            <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-30 relative px-4 sm:px-6 lg:px-10 pt-1 sm:pt-4 pb-3 sm:pb-6 flex flex-col justify-start">
               <div className="space-y-1">
                 <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
                   We Listen
@@ -91,26 +92,28 @@ export default function Home() {
                 Helping Small and Medium Enterprises across Luzon access fast, non-collateralized business financing through a streamlined and professional lending process.
               </p>
 
-              <div className="pt-1 sm:pt-2 flex flex-wrap gap-2 sm:gap-3">
+              {/* Single row non-wrapping buttons on top of wholeoverlay (z-40) */}
+              <div className="pt-1 flex flex-nowrap items-center gap-1.5 sm:gap-3 whitespace-nowrap relative z-40">
                 <Button
                   asChild
-                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-[11px] sm:text-sm font-bold px-4 sm:px-7 py-2 sm:py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-[10px] sm:text-sm font-bold px-3 sm:px-7 py-1.5 sm:py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
                 >
                   <Link href="/apply-now">Apply Now</Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="border-slate-300 text-[#0B192C] hover:bg-slate-100 text-[11px] sm:text-sm font-bold px-3.5 sm:px-6 py-2 sm:py-3 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="border-slate-300 text-[#0B192C] hover:bg-slate-100 text-[10px] sm:text-sm font-bold px-2.5 sm:px-6 py-1.5 sm:py-3 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
                 >
                   <Link href="/about-us">Learn More</Link>
                 </Button>
               </div>
             </div>
 
-            <div className="col-span-5 lg:col-span-7 relative min-h-[160px] sm:min-h-[340px] lg:min-h-[480px] flex items-center justify-end">
+            {/* Picture Column under wholeoverlay (z-5 layer) */}
+            <div className="col-span-5 lg:col-span-7 relative min-h-[180px] sm:min-h-[340px] lg:min-h-[480px] flex items-center justify-end z-0">
               <div 
-                className="absolute inset-0 z-10 overflow-hidden"
+                className="absolute inset-0 z-5 overflow-hidden"
                 style={{
                   WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
                   maskImage: "radial-gradient(ellipse 85% 85% at 75% 50%, black 35%, transparent 75%)",
