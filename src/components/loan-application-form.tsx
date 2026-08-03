@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, Loader2, Send, Paperclip, Check, X, AlertCircle } from "lucide-react";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { Checkbox } from "@/components/ui/checkbox";
-
 import {
   loanApplicationSchema,
   type LoanApplicationInput,
@@ -94,7 +94,7 @@ export function LoanApplicationForm() {
       annualRevenue: undefined,
       purposeOfLoan: "",
       agreedToTerms: false,
-      turnstileToken: "demo-verified-token",
+      turnstileToken: "",
     },
     mode: "onTouched",
   });
@@ -571,6 +571,22 @@ export function LoanApplicationForm() {
                     </FormItem>
                   )}
                 />
+
+                <div className="flex justify-center py-4">
+                  <Turnstile
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
+                    onSuccess={(token) => {
+                      form.setValue("turnstileToken", token, { shouldValidate: true });
+                    }}
+                    onError={() => {
+                      setSubmitError("CAPTCHA verification failed. Please try again.");
+                      form.setValue("turnstileToken", "");
+                    }}
+                    onExpire={() => {
+                      form.setValue("turnstileToken", "");
+                    }}
+                  />
+                </div>
               </div>
             )}
 

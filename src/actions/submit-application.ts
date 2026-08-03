@@ -1,12 +1,33 @@
 "use server";
 
 import crypto from "crypto";
+import { headers } from "next/headers";
 import { loanApplicationSchema } from "@/schemas/application";
 import { generateEncryptedApplication } from "@/lib/pdf-generator";
 import { sendAdminNotification } from "@/lib/email";
+import { checkRateLimit } from "@/lib/ratelimit";
+import { verifyTurnstileToken } from "@/lib/turnstile";
+import { sanitizePayload } from "@/lib/sanitize";
 
 export async function submitApplication(formData: FormData) {
   try {
+    // Rate Limiting
+    const headersList = await headers();
+    const clientIp = headersList.get("x-forwarded-for")?.split(",")[0]?.trim() || headersList.get("x-real-ip")?.trim() || "127.0.0.1";
+    
+    const rateLimit = checkRateLimit(clientIp, { limit: 5, windowMs: 60 * 60 * 1000 });
+    if (!rateLimit.success) {
+      return { success: false, error: "Too many applications submitted. Please try again later." };
+    }
+
+    const turnstileToken = formData.get("turnstileToken") as string;
+    
+    // Turnstile Verification
+    const turnstileResult = await verifyTurnstileToken(turnstileToken, clientIp);
+    if (!turnstileResult.success) {
+      return { success: false, error: "Security check failed. Please refresh and try again." };
+    }
+
     // 1. Extract and convert text fields
     const rawData = {
       fullName: formData.get("fullName") as string,
@@ -20,12 +41,15 @@ export async function submitApplication(formData: FormData) {
       requestedAmount: Number(formData.get("requestedAmount")),
       annualRevenue: Number(formData.get("annualRevenue")),
       purposeOfLoan: formData.get("purposeOfLoan") as string,
-      turnstileToken: formData.get("turnstileToken") as string,
+      turnstileToken,
       agreedToTerms: formData.get("agreedToTerms") === "true",
     };
 
+    // Sanitize Payload
+    const sanitizedData = sanitizePayload(rawData);
+
     // 2. Validate data
-    const parsed = loanApplicationSchema.safeParse(rawData);
+    const parsed = loanApplicationSchema.safeParse(sanitizedData);
     if (!parsed.success) {
       console.error(parsed.error.issues);
       return { success: false, error: "Invalid form data. Please check your inputs." };
@@ -44,9 +68,15 @@ export async function submitApplication(formData: FormData) {
     const files = formData.getAll("documents") as File[];
     const documents = [];
     let totalSize = 0;
+    
+    const allowedMimeTypes = ["application/pdf", "image/jpeg", "image/png", "image/jpg"];
 
     for (const file of files) {
       if (file.size > 0) {
+        if (!allowedMimeTypes.includes(file.type)) {
+          return { success: false, error: `Invalid file type for ${file.name}. Only PDF, JPG, and PNG are allowed.` };
+        }
+        
         totalSize += file.size;
         if (totalSize > 5 * 1024 * 1024) {
           return { success: false, error: "Total document size exceeds the 5MB limit." };
