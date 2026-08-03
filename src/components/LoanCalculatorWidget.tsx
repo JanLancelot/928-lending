@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
 import {
   Calculator,
   X,
   Sparkles,
   RotateCcw,
-  ArrowRight,
   HelpCircle,
   Percent,
   Calendar,
@@ -16,7 +14,6 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 // Payment Frequencies
 type Frequency = "monthly" | "semi-monthly" | "weekly" | "daily";
@@ -139,7 +136,10 @@ export function LoanCalculatorWidget() {
   };
 
   const handleReset = () => {
-    setState(DEFAULT_STATE);
+    setState((prev) => ({
+      ...DEFAULT_STATE,
+      isOpen: prev.isOpen,
+    }));
   };
 
   // Currency formatters
@@ -159,56 +159,55 @@ export function LoanCalculatorWidget() {
     }).format(val);
   };
 
+  // Slider progress fill percentages
+  const amountSliderPercent = Math.max(0, Math.min(100, ((state.amount - 10000) / (2000000 - 10000)) * 100));
+  const termSliderPercent = Math.max(0, Math.min(100, ((state.termMonths - 1) / (36 - 1)) * 100));
+  const rateSliderPercent = Math.max(0, Math.min(100, ((state.monthlyRate - 0.5) / (10.0 - 0.5)) * 100));
+  const feeSliderPercent = Math.max(0, Math.min(100, ((state.processingFeePercent - 0.0) / (10.0 - 0.0)) * 100));
+
   if (!isLoaded) return null;
 
   return (
     <>
       {/* Floating Trigger Button on Bottom Right */}
       <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end pointer-events-auto">
-        {!state.isOpen && (
-          <div className="mb-2 px-3 py-1.5 bg-[#0B192C] text-white text-xs font-semibold rounded-full shadow-lg border border-slate-700/80 flex items-center gap-1.5 animate-bounce">
-            <Sparkles className="w-3.5 h-3.5 text-[#E87722]" />
-            <span>Loan Calculator</span>
-          </div>
-        )}
-
         <button
           onClick={() => updateState("isOpen", !state.isOpen)}
           aria-label="Toggle Loan Calculator"
-          className={`group flex items-center justify-center p-3.5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 ${
+          className={`group flex items-center justify-center w-14 h-14 sm:w-auto sm:h-auto p-0 sm:px-4 sm:py-3.5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 border ${
             state.isOpen
-              ? "bg-slate-900 border-slate-700 text-white hover:bg-slate-800"
-              : "bg-[#0B192C] border-[#E87722] text-white hover:bg-[#12253f] ring-4 ring-[#E87722]/20"
+              ? "bg-slate-900 border-slate-800 text-white hover:bg-slate-800"
+              : "bg-[#0B192C] border-[#0B192C] text-white hover:bg-[#12253f] ring-4 ring-[#0B192C]/20"
           }`}
         >
           {state.isOpen ? (
-            <X className="w-6 h-6 text-slate-300" />
+            <X className="w-6 h-6 text-slate-300 shrink-0" />
           ) : (
-            <div className="flex items-center space-x-2 px-1">
-              <Calculator className="w-6 h-6 text-[#E87722] group-hover:rotate-12 transition-transform duration-300" />
-              <span className="text-xs font-bold tracking-wide pr-1 hidden sm:inline">
+            <>
+              <Calculator className="w-6 h-6 text-[#E87722] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
+              <span className="text-xs font-bold text-white tracking-wide ml-2 hidden sm:inline">
                 Loan Calculator
               </span>
-            </div>
+            </>
           )}
         </button>
       </div>
 
-      {/* Floating Popup Modal Card */}
+      {/* Floating Popup Modal Card (White Theme) */}
       {state.isOpen && (
-        <div className="fixed bottom-20 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[440px] max-h-[85vh] z-50 bg-[#0B192C] text-white rounded-2xl shadow-2xl border border-slate-700/80 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200">
+        <div className="fixed bottom-20 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[420px] max-h-[85vh] z-50 bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200/90 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           
-          {/* Popup Header */}
-          <div className="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/90">
+          {/* Header */}
+          <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-white">
             <div className="flex items-center space-x-2.5">
-              <div className="p-2 bg-[#E87722]/10 rounded-lg border border-[#E87722]/30 text-[#E87722]">
+              <div className="p-2 bg-slate-100 text-[#0B192C] rounded-lg">
                 <Calculator className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-bold text-sm sm:text-base text-slate-100 leading-tight">
+                <h3 className="font-bold text-sm sm:text-base text-[#0B192C] leading-tight">
                   928 Loan Calculator
                 </h3>
-                <p className="text-[11px] text-slate-400">
+                <p className="text-[11px] text-slate-500">
                   Instant Repayment & Disbursement Estimator
                 </p>
               </div>
@@ -218,56 +217,56 @@ export function LoanCalculatorWidget() {
               <button
                 onClick={handleReset}
                 title="Reset to Default"
-                className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
               <button
                 onClick={() => updateState("isOpen", false)}
                 title="Close"
-                className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
           </div>
 
-          {/* Popup Body (Scrollable Controls & Output) */}
+          {/* Body (Scrollable Controls & Output) */}
           <div className="p-4 sm:p-5 overflow-y-auto space-y-5 flex-1 custom-scrollbar text-xs sm:text-sm">
             
-            {/* Primary Result Display Box */}
-            <div className="p-4 bg-gradient-to-br from-slate-900 to-[#132743] rounded-xl border border-slate-700/80 shadow-md">
-              <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+            {/* Primary Result Card */}
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 shadow-sm">
+              <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1 flex items-center justify-between">
                 <span>Estimated {calculations.freqLabel} Payment</span>
-                <span className="text-[#E87722] text-[10px] font-bold bg-[#E87722]/10 px-2 py-0.5 rounded border border-[#E87722]/20">
+                <span className="text-slate-700 text-[10px] font-bold bg-slate-200/70 px-2 py-0.5 rounded border border-slate-300/50">
                   {calculations.totalPaymentsCount} Payments
                 </span>
               </div>
 
-              <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#E87722]">
+              <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#0B192C]">
                 {formatPHPExact(calculations.installmentPerPeriod)}
               </div>
 
-              <div className="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-[11px]">
+              <div className="mt-3 pt-3 border-t border-slate-200/80 grid grid-cols-2 gap-2 text-[11px]">
                 <div>
-                  <span className="text-slate-400">Net Received:</span>
-                  <p className="font-bold text-emerald-400">{formatPHP(calculations.netDisbursement)}</p>
+                  <span className="text-slate-500">Net Received:</span>
+                  <p className="font-bold text-slate-800">{formatPHP(calculations.netDisbursement)}</p>
                 </div>
                 <div>
-                  <span className="text-slate-400">Total Repayment:</span>
-                  <p className="font-bold text-slate-200">{formatPHP(calculations.totalRepayment)}</p>
+                  <span className="text-slate-500">Total Repayment:</span>
+                  <p className="font-bold text-slate-800">{formatPHP(calculations.totalRepayment)}</p>
                 </div>
               </div>
             </div>
 
-            {/* Adjustable Controls Form */}
+            {/* Adjustable Controls */}
             <div className="space-y-4">
               
               {/* 1. Loan Amount */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-semibold">
-                  <label className="text-slate-300 flex items-center gap-1.5">
-                    <DollarSign className="w-3.5 h-3.5 text-[#E87722]" />
+                  <label className="text-slate-700 flex items-center gap-1.5">
+                    <DollarSign className="w-3.5 h-3.5 text-slate-500" />
                     <span>Loan Amount (₱)</span>
                   </label>
                   <input
@@ -277,7 +276,7 @@ export function LoanCalculatorWidget() {
                     step="5000"
                     value={state.amount}
                     onChange={(e) => updateState("amount", Number(e.target.value))}
-                    className="w-28 text-right bg-slate-900 border border-slate-700 rounded px-2 py-0.5 font-bold text-white text-xs focus:outline-none focus:border-[#E87722]"
+                    className="w-28 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-slate-900 text-xs focus:outline-none focus:border-slate-400"
                   />
                 </div>
 
@@ -288,7 +287,10 @@ export function LoanCalculatorWidget() {
                   step="5000"
                   value={state.amount}
                   onChange={(e) => updateState("amount", Number(e.target.value))}
-                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
+                  className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
+                  style={{
+                    background: `linear-gradient(to right, #E87722 0%, #E87722 ${amountSliderPercent}%, #e2e8f0 ${amountSliderPercent}%, #e2e8f0 100%)`,
+                  }}
                 />
 
                 {/* Preset Chips */}
@@ -299,8 +301,8 @@ export function LoanCalculatorWidget() {
                       onClick={() => updateState("amount", amt)}
                       className={`text-[10px] font-semibold px-2 py-1 rounded-md transition-all border ${
                         state.amount === amt
-                          ? "bg-[#E87722] text-white border-[#E87722]"
-                          : "bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700"
+                          ? "bg-[#0B192C] text-white border-[#0B192C]"
+                          : "bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200"
                       }`}
                     >
                       ₱{(amt / 1000).toLocaleString()}k
@@ -309,11 +311,11 @@ export function LoanCalculatorWidget() {
                 </div>
               </div>
 
-              {/* 2. Loan Term (Months) */}
+              {/* 2. Terms (Months) */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-semibold">
-                  <label className="text-slate-300 flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#E87722]" />
+                  <label className="text-slate-700 flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5 text-slate-500" />
                     <span>Terms (Months)</span>
                   </label>
                   <input
@@ -323,7 +325,7 @@ export function LoanCalculatorWidget() {
                     step="1"
                     value={state.termMonths}
                     onChange={(e) => updateState("termMonths", Number(e.target.value))}
-                    className="w-20 text-right bg-slate-900 border border-slate-700 rounded px-2 py-0.5 font-bold text-white text-xs focus:outline-none focus:border-[#E87722]"
+                    className="w-20 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-slate-900 text-xs focus:outline-none focus:border-slate-400"
                   />
                 </div>
 
@@ -334,7 +336,10 @@ export function LoanCalculatorWidget() {
                   step="1"
                   value={state.termMonths}
                   onChange={(e) => updateState("termMonths", Number(e.target.value))}
-                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
+                  className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
+                  style={{
+                    background: `linear-gradient(to right, #E87722 0%, #E87722 ${termSliderPercent}%, #e2e8f0 ${termSliderPercent}%, #e2e8f0 100%)`,
+                  }}
                 />
 
                 {/* Term Chips */}
@@ -345,8 +350,8 @@ export function LoanCalculatorWidget() {
                       onClick={() => updateState("termMonths", t)}
                       className={`text-[10px] font-semibold px-2.5 py-1 rounded-md transition-all border ${
                         state.termMonths === t
-                          ? "bg-[#E87722] text-white border-[#E87722]"
-                          : "bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700"
+                          ? "bg-[#0B192C] text-white border-[#0B192C]"
+                          : "bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200"
                       }`}
                     >
                       {t} Mos
@@ -358,8 +363,8 @@ export function LoanCalculatorWidget() {
               {/* 3. Monthly Interest Rate */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-semibold">
-                  <label className="text-slate-300 flex items-center gap-1.5">
-                    <Percent className="w-3.5 h-3.5 text-[#E87722]" />
+                  <label className="text-slate-700 flex items-center gap-1.5">
+                    <Percent className="w-3.5 h-3.5 text-slate-500" />
                     <span>Monthly Interest Rate (%)</span>
                   </label>
                   <input
@@ -369,7 +374,7 @@ export function LoanCalculatorWidget() {
                     step="0.1"
                     value={state.monthlyRate}
                     onChange={(e) => updateState("monthlyRate", Number(e.target.value))}
-                    className="w-20 text-right bg-slate-900 border border-slate-700 rounded px-2 py-0.5 font-bold text-white text-xs focus:outline-none focus:border-[#E87722]"
+                    className="w-20 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-slate-900 text-xs focus:outline-none focus:border-slate-400"
                   />
                 </div>
 
@@ -380,14 +385,17 @@ export function LoanCalculatorWidget() {
                   step="0.1"
                   value={state.monthlyRate}
                   onChange={(e) => updateState("monthlyRate", Number(e.target.value))}
-                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
+                  className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
+                  style={{
+                    background: `linear-gradient(to right, #E87722 0%, #E87722 ${rateSliderPercent}%, #e2e8f0 ${rateSliderPercent}%, #e2e8f0 100%)`,
+                  }}
                 />
               </div>
 
               {/* 4. Payment Frequency */}
               <div className="space-y-2">
-                <label className="text-slate-300 text-xs font-semibold flex items-center gap-1.5">
-                  <Briefcase className="w-3.5 h-3.5 text-[#E87722]" />
+                <label className="text-slate-700 text-xs font-semibold flex items-center gap-1.5">
+                  <Briefcase className="w-3.5 h-3.5 text-slate-500" />
                   <span>Payment Frequency</span>
                 </label>
 
@@ -398,12 +406,14 @@ export function LoanCalculatorWidget() {
                       onClick={() => updateState("frequency", freq.id)}
                       className={`p-2 rounded-lg text-left transition-all border ${
                         state.frequency === freq.id
-                          ? "bg-[#E87722]/15 border-[#E87722] text-white"
-                          : "bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700"
+                          ? "bg-[#0B192C] text-white border-[#0B192C]"
+                          : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
                       }`}
                     >
                       <div className="font-bold text-xs">{freq.label}</div>
-                      <div className="text-[10px] text-slate-400">{freq.subtitle}</div>
+                      <div className={`text-[10px] ${state.frequency === freq.id ? "text-slate-300" : "text-slate-400"}`}>
+                        {freq.subtitle}
+                      </div>
                     </button>
                   ))}
                 </div>
@@ -412,13 +422,13 @@ export function LoanCalculatorWidget() {
               {/* 5. Processing Fee */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-semibold">
-                  <label className="text-slate-300 flex items-center gap-1.5">
-                    <HelpCircle className="w-3.5 h-3.5 text-[#E87722]" />
+                  <label className="text-slate-700 flex items-center gap-1.5">
+                    <HelpCircle className="w-3.5 h-3.5 text-slate-500" />
                     <span>Processing Fee</span>
                   </label>
-                  <div className="flex items-center space-x-1 text-xs font-bold text-white">
+                  <div className="flex items-center space-x-1 text-xs font-bold text-slate-800">
                     <span>{state.processingFeePercent.toFixed(1)}%</span>
-                    <span className="text-slate-500">({formatPHP(calculations.processingFeeAmount)})</span>
+                    <span className="text-slate-400 font-normal">({formatPHP(calculations.processingFeeAmount)})</span>
                   </div>
                 </div>
 
@@ -429,70 +439,51 @@ export function LoanCalculatorWidget() {
                   step="0.5"
                   value={state.processingFeePercent}
                   onChange={(e) => updateState("processingFeePercent", Number(e.target.value))}
-                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
+                  className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
+                  style={{
+                    background: `linear-gradient(to right, #E87722 0%, #E87722 ${feeSliderPercent}%, #e2e8f0 ${feeSliderPercent}%, #e2e8f0 100%)`,
+                  }}
                 />
               </div>
 
             </div>
 
             {/* Comprehensive Calculation Breakdown */}
-            <div className="pt-2 border-t border-slate-800 space-y-2 text-xs">
+            <div className="pt-2 border-t border-slate-100 space-y-2 text-xs">
               <button
                 onClick={() => setShowSummaryModal(!showSummaryModal)}
-                className="w-full py-2 px-3 bg-slate-900 hover:bg-slate-800 rounded-lg border border-slate-800 flex items-center justify-between text-slate-300 font-semibold transition-colors"
+                className="w-full py-2 px-3 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-200 flex items-center justify-between text-slate-700 font-semibold transition-colors"
               >
                 <span>Full Calculation Breakdown</span>
-                {showSummaryModal ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                {showSummaryModal ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
               </button>
 
               {showSummaryModal && (
-                <div className="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-2 text-[11px] text-slate-300">
+                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-2 text-[11px] text-slate-600">
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Requested Principal:</span>
-                    <span className="font-bold text-white">{formatPHP(calculations.amount)}</span>
+                    <span className="text-slate-500">Requested Principal:</span>
+                    <span className="font-bold text-slate-900">{formatPHP(calculations.amount)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Total Interest ({calculations.monthlyRate}% x {calculations.termMonths} mos):</span>
-                    <span className="font-bold text-amber-400">+{formatPHP(calculations.totalInterest)}</span>
+                    <span className="text-slate-500">Total Interest ({calculations.monthlyRate}% x {calculations.termMonths} mos):</span>
+                    <span className="font-bold text-slate-900">+{formatPHP(calculations.totalInterest)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Deducted Processing Fee ({calculations.feePercent}%):</span>
-                    <span className="font-bold text-rose-400">-{formatPHP(calculations.processingFeeAmount)}</span>
+                    <span className="text-slate-500">Deducted Processing Fee ({calculations.feePercent}%):</span>
+                    <span className="font-bold text-slate-900">-{formatPHP(calculations.processingFeeAmount)}</span>
                   </div>
-                  <div className="pt-2 border-t border-slate-800 flex justify-between font-bold">
-                    <span>Net Loan Received:</span>
-                    <span className="text-emerald-400">{formatPHP(calculations.netDisbursement)}</span>
+                  <div className="pt-2 border-t border-slate-200 flex justify-between font-bold">
+                    <span className="text-slate-700">Net Loan Received:</span>
+                    <span className="text-slate-900">{formatPHP(calculations.netDisbursement)}</span>
                   </div>
                   <div className="flex justify-between font-bold">
-                    <span>Total Amount Repaid:</span>
-                    <span className="text-white">{formatPHP(calculations.totalRepayment)}</span>
+                    <span className="text-slate-700">Total Amount Repaid:</span>
+                    <span className="text-[#0B192C]">{formatPHP(calculations.totalRepayment)}</span>
                   </div>
                 </div>
               )}
             </div>
 
-          </div>
-
-          {/* Popup Footer CTA */}
-          <div className="p-4 border-t border-slate-800 bg-slate-900/90">
-            <Button
-              asChild
-              className="w-full bg-[#E87722] hover:bg-[#d46716] text-white font-bold py-2.5 rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 text-xs sm:text-sm"
-            >
-              <Link
-                href={{
-                  pathname: "/apply-now",
-                  query: {
-                    amount: calculations.amount,
-                    term: calculations.termMonths,
-                  },
-                }}
-                onClick={() => updateState("isOpen", false)}
-              >
-                <span>Apply Now With These Figures</span>
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </Link>
-            </Button>
           </div>
 
         </div>

@@ -98,16 +98,6 @@ export function LoanApplicationForm() {
     mode: "onTouched",
   });
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const amtParam = params.get("amount");
-      if (amtParam && !isNaN(Number(amtParam))) {
-        form.setValue("requestedAmount", Number(amtParam));
-      }
-    }
-  }, [form]);
-
   const nextStep = async () => {
     let fieldsToValidate: (keyof LoanApplicationInput)[] = [];
     if (currentStep === 1) {
