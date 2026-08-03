@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "928 Lending | Fast & Secure Business Loans",
-  description: "Licensed Financing & Lending Institution regulated by the SEC.",
+  title: "928 Credit Concept Lending Investor Corporation",
+  description: "Premier financial partner providing non-collateralized business loans to Small and Medium Enterprises (SMEs) across Luzon.",
 };
 
 export default function RootLayout({
@@ -25,11 +23,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      suppressHydrationWarning
+      className={`${poppins.variable} font-sans h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        {children}
+      <body className="min-h-full flex flex-col bg-white text-slate-900 font-sans">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

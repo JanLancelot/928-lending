@@ -43,6 +43,12 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  serverExternalPackages: ["pdf-lib"], // Just in case, though maybe not needed
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "5mb",
+    },
+  },
   async headers() {
     // Only enforce strict headers in production or allow dev HMR / styles
     if (process.env.NODE_ENV === "development") {
