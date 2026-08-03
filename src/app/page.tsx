@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Initial push to website
 const whyChooseUs = [
   {
     icon: Zap,
