@@ -4,6 +4,10 @@ import { generateHmacSignature, verifyHmacSignature } from "../hmac";
 describe("HMAC Security Utilities", () => {
   const originalEnv = process.env;
 
+  const setNodeEnv = (value: string | undefined) => {
+    (process.env as Record<string, string | undefined>).NODE_ENV = value;
+  };
+
   beforeEach(() => {
     process.env = { ...originalEnv };
   });
@@ -25,7 +29,7 @@ describe("HMAC Security Utilities", () => {
   });
 
   it("should verify valid HMAC signature correctly", () => {
-    process.env.NODE_ENV = "production";
+    setNodeEnv("production");
     process.env.HMAC_SECRET_KEY = "super-secret-key-32-chars-long";
     delete process.env.SKIP_HMAC;
 
@@ -48,7 +52,7 @@ describe("HMAC Security Utilities", () => {
   });
 
   it("should reject when signature or timestamp is missing", () => {
-    process.env.NODE_ENV = "production";
+    setNodeEnv("production");
     process.env.HMAC_SECRET_KEY = "super-secret-key-32-chars-long";
     delete process.env.SKIP_HMAC;
 
@@ -57,7 +61,7 @@ describe("HMAC Security Utilities", () => {
   });
 
   it("should reject invalid non-numeric timestamp strings", () => {
-    process.env.NODE_ENV = "production";
+    setNodeEnv("production");
     process.env.HMAC_SECRET_KEY = "super-secret-key-32-chars-long";
     delete process.env.SKIP_HMAC;
 
@@ -67,7 +71,7 @@ describe("HMAC Security Utilities", () => {
   });
 
   it("should reject signature length mismatch", () => {
-    process.env.NODE_ENV = "production";
+    setNodeEnv("production");
     process.env.HMAC_SECRET_KEY = "super-secret-key-32-chars-long";
     delete process.env.SKIP_HMAC;
 
@@ -77,17 +81,16 @@ describe("HMAC Security Utilities", () => {
   });
 
   it("should handle malformed hex signature errors gracefully", () => {
-    process.env.NODE_ENV = "production";
+    setNodeEnv("production");
     process.env.HMAC_SECRET_KEY = "super-secret-key-32-chars-long";
     delete process.env.SKIP_HMAC;
 
-    // Buffer.from throws or signature verification fails on bad hex
     const result = verifyHmacSignature("payload", "ZZZZZZZZ", Date.now().toString());
     expect(result.valid).toBe(false);
   });
 
   it("should reject tampered payload", () => {
-    process.env.NODE_ENV = "production";
+    setNodeEnv("production");
     process.env.HMAC_SECRET_KEY = "super-secret-key-32-chars-long";
     delete process.env.SKIP_HMAC;
 
@@ -111,7 +114,7 @@ describe("HMAC Security Utilities", () => {
   });
 
   it("should reject signatures outside the timestamp window (replay attack)", () => {
-    process.env.NODE_ENV = "production";
+    setNodeEnv("production");
     process.env.HMAC_SECRET_KEY = "super-secret-key-32-chars-long";
     delete process.env.SKIP_HMAC;
 
@@ -135,7 +138,7 @@ describe("HMAC Security Utilities", () => {
   });
 
   it("should fail gracefully if HMAC_SECRET_KEY is missing in production", () => {
-    process.env.NODE_ENV = "production";
+    setNodeEnv("production");
     delete process.env.HMAC_SECRET_KEY;
     delete process.env.SKIP_HMAC;
 

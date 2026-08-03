@@ -4,9 +4,6 @@ import path from "node:path";
 export default defineConfig({
   test: {
     environment: "node",
-    environmentMatchGlobs: [
-      ["src/**/*.test.tsx", "happy-dom"],
-    ],
     globals: true,
     setupFiles: ["./vitest.setup.ts"],
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
