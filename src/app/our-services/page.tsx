@@ -103,24 +103,13 @@ export default function OurServicesPage() {
 
           </div>
 
-          <div className="absolute top-0 right-4 sm:right-6 lg:right-8 w-[20%] sm:w-[15%] lg:w-[12%] max-w-[150px] pointer-events-none z-20">
+          <div className="absolute inset-y-0 right-4 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end">
             <Image
-              src="/images/overlay top.png"
-              alt="Top Overlay"
+              src="/images/wholeoverlay.png"
+              alt="Decorative Header Overlay"
               width={632}
-              height={385}
-              className="w-full h-auto object-contain object-right-top"
-              priority
-            />
-          </div>
-
-          <div className="absolute bottom-0 right-4 sm:right-6 lg:right-8 w-[20%] sm:w-[15%] lg:w-[12%] max-w-[150px] pointer-events-none z-30">
-            <Image
-              src="/images/overlay bottom.png"
-              alt="Bottom Overlay"
-              width={632}
-              height={385}
-              className="w-full h-auto object-contain object-right-bottom"
+              height={770}
+              className="h-full w-auto object-right"
               priority
             />
           </div>
