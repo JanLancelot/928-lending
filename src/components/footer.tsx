@@ -4,7 +4,7 @@ import { Clock, Phone, Mail, MapPin } from "lucide-react";
 export function Footer() {
   return (
     <footer className="w-full bg-white pt-8 pb-0">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
         <div className="bg-[#0B192C] text-white p-6 sm:p-8 lg:p-10 shadow-lg rounded-none">
           <h3 className="text-lg font-bold text-slate-200 mb-6">Contact Us</h3>
           

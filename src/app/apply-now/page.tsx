@@ -5,9 +5,9 @@ export default function ApplyNowPage() {
   return (
     <div className="w-full bg-white overflow-hidden">
       <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[120px] sm:min-h-[160px] flex items-center overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
           {/* Background pattern matching Footer container width */}
-          <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
+          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
               src="/images/bg.jpg"
               alt="Background Pattern"
@@ -18,7 +18,7 @@ export default function ApplyNowPage() {
           </div>
 
           {/* Header Overlay matching Footer right edge */}
-          <div className="absolute inset-y-0 right-4 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
+          <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
             <Image
               src="/images/wholeoverlay.png"
               alt="Decorative Header Overlay"
@@ -29,9 +29,9 @@ export default function ApplyNowPage() {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center relative z-10 px-0">
             
-            <div className="lg:col-span-6 space-y-2 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+            <div className="lg:col-span-6 space-y-2 z-20 pl-0 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
               <div className="space-y-1">
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-tight">
                   Loan Application

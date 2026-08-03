@@ -46,9 +46,9 @@ export default function Home() {
   return (
     <div className="w-full bg-white overflow-hidden">
       <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[440px] flex items-center overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
           {/* Background pattern matching Footer container width */}
-          <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
+          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
               src="/images/bg.jpg"
               alt="Hero Background"
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
 
           {/* Header Overlay matching Footer right edge */}
-          <div className="absolute inset-y-0 right-4 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
+          <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
             <Image
               src="/images/wholeoverlay.png"
               alt="Decorative Header Overlay"
@@ -70,9 +70,9 @@ export default function Home() {
             />
           </div>
 
-          <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10">
+          <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10 px-0">
             
-            <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+            <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-20 pl-0 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
               <div className="space-y-1">
                 <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
                   We Listen
@@ -130,13 +130,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-30 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 my-4 sm:my-6">
-        <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 shadow-xl border border-slate-800">
-          <div className="text-center max-w-xl mx-auto mb-8">
+      <section className="relative z-30 max-w-6xl mx-auto px-0 sm:px-10 lg:px-12 my-4 sm:my-6">
+        <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 lg:p-12 shadow-xl border-x-0 sm:border border-slate-800">
+          <div className="text-center max-w-xl mx-auto mb-8 px-4 sm:px-0">
             <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Why Choose Us</span>
             <h2 className="text-2xl sm:text-3xl font-black text-white mt-1.5">Why Choose 928 Credit?</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-800">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-800 px-4 sm:px-0">
             {whyChooseUs.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="py-5 first:pt-0 lg:py-0 lg:px-8 lg:first:pl-0 lg:last:pr-0">
                 <Icon className="w-5 h-5 text-[#E87722] mb-2.5" strokeWidth={1.5} />
@@ -149,7 +149,7 @@ export default function Home() {
       </section>
 
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
             <div className="lg:col-span-5 flex">
@@ -196,9 +196,9 @@ export default function Home() {
       </section>
 
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        <div className="max-w-6xl mx-auto px-0 sm:px-10 lg:px-12">
+          <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 lg:p-12 border-x-0 sm:border border-slate-800 shadow-xl relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 px-4 sm:px-0">
               
               <div className="lg:col-span-8 space-y-3.5">
                 <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">
@@ -235,7 +235,7 @@ export default function Home() {
       </section>
 
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-12 space-y-8">
           <div className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Simple Step-by-Step</span>
             <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">How It Works</h2>
@@ -260,8 +260,8 @@ export default function Home() {
       </section>
 
       <section className="py-6 sm:py-8 lg:py-10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
+        <div className="max-w-6xl mx-auto px-0 sm:px-10 lg:px-12">
+          <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border-x-0 sm:border border-slate-800 px-4 sm:px-10">
             <div className="space-y-2 text-center md:text-left">
               <h3 className="text-2xl sm:text-3xl font-bold">Ready to Grow Your Business?</h3>
               <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
