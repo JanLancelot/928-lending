@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Loader2, Send, Paperclip, Check } from "lucide-react";
+import { CheckCircle2, Loader2, Send, Paperclip, Check, X, AlertCircle } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
 import {
@@ -45,6 +45,39 @@ export function LoanApplicationForm() {
   const [submittedData, setSubmittedData] = useState<LoanApplicationInput | null>(null);
   const [referenceId, setReferenceId] = useState<string | null>(null);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const validateFiles = (files: File[]) => {
+    let errorMsg = null;
+    const oversized = files.find((file) => file.size > 5 * 1024 * 1024);
+    if (oversized) {
+      errorMsg = `File "${oversized.name}" exceeds the 5MB limit. Please remove it or choose a smaller file.`;
+    } else {
+      const totalSize = files.reduce((acc, file) => acc + file.size, 0);
+      if (totalSize > 5 * 1024 * 1024) {
+        errorMsg = `Total size of selected files (${(totalSize / 1024 / 1024).toFixed(2)} MB) exceeds the 5MB total limit. Please remove some files or compress them.`;
+      }
+    }
+    setUploadError(errorMsg);
+    return errorMsg === null;
+  };
+
+  const handleFileChange = (newFiles: File[]) => {
+    // Filter out duplicates by filename
+    const currentNames = uploadedFiles.map((f) => f.name);
+    const filteredNew = newFiles.filter((f) => !currentNames.includes(f.name));
+    const combined = [...uploadedFiles, ...filteredNew];
+
+    setUploadedFiles(combined);
+    validateFiles(combined);
+  };
+
+  const handleRemoveFile = (indexToRemove: number) => {
+    const updated = uploadedFiles.filter((_, idx) => idx !== indexToRemove);
+    setUploadedFiles(updated);
+    validateFiles(updated);
+  };
 
   const form = useForm<LoanApplicationInput>({
     resolver: zodResolver(loanApplicationSchema),
@@ -89,6 +122,7 @@ export function LoanApplicationForm() {
   async function onSubmit(values: LoanApplicationInput) {
     if (currentStep !== 4) return;
     setIsSubmitting(true);
+    setSubmitError(null);
     
     try {
       const formData = new FormData();
@@ -96,12 +130,9 @@ export function LoanApplicationForm() {
         if (value !== undefined) formData.append(key, value.toString());
       });
 
-      const fileInput = document.getElementById("documents-upload") as HTMLInputElement;
-      if (fileInput && fileInput.files) {
-        for (let i = 0; i < fileInput.files.length; i++) {
-          formData.append("documents", fileInput.files[i]);
-        }
-      }
+      uploadedFiles.forEach((file) => {
+        formData.append("documents", file);
+      });
 
       const result = await submitApplication(formData);
       
@@ -109,11 +140,11 @@ export function LoanApplicationForm() {
         setSubmittedData(values);
         setReferenceId(result.referenceId || null);
       } else {
-        alert(result.error || "Failed to submit application.");
+        setSubmitError(result.error || "Failed to submit application.");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("An unexpected error occurred.");
+      setSubmitError(error.message || "An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -444,7 +475,7 @@ export function LoanApplicationForm() {
               <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="mb-4">
                   <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C]">Document Upload</h2>
-                  <p className="text-slate-500 text-xs sm:text-sm mt-1">Upload a valid government-issued ID (JPG, PNG, or PDF — max 5MB).</p>
+                  <p className="text-slate-500 text-xs sm:text-sm mt-1">Upload a valid government-issued ID (JPG, PNG, or PDF — max 5MB total size).</p>
                 </div>
 
                 <div className="relative flex flex-col items-center justify-center p-12 border-2 border-dashed border-slate-300 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer">
@@ -456,7 +487,9 @@ export function LoanApplicationForm() {
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                     onChange={(e) => {
                       if (e.target.files) {
-                        setUploadedFiles(Array.from(e.target.files));
+                        handleFileChange(Array.from(e.target.files));
+                        // Reset input value so the same file can be uploaded again if removed
+                        e.target.value = "";
                       }
                     }}
                   />
@@ -465,17 +498,45 @@ export function LoanApplicationForm() {
                   <p className="text-sm text-slate-500 mt-1">or <span className="text-[#E87722] underline font-medium">browse file</span> - JPG, PNG, PDF - Max 5MB</p>
                 </div>
 
+                {uploadError && (
+                  <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg flex items-start space-x-3 text-amber-800 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5 shrink-0" />
+                    <div>
+                      <p className="text-sm font-semibold">Upload Error</p>
+                      <p className="text-xs sm:text-sm text-amber-700 mt-1">{uploadError}</p>
+                      <p className="text-xs text-amber-600 mt-2 font-medium">
+                        What you can do:
+                      </p>
+                      <ul className="list-disc pl-4 text-xs text-amber-600 space-y-1 mt-1">
+                        <li>Compress large PDF/image files using an online tool before uploading.</li>
+                        <li>Remove some documents to stay under the 5MB total limit.</li>
+                        <li>Ensure each file is less than 5MB.</li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
                 {uploadedFiles.length > 0 && (
                   <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-lg flex flex-col space-y-2">
                     <p className="text-sm font-semibold text-emerald-800 flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
                       {uploadedFiles.length} file(s) selected
                     </p>
-                    <div className="space-y-1">
+                    <div className="space-y-1.5">
                       {uploadedFiles.map((file, idx) => (
                         <div key={idx} className="text-xs text-emerald-700 flex items-center justify-between bg-white px-3 py-2 rounded border border-emerald-100">
-                          <span className="truncate max-w-[200px] sm:max-w-[300px]">{file.name}</span>
-                          <span className="text-emerald-500 font-medium">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                          <span className="truncate max-w-[150px] sm:max-w-[280px] font-medium">{file.name}</span>
+                          <div className="flex items-center space-x-2 shrink-0">
+                            <span className="text-emerald-500 font-medium">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveFile(idx)}
+                              className="text-slate-400 hover:text-red-500 p-1 hover:bg-slate-100 rounded transition-colors"
+                              title="Remove file"
+                            >
+                              <X className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -513,6 +574,16 @@ export function LoanApplicationForm() {
               </div>
             )}
 
+            {submitError && (
+              <div className="bg-red-50 border border-red-200 p-4 rounded-lg flex items-start space-x-3 text-red-800 animate-in fade-in slide-in-from-top-2 duration-200 mt-6">
+                <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold">Submission Failed</p>
+                  <p className="text-xs sm:text-sm text-red-700 mt-1">{submitError}</p>
+                </div>
+              </div>
+            )}
+
             <div className="flex justify-between items-center pt-8 mt-8 border-t border-slate-200">
               {currentStep > 1 ? (
                 <Button type="button" variant="outline" onClick={prevStep} className="h-11 px-7 text-[#0B192C] border-slate-300 hover:bg-slate-100 font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:-translate-y-0.5">
@@ -530,7 +601,7 @@ export function LoanApplicationForm() {
                 <Button
                   type="submit"
                   className="h-11 px-8 bg-[#E87722] hover:bg-[#d46716] text-white font-bold rounded-md shadow-md flex items-center text-xs sm:text-sm transition-all duration-300 transform hover:-translate-y-0.5"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !!uploadError}
                 >
                   {isSubmitting ? (
                     <>

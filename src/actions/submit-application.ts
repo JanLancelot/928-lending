@@ -35,8 +35,10 @@ export async function submitApplication(formData: FormData) {
 
     // 3. Generate Reference ID and Password
     const refId = "LOAN-" + crypto.randomBytes(4).toString("hex").toUpperCase();
-    const lastName = (data.fullName.split(" ").pop() || "UNKNOWN").toUpperCase();
-    const pdfPassword = `${lastName}-${refId.slice(-4)}`;
+    const pdfPassword = process.env.PDF_DECRYPTION_PASSWORD;
+    if (!pdfPassword) {
+      throw new Error("PDF decryption password is not configured in environment variables.");
+    }
 
     // 4. Handle files
     const files = formData.getAll("documents") as File[];
@@ -46,8 +48,8 @@ export async function submitApplication(formData: FormData) {
     for (const file of files) {
       if (file.size > 0) {
         totalSize += file.size;
-        if (totalSize > 10 * 1024 * 1024) {
-          return { success: false, error: "Total document size exceeds the 10MB limit." };
+        if (totalSize > 5 * 1024 * 1024) {
+          return { success: false, error: "Total document size exceeds the 5MB limit." };
         }
         
         const buffer = Buffer.from(await file.arrayBuffer());
@@ -63,7 +65,7 @@ export async function submitApplication(formData: FormData) {
     const encryptedPdfBuffer = await generateEncryptedApplication(data, documents, pdfPassword);
 
     // 6. Send notification
-    await sendAdminNotification(refId, encryptedPdfBuffer, data.fullName);
+    await sendAdminNotification(refId, encryptedPdfBuffer);
 
     return { success: true, referenceId: refId };
   } catch (err: any) {

@@ -7,12 +7,12 @@ export async function generateEncryptedApplication(
   password: string
 ): Promise<Buffer> {
   const pdfDoc = await PDFDocument.create();
-  
+
   // 1. Create main text page
   const page = pdfDoc.addPage([600, 850]);
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-  
+
   const { width, height } = page.getSize();
 
   // Branding Colors
@@ -42,7 +42,7 @@ export async function generateEncryptedApplication(
   });
 
   // Header Title
-  page.drawText("COMMERCIAL LOAN APPLICATION", {
+  page.drawText("LOAN APPLICATION", {
     x: 40,
     y: height - 60,
     size: 20,
@@ -190,25 +190,25 @@ export async function generateEncryptedApplication(
       }
     } else if (doc.mimeType === "image/jpeg" || doc.mimeType === "image/png") {
       try {
-        const image = doc.mimeType === "image/jpeg" 
-          ? await pdfDoc.embedJpg(doc.buffer) 
+        const image = doc.mimeType === "image/jpeg"
+          ? await pdfDoc.embedJpg(doc.buffer)
           : await pdfDoc.embedPng(doc.buffer);
-        
+
         // Scale and embed image to standard page size nicely
         const imgPage = pdfDoc.addPage([600, 850]);
         const { width: pWidth, height: pHeight } = imgPage.getSize();
-        
+
         // Max bounds with margins
         const maxW = pWidth - 80;
         const maxH = pHeight - 160;
-        
+
         const imgW = image.width;
         const imgH = image.height;
         const ratio = Math.min(maxW / imgW, maxH / imgH, 1);
-        
+
         const finalW = imgW * ratio;
         const finalH = imgH * ratio;
-        
+
         // Center image
         const xPos = (pWidth - finalW) / 2;
         const yPos = (pHeight - finalH) / 2;
@@ -254,6 +254,6 @@ export async function generateEncryptedApplication(
   // 3. Save to Uint8Array and encrypt
   const pdfBytes = await pdfDoc.save();
   const encryptedPdfUint8 = await encryptPDF(pdfBytes, password);
-  
+
   return Buffer.from(encryptedPdfUint8);
 }
