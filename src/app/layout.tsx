@@ -14,6 +14,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "928 Credit Concept Lending Investor Corporation",
   description: "Premier financial partner providing non-collateralized business loans to Small and Medium Enterprises (SMEs) across Luzon.",
+  icons: {
+    icon: "/images/minilogo.png",
+    shortcut: "/images/minilogo.png",
+    apple: "/images/minilogo.png",
+  },
 };
 
 export default function RootLayout({
