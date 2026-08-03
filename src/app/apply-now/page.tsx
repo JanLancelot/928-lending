@@ -52,7 +52,7 @@ export default function ApplyNowPage() {
                 }}
               >
                 <Image
-                  src="/images/sqpicoverlay.png"
+                  src="/images/loanpicc.png"
                   alt="928 Credit Concept Lending Application Portal"
                   fill
                   className="object-cover object-center"
