@@ -32,10 +32,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const steps = [
-  { id: 1, title: "Loan Details" },
-  { id: 2, title: "Personal Info" },
-  { id: 3, title: "Financial Info" },
-  { id: 4, title: "Upload & Submit" },
+  { id: 1, title: "Loan Details", shortTitle: "Loan" },
+  { id: 2, title: "Personal Info", shortTitle: "Info" },
+  { id: 3, title: "Financial Info", shortTitle: "Financial" },
+  { id: 4, title: "Upload & Submit", shortTitle: "Submit" },
 ];
 
 export function LoanApplicationForm() {
@@ -208,20 +208,20 @@ export function LoanApplicationForm() {
   return (
     <Card className="w-full max-w-6xl mx-auto shadow-xl border border-slate-200/80 rounded-2xl bg-white">
       <CardHeader className="px-6 sm:px-10 lg:px-12 pt-8 sm:pt-10 pb-4">
-        <div className="flex items-center justify-between w-full mb-8 sm:mb-10">
+        <div className="flex items-center justify-between w-full mb-2">
           {steps.map((step, idx) => (
-            <div key={step.id} className="flex flex-col items-center relative flex-1">
+            <div key={step.id} className="flex flex-col items-center flex-1 gap-2">
               <div className="flex items-center w-full">
                 <div className={cn("h-[2px] w-full",
                   idx === 0 ? "opacity-0" : "opacity-100",
                   currentStep >= step.id ? "bg-[#0B192C]" : "bg-slate-200"
                 )} />
 
-                <div className={cn("flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full border-2 z-10 transition-all duration-300",
+                <div className={cn("flex-shrink-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 z-10 transition-all duration-300",
                   currentStep > step.id ? "bg-[#0B192C] border-[#0B192C] text-white" :
                   currentStep === step.id ? "bg-[#E87722] border-[#E87722] text-white shadow-md" : "bg-white border-slate-300 text-slate-400"
                 )}>
-                  {currentStep > step.id ? <Check className="w-5 h-5" /> : <span className="font-semibold">{step.id}</span>}
+                  {currentStep > step.id ? <Check className="w-4 h-4 sm:w-5 sm:h-5" /> : <span className="font-semibold text-xs sm:text-sm">{step.id}</span>}
                 </div>
 
                 <div className={cn("h-[2px] w-full",
@@ -229,10 +229,11 @@ export function LoanApplicationForm() {
                   currentStep > step.id ? "bg-[#0B192C]" : "bg-slate-200"
                 )} />
               </div>
-              <span className={cn("absolute top-12 text-xs sm:text-sm font-semibold whitespace-nowrap text-center transition-colors duration-300",
+              <span className={cn("text-[10px] sm:text-xs font-semibold text-center transition-colors duration-300 leading-tight px-0.5",
                 currentStep >= step.id ? (currentStep === step.id ? "text-[#E87722]" : "text-[#0B192C]") : "text-slate-400"
               )}>
-                {step.title}
+                <span className="sm:hidden">{step.shortTitle}</span>
+                <span className="hidden sm:inline">{step.title}</span>
               </span>
             </div>
           ))}

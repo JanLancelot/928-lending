@@ -103,7 +103,7 @@ export default function OurServicesPage() {
                 }}
               >
                 <Image
-                  src="/images/hero_meeting.png"
+                  src="/images/building.jpg"
                   alt="928 Credit Concept Financial Advisory Team"
                   fill
                   className="object-cover object-center"

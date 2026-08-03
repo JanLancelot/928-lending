@@ -114,7 +114,7 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/images/hero_meeting.png"
+                  src="/images/sqpicoverlay.png"
                   alt="928 Credit Concept Lending Team Meeting"
                   fill
                   className="object-cover object-center scale-110 sm:scale-105"
@@ -152,7 +152,7 @@ export default function Home() {
             <div className="lg:col-span-5 flex">
               <div className="relative w-full h-[380px] sm:h-[420px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-100 shadow-md">
                 <Image
-                  src="/images/building.png"
+                  src="/images/building.jpg"
                   alt="928 Credit Concept Lending Storefront Unit E"
                   fill
                   className="object-cover object-center rounded-2xl"
