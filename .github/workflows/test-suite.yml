@@ -2,7 +2,7 @@ name: Enterprise Quality Gate & Test Suite
 
 on:
   push:
-    branches: [ main, feat/*, security/*, infra/* ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
