@@ -45,8 +45,9 @@ const steps = [
 export default function Home() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-6 lg:pt-0 pb-6 lg:pb-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[440px] flex items-center overflow-hidden">
+      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[440px] flex items-center overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          {/* Background pattern matching Footer container width */}
           <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
               src="/images/bg.jpg"
@@ -57,45 +58,57 @@ export default function Home() {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
+          {/* Header Overlay matching Footer right edge */}
+          <div className="absolute inset-y-0 right-4 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
+            <Image
+              src="/images/wholeoverlay.png"
+              alt="Decorative Header Overlay"
+              width={632}
+              height={770}
+              className="h-full w-auto object-right object-cover"
+              priority
+            />
+          </div>
+
+          <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10">
             
-            <div className="lg:col-span-5 space-y-4 sm:space-y-5 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
+            <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-20 pl-2 sm:pl-6 lg:pl-10 my-auto flex flex-col justify-center">
               <div className="space-y-1">
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
                   We Listen
                 </h1>
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#E87722] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#E87722] leading-none">
                   We Work
                 </h1>
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
                   We Lend
                 </h1>
               </div>
 
-              <div className="w-12 sm:w-14 h-1 bg-[#E87722] rounded-full"></div>
+              <div className="w-10 sm:w-14 h-1 bg-[#E87722] rounded-full"></div>
 
-              <p className="text-xs sm:text-sm text-slate-600 max-w-sm leading-relaxed">
+              <p className="text-[11px] sm:text-sm text-slate-600 max-w-sm leading-relaxed">
                 Helping Small and Medium Enterprises across Luzon access fast, non-collateralized business financing through a streamlined and professional lending process.
               </p>
 
-              <div className="pt-2 flex flex-wrap gap-3">
+              <div className="pt-1 sm:pt-2 flex flex-wrap gap-2 sm:gap-3">
                 <Button
                   asChild
-                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm font-bold px-6 sm:px-7 py-2.5 sm:py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="bg-[#E87722] hover:bg-[#d46716] text-white text-[11px] sm:text-sm font-bold px-4 sm:px-7 py-2 sm:py-3 rounded-md shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <Link href="/apply-now">Apply Now</Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="border-slate-300 text-[#0B192C] hover:bg-slate-100 text-xs sm:text-sm font-bold px-5 sm:px-6 py-2.5 sm:py-3 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="border-slate-300 text-[#0B192C] hover:bg-slate-100 text-[11px] sm:text-sm font-bold px-3.5 sm:px-6 py-2 sm:py-3 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <Link href="/about-us">Learn More</Link>
                 </Button>
               </div>
             </div>
 
-            <div className="lg:col-span-7 relative min-h-[220px] sm:min-h-[340px] lg:min-h-[480px] flex items-center justify-end">
+            <div className="col-span-5 lg:col-span-7 relative min-h-[160px] sm:min-h-[340px] lg:min-h-[480px] flex items-center justify-end">
               <div 
                 className="absolute inset-0 z-10 overflow-hidden"
                 style={{
@@ -113,17 +126,6 @@ export default function Home() {
               </div>
             </div>
 
-          </div>
-
-          <div className="absolute inset-y-0 right-2 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end">
-            <Image
-              src="/images/wholeoverlay.png"
-              alt="Decorative Header Overlay"
-              width={632}
-              height={770}
-              className="h-full w-auto max-w-[45vw] sm:max-w-none object-contain sm:object-cover object-right"
-              priority
-            />
           </div>
         </div>
       </section>

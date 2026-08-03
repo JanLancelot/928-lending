@@ -40,14 +40,27 @@ const goals = [
 export default function AboutUsPage() {
   return (
     <div className="w-full bg-white overflow-hidden">
-      <section className="relative w-full bg-white pt-4 lg:pt-0 pb-6 lg:pb-8 min-h-[120px] sm:min-h-[160px] flex items-center overflow-hidden">
+      <section className="relative w-full bg-white pt-0 pb-6 lg:pb-8 min-h-[120px] sm:min-h-[160px] flex items-center overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          {/* Background pattern matching Footer container width */}
           <div className="absolute inset-y-0 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
               src="/images/bg.jpg"
               alt="Background Pattern"
               fill
               className="object-cover object-left"
+              priority
+            />
+          </div>
+
+          {/* Header Overlay matching Footer right edge */}
+          <div className="absolute inset-y-0 right-4 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
+            <Image
+              src="/images/wholeoverlay.png"
+              alt="Decorative Header Overlay"
+              width={632}
+              height={770}
+              className="h-full w-auto object-right object-cover"
               priority
             />
           </div>
@@ -86,17 +99,6 @@ export default function AboutUsPage() {
               </div>
             </div>
 
-          </div>
-
-          <div className="absolute inset-y-0 right-2 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end">
-            <Image
-              src="/images/wholeoverlay.png"
-              alt="Decorative Header Overlay"
-              width={632}
-              height={770}
-              className="h-full w-auto max-w-[40vw] sm:max-w-none object-contain sm:object-cover object-right"
-              priority
-            />
           </div>
         </div>
       </section>
