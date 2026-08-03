@@ -1,0 +1,2 @@
+# Gitleaks ignore file for false positive fingerprints
+90679d5d0323ab8da101dcac1fa8ea7c91307ee2:src/components/CookieConsentBanner.tsx:generic-api-key:11
