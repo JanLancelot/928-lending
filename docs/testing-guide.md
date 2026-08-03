@@ -18,6 +18,9 @@ This document outlines the testing standards, commands, architecture, and load p
 ## ⚡ 2. Quick Command Reference
 
 ```bash
+# Run ALL test suites & audits with a single command (Linting, Vitest, Security, Retention, Load)
+npm run test:all
+
 # Run complete unit and component test suite
 npm run test
 
