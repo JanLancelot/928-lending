@@ -171,7 +171,7 @@ export async function generateEncryptedApplication(
     color: mutedTextColor,
   });
 
-  page.drawText("928 Credit Concept Lending Investor Corp. · SEC Reg. No. CS201314115", {
+  page.drawText("928 Credit Concept Lending Investor Corp. · SEC Reg. No. CS202002431 · SEC COA No. 3247", {
     x: 40,
     y: 20,
     size: 8,

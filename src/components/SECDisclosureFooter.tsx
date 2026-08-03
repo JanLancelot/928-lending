@@ -8,9 +8,9 @@ export interface SECDisclosureFooterProps {
 }
 
 export function SECDisclosureFooter({
-  companyName = "928 Credit Concept Lending Corp.",
-  secRegNo = "CS202600928",
-  caNo = "CA-2026-0928",
+  companyName = "928 Credit Concept Lending Investor Corporation",
+  secRegNo = "CS202002431",
+  caNo = "CA No. 3247",
   npcRegistrationNo = "NPC-REG-2026-928",
 }: SECDisclosureFooterProps) {
   return (

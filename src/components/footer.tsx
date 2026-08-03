@@ -57,9 +57,16 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Copyright Bar */}
-          <div className="mt-6 text-center text-xs text-slate-400 font-medium">
-            © 2020-2026 928 Credit Concept Lending Investor Corporation. All Rights Reserved.
+          {/* Regulatory Information & Copyright Bar */}
+          <div className="mt-6 pt-2 text-center text-xs text-slate-400 font-medium space-y-1.5">
+            <div className="text-slate-300 font-semibold tracking-wide">
+              <span>SEC Reg. No. CS202002431</span>
+              <span className="mx-2 text-slate-600">|</span>
+              <span>SEC COA No. 3247</span>
+            </div>
+            <div>
+              © 2020-2026 928 Credit Concept Lending Investor Corporation. All Rights Reserved.
+            </div>
           </div>
         </div>
       </div>
