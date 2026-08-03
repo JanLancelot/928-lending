@@ -18,23 +18,31 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md overflow-x-clip">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20 px-0 sm:px-6 lg:px-8">
         
-        <div className="flex items-center h-full shrink-0 pl-3 sm:pl-0 pr-18 sm:pr-28 lg:pr-36 py-2 z-10 my-auto">
+        <div className="flex items-center h-full shrink-0 pl-3 sm:pl-0 pr-12 sm:pr-28 lg:pr-36 py-2 z-10 my-auto">
           <Link href="/" className="flex items-center justify-center h-full group">
             <Image
               src="/images/928logo.png"
               alt="928 Credit Concept Lending"
               width={220}
               height={56}
-              className="h-9 sm:h-11 lg:h-12 w-auto object-contain my-auto transition-transform duration-300 group-hover:scale-[1.02]"
+              className="hidden sm:block h-9 sm:h-11 lg:h-12 w-auto object-contain my-auto transition-transform duration-300 group-hover:scale-[1.02]"
+              priority
+            />
+            <Image
+              src="/images/minilogo.png"
+              alt="928 Credit Concept Lending"
+              width={48}
+              height={48}
+              className="block sm:hidden h-8 sm:h-9 w-auto object-contain my-auto transition-transform duration-300 group-hover:scale-105"
               priority
             />
           </Link>
         </div>
 
-        <div className="relative flex-1 h-full flex items-center justify-end">
-          <div className="relative flex items-center justify-between h-full w-full bg-[#0B192C] text-white pl-16 sm:pl-24 lg:pl-32 pr-5 sm:pr-6 shadow-md rounded-none">
+        <div className="relative flex-1 h-full flex items-center justify-end z-20">
+          <div className="relative flex items-center justify-between h-full w-full bg-[#0B192C] text-white pl-12 sm:pl-24 lg:pl-32 pr-3 sm:pr-6 shadow-md rounded-none">
             
-            <div className="absolute -left-16 sm:-left-24 lg:-left-32 top-0 h-full w-16 sm:w-24 lg:w-32 pointer-events-none">
+            <div className="absolute -left-12 sm:-left-24 lg:-left-32 top-0 h-full w-12 sm:w-24 lg:w-32 pointer-events-none">
               <svg
                 viewBox="0 0 128 80"
                 fill="none"
@@ -49,14 +57,14 @@ export function Navbar() {
               </svg>
             </div>
 
-            <nav className="flex items-center space-x-8 sm:space-x-12 lg:space-x-16 ml-auto mr-8 sm:mr-10">
+            <nav className="flex items-center space-x-3 sm:space-x-12 lg:space-x-16 ml-auto mr-2.5 sm:mr-10">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="relative group py-1.5 font-semibold text-xs sm:text-sm lg:text-base tracking-wide transition-all duration-300"
+                    className="relative group py-1.5 font-semibold text-[10px] sm:text-sm lg:text-base tracking-tight sm:tracking-wide transition-all duration-300 whitespace-nowrap"
                   >
                     <span
                       className={`inline-block transition-all duration-300 transform group-hover:-translate-y-0.5 ${
@@ -69,7 +77,7 @@ export function Navbar() {
                     </span>
 
                     <span
-                      className={`absolute -bottom-0.5 left-0 h-[2.5px] bg-[#E87722] rounded-full transition-all duration-300 ease-out ${
+                      className={`absolute -bottom-0.5 left-0 h-[2px] sm:h-[2.5px] bg-[#E87722] rounded-full transition-all duration-300 ease-out ${
                         isActive
                           ? "w-full opacity-100"
                           : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
@@ -82,7 +90,7 @@ export function Navbar() {
 
             <Button
               asChild
-              className="bg-[#E87722] hover:bg-[#d46716] text-white text-xs sm:text-sm lg:text-base font-bold px-6 py-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] shrink-0"
+              className="bg-[#E87722] hover:bg-[#d46716] text-white text-[10px] sm:text-sm lg:text-base font-bold px-2.5 sm:px-6 py-1.5 sm:py-2.5 h-auto rounded-md shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] shrink-0 whitespace-nowrap"
             >
               <Link href="/apply-now">Apply Now</Link>
             </Button>

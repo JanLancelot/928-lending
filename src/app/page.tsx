@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Initial push to website
 const whyChooseUs = [
   {
     icon: Zap,
@@ -47,7 +46,6 @@ export default function Home() {
     <div className="w-full bg-white overflow-hidden">
       <section className="relative w-full bg-white pt-0 pb-4 lg:pb-8 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full">
-          {/* Background pattern matching Footer/Navbar container width */}
           <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
             <Image
               src="/images/bg.jpg"
@@ -58,7 +56,6 @@ export default function Home() {
             />
           </div>
 
-          {/* Decorative Wholeoverlay anchored right edge (z-20 layer over picture) */}
           <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
             <Image
               src="/images/wholeoverlay.png"
@@ -72,7 +69,6 @@ export default function Home() {
 
           <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10">
             
-            {/* Text Column flush under navbar with pt-1 sm:pt-4 */}
             <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-30 relative px-4 sm:px-6 lg:px-10 pt-1 sm:pt-4 pb-3 sm:pb-6 flex flex-col justify-start">
               <div className="space-y-1">
                 <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
@@ -92,7 +88,6 @@ export default function Home() {
                 Helping Small and Medium Enterprises across Luzon access fast, non-collateralized business financing through a streamlined and professional lending process.
               </p>
 
-              {/* Single row non-wrapping buttons on top of wholeoverlay (z-40) */}
               <div className="pt-1 flex flex-nowrap items-center gap-1.5 sm:gap-3 whitespace-nowrap relative z-40">
                 <Button
                   asChild
@@ -110,7 +105,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Picture Column under wholeoverlay (z-5 layer) - Larger Picture Size */}
             <div className="col-span-5 lg:col-span-7 relative min-h-[220px] sm:min-h-[380px] lg:min-h-[520px] flex items-center justify-end z-0">
               <div 
                 className="absolute inset-0 z-5 overflow-hidden"
