@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Mail, MapPin, Building2, ShieldCheck, Phone } from "lucide-react";
+import { ArrowLeft, Mail, MapPin, Phone } from "lucide-react";
 import { SECDisclosureFooter } from "@/components/SECDisclosureFooter";
 
 const sections = [
@@ -17,7 +17,6 @@ const sections = [
 export function PrivacyContent() {
   return (
     <div className="w-full bg-slate-100/70 min-h-screen font-sans text-slate-800 antialiased">
-      {/* Header Banner */}
       <header className="bg-[#0B192C] text-white py-10 sm:py-14 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="mb-6">
@@ -48,10 +47,8 @@ export function PrivacyContent() {
         </div>
       </header>
 
-      {/* Main Document Layout */}
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-8">
         
-        {/* Quick Navigation Bar */}
         <div className="bg-white rounded-lg border border-slate-200 p-4 sm:p-5 shadow-sm">
           <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
             Table of Contents
@@ -69,10 +66,8 @@ export function PrivacyContent() {
           </div>
         </div>
 
-        {/* Policy Content Card */}
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6 sm:p-10 lg:p-12 space-y-10 leading-relaxed text-sm text-slate-700">
           
-          {/* Section 1 */}
           <section id="policy-statement" className="scroll-mt-24 space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-[#0B192C] border-b border-slate-200 pb-2">
               1. Statement of Policy
@@ -85,7 +80,6 @@ export function PrivacyContent() {
             </p>
           </section>
 
-          {/* Section 2 */}
           <section id="information-collected" className="scroll-mt-24 space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-[#0B192C] border-b border-slate-200 pb-2">
               2. Information We Collect
@@ -106,7 +100,6 @@ export function PrivacyContent() {
             </ul>
           </section>
 
-          {/* Section 3 */}
           <section id="purpose-of-processing" className="scroll-mt-24 space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-[#0B192C] border-b border-slate-200 pb-2">
               3. Purpose of Processing
@@ -122,7 +115,6 @@ export function PrivacyContent() {
             </ol>
           </section>
 
-          {/* Section 4 */}
           <section id="data-security" className="scroll-mt-24 space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-[#0B192C] border-b border-slate-200 pb-2">
               4. Data Security Measures
@@ -143,7 +135,6 @@ export function PrivacyContent() {
             </ul>
           </section>
 
-          {/* Section 5 */}
           <section id="data-retention" className="scroll-mt-24 space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-[#0B192C] border-b border-slate-200 pb-2">
               5. Data Retention Schedule
@@ -186,7 +177,6 @@ export function PrivacyContent() {
             </div>
           </section>
 
-          {/* Section 6 */}
           <section id="data-subject-rights" className="scroll-mt-24 space-y-3">
             <h2 className="text-lg sm:text-xl font-bold text-[#0B192C] border-b border-slate-200 pb-2">
               6. Rights of Data Subjects
@@ -203,7 +193,6 @@ export function PrivacyContent() {
             </ul>
           </section>
 
-          {/* Section 7 */}
           <section id="dpo-contact" className="scroll-mt-24 space-y-4 pt-4 border-t border-slate-200">
             <h2 className="text-lg sm:text-xl font-bold text-[#0B192C]">
               7. Data Protection Officer (DPO) Contact Information
@@ -237,7 +226,6 @@ export function PrivacyContent() {
         </div>
       </main>
 
-      {/* SEC Regulatory Disclosure Footer */}
       <SECDisclosureFooter />
     </div>
   );
