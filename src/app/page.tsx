@@ -63,13 +63,13 @@ export default function Home() {
             
             <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-30 relative px-4 sm:px-6 lg:px-10 pt-1 sm:pt-4 pb-3 sm:pb-6 flex flex-col justify-start">
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B192C] leading-none">
                   We Listen
                 </h1>
-                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#E87722] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#E87722] leading-none">
                   We Work
                 </h1>
-                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B192C] leading-none">
                   We Lend
                 </h1>
               </div>
@@ -97,7 +97,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-span-5 lg:col-span-7 relative min-h-[180px] sm:min-h-[380px] lg:min-h-[520px] flex items-center justify-end z-0">
+            <div className="col-span-5 lg:col-span-7 relative min-h-[200px] sm:min-h-[380px] lg:min-h-[520px] flex items-center justify-end z-0">
               <div 
                 className="absolute inset-0 z-5 overflow-hidden"
                 style={{
@@ -123,7 +123,7 @@ export default function Home() {
         <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 lg:p-12 shadow-xl border-x-0 sm:border border-slate-800">
           <div className="text-center max-w-xl mx-auto mb-8 px-4 sm:px-0">
             <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Why Choose Us</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mt-1.5">Why Choose 928 Credit?</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-1.5">Why Choose 928 Credit?</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-800 px-4 sm:px-0">
             {whyChooseUs.map(({ icon: Icon, title, desc }) => (
@@ -158,7 +158,7 @@ export default function Home() {
                 <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">
                   About Us
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#0B192C] leading-tight tracking-tight mt-1.5">
+                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#0B192C] leading-tight tracking-tight mt-1.5">
                   About 928 Credit Concept Lending
                 </h2>
               </div>
@@ -193,7 +193,7 @@ export default function Home() {
                 <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">
                   Our Primary Loan Product
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
                   Non-Collateralized Business Loan
                 </h2>
                 <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
@@ -227,7 +227,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-12 space-y-8">
           <div className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Simple Step-by-Step</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">How It Works</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">How It Works</h2>
             <p className="text-xs text-slate-500">From application to fund release in 5 simple steps.</p>
           </div>
 

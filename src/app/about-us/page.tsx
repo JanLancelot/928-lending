@@ -59,7 +59,7 @@ export default function AboutUsPage() {
             
             <div className="col-span-7 lg:col-span-6 space-y-2 sm:space-y-3 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-center">
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-tight">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0B192C] leading-tight">
                   About 928 Credit Concept Lending
                 </h1>
               </div>
@@ -106,7 +106,7 @@ export default function AboutUsPage() {
                 <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">
                   Company Overview
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-[#0B192C] leading-tight tracking-tight mt-1.5">
+                <h2 className="text-3xl sm:text-4xl font-bold text-[#0B192C] leading-tight tracking-tight mt-1.5">
                   SEC Registered Lending Company
                 </h2>
               </div>
@@ -118,13 +118,13 @@ export default function AboutUsPage() {
               <div className="grid grid-cols-2 gap-6 pt-3">
                 <div>
                   <div className="text-[11px] font-bold text-[#E87722] uppercase tracking-wider mb-1">SEC Registration</div>
-                  <div className="text-lg font-black text-[#0B192C]">CS202002431</div>
+                  <div className="text-lg font-bold text-[#0B192C]">CS202002431</div>
                   <div className="text-[11px] text-slate-500 mt-0.5">Incorporated Feb 20, 2020</div>
                 </div>
 
                 <div>
                   <div className="text-[11px] font-bold text-[#E87722] uppercase tracking-wider mb-1">Authority Certificate</div>
-                  <div className="text-lg font-black text-[#0B192C]">CA No. 3247</div>
+                  <div className="text-lg font-bold text-[#0B192C]">CA No. 3247</div>
                   <div className="text-[11px] text-slate-500 mt-0.5">Republic Act No. 9474</div>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function AboutUsPage() {
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Our Journey</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Company Timeline</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Company Timeline</h2>
             </div>
 
             <div className="relative">
@@ -144,7 +144,7 @@ export default function AboutUsPage() {
                   <div key={t.title}>
                     <div className="flex items-center gap-2 mb-2 relative z-10">
                       <span className="w-2 h-2 rounded-full bg-[#E87722]" />
-                      <span className="text-xs font-black text-[#E87722] uppercase tracking-wider">{t.year}</span>
+                      <span className="text-xs font-bold text-[#E87722] uppercase tracking-wider">{t.year}</span>
                     </div>
                     <h4 className="font-bold text-sm text-[#0B192C] mb-1">{t.title}</h4>
                     <p className="text-xs text-slate-500 leading-relaxed">{t.desc}</p>
@@ -157,7 +157,7 @@ export default function AboutUsPage() {
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Purpose & Direction</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Vision & Mission</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Vision & Mission</h2>
             </div>
 
             <div className="bg-[#0B192C] text-white p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
@@ -184,7 +184,7 @@ export default function AboutUsPage() {
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Guided Principles</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Our Core Values</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Our Core Values</h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -224,7 +224,7 @@ export default function AboutUsPage() {
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 space-y-5 border border-slate-800 shadow-xl">
             <div className="space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Strategic Goals</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">Future Expansion</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mt-1">Future Expansion</h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2.5">
