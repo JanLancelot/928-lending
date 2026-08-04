@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, Loader2, Send, Paperclip, Check, X, AlertCircle } from "lucide-react";
@@ -383,7 +384,7 @@ export function LoanApplicationForm() {
                       <FormItem>
                         <FormLabel className="text-slate-700 font-semibold text-xs sm:text-sm">Business Name</FormLabel>
                         <FormControl>
-                          <Input className="h-12 border-slate-300 focus-visible:ring-[#E87722] rounded-md text-sm" placeholder="Acme Inc." {...field} />
+                          <Input className="h-12 border-slate-300 focus-visible:ring-[#E87722] rounded-md text-sm" placeholder="Enter your business name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -582,7 +583,25 @@ export function LoanApplicationForm() {
                       </FormControl>
                       <div className="space-y-1 leading-none">
                         <FormLabel className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
-                          I agree to the <a href="#" className="text-[#E87722] hover:underline font-semibold">Terms & Conditions</a> and <a href="#" className="text-[#E87722] hover:underline font-semibold">Privacy Policy</a>. I authorize 928 Credit Concept Lending Investor Corp. to verify my information and contact me regarding my application.
+                          I agree to the{" "}
+                          <Link
+                            href="/terms-and-conditions"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#E87722] hover:underline font-semibold"
+                          >
+                            Terms &amp; Conditions
+                          </Link>{" "}
+                          and{" "}
+                          <Link
+                            href="/privacy-policy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#E87722] hover:underline font-semibold"
+                          >
+                            Privacy Policy
+                          </Link>
+                          . I authorize 928 Credit Concept Lending Investor Corp. to verify my information and contact me regarding my application.
                         </FormLabel>
                         <FormMessage />
                       </div>

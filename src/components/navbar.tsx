@@ -16,7 +16,6 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/50 backdrop-blur-md overflow-x-clip relative">
-      {/* Full-bleed navy blue background extension on the right side */}
       <div className="absolute inset-y-0 right-0 w-1/2 bg-[#0B192C] z-0 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20 px-0 sm:px-6 lg:px-8">
