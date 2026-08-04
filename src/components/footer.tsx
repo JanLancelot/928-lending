@@ -1,9 +1,10 @@
 import React from "react";
+import Link from "next/link";
 import { Clock, Phone, Mail, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="w-full  pt-8 pb-0">
+    <footer className="w-full pt-8 pb-0">
       <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
         <div className="bg-[#0B192C] text-white p-6 sm:p-8 lg:p-10 shadow-lg rounded-none">
           <h3 className="text-lg font-bold text-slate-200 mb-6">Contact Us</h3>
@@ -57,12 +58,16 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Regulatory Information & Copyright Bar */}
-          <div className="mt-6 pt-2 text-center text-xs text-slate-400 font-medium space-y-1.5">
-            <div className="text-slate-300 font-semibold tracking-wide">
+          {/* Regulatory Information & Links Bar */}
+          <div className="mt-6 pt-2 text-center text-xs text-slate-400 font-medium space-y-2">
+            <div className="text-slate-300 font-semibold tracking-wide flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
               <span>SEC Reg. No. CS202002431</span>
-              <span className="mx-2 text-slate-600">|</span>
+              <span className="text-slate-600">|</span>
               <span>SEC COA No. 3247</span>
+              <span className="text-slate-600">|</span>
+              <Link href="/privacy-policy" className="text-[#E87722] hover:underline">
+                Privacy Policy (RA 10173)
+              </Link>
             </div>
             <div>
               © 2020-2026 928 Credit Concept Lending Investor Corporation. All Rights Reserved.
