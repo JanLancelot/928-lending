@@ -5,7 +5,6 @@ import {
   Calculator,
   X,
   RotateCcw,
-  HelpCircle,
   Percent,
   Calendar,
   DollarSign,
@@ -33,7 +32,7 @@ const FREQUENCY_OPTIONS: FrequencyOption[] = [
 const PRESET_AMOUNTS = [50000, 100000, 250000, 500000, 1000000];
 const PRESET_TERMS = [3, 6, 12, 18, 24, 36];
 
-const LOCAL_STORAGE_KEY = "928_loan_calculator_state_v1";
+const LOCAL_STORAGE_KEY = "928_loan_calculator_state_v2";
 
 interface CalculatorState {
   isOpen: boolean;
@@ -41,7 +40,6 @@ interface CalculatorState {
   termMonths: number;
   monthlyRate: number;
   frequency: Frequency;
-  processingFeePercent: number;
 }
 
 const DEFAULT_STATE: CalculatorState = {
@@ -50,7 +48,6 @@ const DEFAULT_STATE: CalculatorState = {
   termMonths: 12,
   monthlyRate: 2.5,
   frequency: "monthly",
-  processingFeePercent: 2.5,
 };
 
 export function LoanCalculatorWidget() {
@@ -66,7 +63,6 @@ export function LoanCalculatorWidget() {
           amount: Math.max(10000, Math.min(2000000, Number(parsed.amount) || 250000)),
           termMonths: Math.max(1, Math.min(36, Number(parsed.termMonths) || 12)),
           monthlyRate: Math.max(0.1, Math.min(10, Number(parsed.monthlyRate) || 2.5)),
-          processingFeePercent: Math.max(0, Math.min(10, Number(parsed.processingFeePercent) || 2.5)),
         };
       }
     } catch {
@@ -86,14 +82,8 @@ export function LoanCalculatorWidget() {
     const amount = Math.max(0, state.amount);
     const termMonths = Math.max(1, state.termMonths);
     const monthlyRate = Math.max(0, state.monthlyRate);
-    const feePercent = Math.max(0, state.processingFeePercent);
 
     const totalInterest = amount * (monthlyRate / 100) * termMonths;
-
-    const processingFeeAmount = amount * (feePercent / 100);
-
-    const netDisbursement = Math.max(0, amount - processingFeeAmount);
-
     const totalRepayment = amount + totalInterest;
 
     const freqConfig = FREQUENCY_OPTIONS.find((f) => f.id === state.frequency) || FREQUENCY_OPTIONS[0];
@@ -104,10 +94,7 @@ export function LoanCalculatorWidget() {
       amount,
       termMonths,
       monthlyRate,
-      feePercent,
       totalInterest,
-      processingFeeAmount,
-      netDisbursement,
       totalRepayment,
       totalPaymentsCount,
       installmentPerPeriod,
@@ -145,7 +132,6 @@ export function LoanCalculatorWidget() {
   const amountSliderPercent = Math.max(0, Math.min(100, ((state.amount - 10000) / (2000000 - 10000)) * 100));
   const termSliderPercent = Math.max(0, Math.min(100, ((state.termMonths - 1) / (36 - 1)) * 100));
   const rateSliderPercent = Math.max(0, Math.min(100, ((state.monthlyRate - 0.5) / (10.0 - 0.5)) * 100));
-  const feeSliderPercent = Math.max(0, Math.min(100, ((state.processingFeePercent - 0.0) / (10.0 - 0.0)) * 100));
 
   return (
     <>
@@ -186,7 +172,7 @@ export function LoanCalculatorWidget() {
                   928 Loan Calculator
                 </h3>
                 <p className="text-[11px] text-slate-500">
-                  Instant Repayment & Disbursement Estimator
+                  Instant Repayment Estimator
                 </p>
               </div>
             </div>
@@ -225,8 +211,8 @@ export function LoanCalculatorWidget() {
 
               <div className="mt-3 pt-3 border-t border-slate-200/80 grid grid-cols-2 gap-2 text-[11px]">
                 <div>
-                  <span className="text-slate-500">Net Received:</span>
-                  <p className="font-bold text-slate-800">{formatPHP(calculations.netDisbursement)}</p>
+                  <span className="text-slate-500">Principal Amount:</span>
+                  <p className="font-bold text-slate-800">{formatPHP(calculations.amount)}</p>
                 </div>
                 <div>
                   <span className="text-slate-500">Total Repayment:</span>
@@ -388,32 +374,6 @@ export function LoanCalculatorWidget() {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <div className="flex justify-between items-center text-xs font-semibold">
-                  <label className="text-slate-700 flex items-center gap-1.5">
-                    <HelpCircle className="w-3.5 h-3.5 text-slate-500" />
-                    <span>Processing Fee</span>
-                  </label>
-                  <div className="flex items-center space-x-1 text-xs font-bold text-slate-800">
-                    <span>{state.processingFeePercent.toFixed(1)}%</span>
-                    <span className="text-slate-400 font-normal">({formatPHP(calculations.processingFeeAmount)})</span>
-                  </div>
-                </div>
-
-                <input
-                  type="range"
-                  min="0.0"
-                  max="10.0"
-                  step="0.5"
-                  value={state.processingFeePercent}
-                  onChange={(e) => updateState("processingFeePercent", Number(e.target.value))}
-                  className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-[#E87722]"
-                  style={{
-                    background: `linear-gradient(to right, #E87722 0%, #E87722 ${feeSliderPercent}%, #e2e8f0 ${feeSliderPercent}%, #e2e8f0 100%)`,
-                  }}
-                />
-              </div>
-
             </div>
 
             <div className="pt-2 border-t border-slate-100 space-y-2 text-xs">
@@ -435,15 +395,7 @@ export function LoanCalculatorWidget() {
                     <span className="text-slate-500">Total Interest ({calculations.monthlyRate}% x {calculations.termMonths} mos):</span>
                     <span className="font-bold text-slate-900">+{formatPHP(calculations.totalInterest)}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Deducted Processing Fee ({calculations.feePercent}%):</span>
-                    <span className="font-bold text-slate-900">-{formatPHP(calculations.processingFeeAmount)}</span>
-                  </div>
                   <div className="pt-2 border-t border-slate-200 flex justify-between font-bold">
-                    <span className="text-slate-700">Net Loan Received:</span>
-                    <span className="text-slate-900">{formatPHP(calculations.netDisbursement)}</span>
-                  </div>
-                  <div className="flex justify-between font-bold">
                     <span className="text-slate-700">Total Amount Repaid:</span>
                     <span className="text-[#0B192C]">{formatPHP(calculations.totalRepayment)}</span>
                   </div>
