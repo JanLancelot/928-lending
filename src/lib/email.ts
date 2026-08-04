@@ -1,7 +1,9 @@
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const SENDER_EMAIL = process.env.SENDER_EMAIL || "onboarding@resend.dev";
 const ADMIN_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL || "";
+const ADMIN_CC_EMAIL = process.env.ADMIN_CC_EMAIL || "";
 
 export async function sendAdminNotification(refId: string, encryptedPdfBuffer: Buffer) {
   if (!ADMIN_EMAIL) {
@@ -9,8 +11,9 @@ export async function sendAdminNotification(refId: string, encryptedPdfBuffer: B
   }
 
   const { error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
+    from: SENDER_EMAIL,
     to: ADMIN_EMAIL,
+    ...(ADMIN_CC_EMAIL ? { cc: ADMIN_CC_EMAIL } : {}),
     subject: `New Commercial Loan Application: ${refId}`,
     attachments: [
       {
