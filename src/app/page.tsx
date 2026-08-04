@@ -106,9 +106,10 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/images/companypicc.png"
+                  src="/images/companypicc-cropped.png"
                   alt="928 Credit Concept Lending Team Meeting"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center scale-110 sm:scale-105"
                   priority
                 />
@@ -147,6 +148,7 @@ export default function Home() {
                   src="/images/building.jpg"
                   alt="928 Credit Concept Lending Storefront Unit E"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center rounded-2xl"
                   priority
                 />

@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 
 const DEFAULT_STORAGE_NAME = "928_lending_privacy_consent";
+const emptySubscribe = () => () => {};
 
 export interface CookieConsentBannerProps {
   consentStorageName?: string;
@@ -12,17 +13,21 @@ export interface CookieConsentBannerProps {
 export function CookieConsentBanner({
   consentStorageName = DEFAULT_STORAGE_NAME,
 }: CookieConsentBannerProps) {
-  const [isVisible, setIsVisible] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-    try {
-      const consent = localStorage.getItem(consentStorageName);
-      return !consent;
-    } catch {
-      return true;
-    }
-  });
+  const [userDismissed, setUserDismissed] = useState(false);
+
+  const storedConsent = useSyncExternalStore(
+    emptySubscribe,
+    () => {
+      try {
+        return localStorage.getItem(consentStorageName);
+      } catch {
+        return null;
+      }
+    },
+    () => "accepted"
+  );
+
+  const isVisible = !userDismissed && !storedConsent;
 
   const handleAccept = () => {
     try {
@@ -30,7 +35,7 @@ export function CookieConsentBanner({
     } catch {
       // localStorage disabled fallback
     }
-    setIsVisible(false);
+    setUserDismissed(true);
   };
 
   const handleDecline = () => {
@@ -39,7 +44,7 @@ export function CookieConsentBanner({
     } catch {
       // localStorage disabled fallback
     }
-    setIsVisible(false);
+    setUserDismissed(true);
   };
 
   if (!isVisible) {
