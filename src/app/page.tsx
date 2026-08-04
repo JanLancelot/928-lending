@@ -97,7 +97,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-span-5 lg:col-span-7 relative min-h-[220px] sm:min-h-[380px] lg:min-h-[520px] flex items-center justify-end z-0">
+            <div className="col-span-5 lg:col-span-7 relative min-h-[180px] sm:min-h-[380px] lg:min-h-[520px] flex items-center justify-end z-0">
               <div 
                 className="absolute inset-0 z-5 overflow-hidden"
                 style={{
@@ -106,7 +106,7 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/images/loanpicc.png"
+                  src="/images/companypicc.png"
                   alt="928 Credit Concept Lending Team Meeting"
                   fill
                   className="object-cover object-center scale-110 sm:scale-105"

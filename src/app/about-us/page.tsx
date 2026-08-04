@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ImageSlideshow } from "@/components/ImageSlideshow";
 import { 
   Shield, 
   Award, 
@@ -42,15 +43,6 @@ export default function AboutUsPage() {
     <div className="w-full  overflow-hidden">
       <section className="relative w-full  pt-0 pb-4 sm:pb-6 lg:pb-8 min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full my-auto">
-          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
-            <Image
-              src="/images/bg.jpg"
-              alt="Background Pattern"
-              fill
-              className="object-cover object-left"
-              priority
-            />
-          </div>
 
           <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
             <Image
@@ -106,15 +98,7 @@ export default function AboutUsPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             <div className="lg:col-span-5 flex">
-              <div className="relative w-full h-[380px] sm:h-[420px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-100 shadow-md">
-                <Image
-                  src="/images/building.jpg"
-                  alt="928 Credit Concept Storefront"
-                  fill
-                  className="object-cover object-center rounded-2xl"
-                  priority
-                />
-              </div>
+              <ImageSlideshow />
             </div>
 
             <div className="lg:col-span-7 flex flex-col justify-between py-1 space-y-4 sm:space-y-5">
