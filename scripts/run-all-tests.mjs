@@ -85,7 +85,7 @@ try {
   }
 
   console.log("  ✅ Vitest unit test suite passed with coverage thresholds met.\n");
-} catch (err) {
+} catch {
   masterResults.overallPass = false;
   masterResults.suites.unitTests.pass = false;
   console.log("  ❌ Vitest unit test suite failed.\n");
@@ -134,7 +134,7 @@ try {
   });
   masterResults.suites.loadTest.pass = true;
   console.log("  ✅ Endpoint load testing harness completed.\n");
-} catch (err) {
+} catch {
   masterResults.suites.loadTest.pass = false;
   console.log("  ⚠️ Load test runner finished with warning.\n");
 }
