@@ -51,7 +51,7 @@ export async function submitApplication(formData: FormData) {
     // 2. Validate data
     const parsed = loanApplicationSchema.safeParse(sanitizedData);
     if (!parsed.success) {
-      console.error(parsed.error.issues);
+      console.error("Validation failed for fields:", parsed.error.issues.map((i) => i.path.join(".")));
       return { success: false, error: "Invalid form data. Please check your inputs." };
     }
 
@@ -99,7 +99,7 @@ export async function submitApplication(formData: FormData) {
 
     return { success: true, referenceId: refId };
   } catch (err: unknown) {
-    console.error("Submit application error:", err);
+    console.error("Submit application error:", err instanceof Error ? err.message : "An unexpected error occurred.");
     const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred.";
     return { success: false, error: errorMessage };
   }
