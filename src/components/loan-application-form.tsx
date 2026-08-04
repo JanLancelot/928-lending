@@ -138,6 +138,7 @@ export function LoanApplicationForm() {
       if (result.success) {
         setSubmittedData(values);
         setReferenceId(result.referenceId || null);
+        setUploadedFiles([]);
       } else {
         setSubmitError(result.error || "Failed to submit application.");
       }
