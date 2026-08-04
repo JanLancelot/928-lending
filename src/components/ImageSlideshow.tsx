@@ -10,9 +10,9 @@ interface ImageSlideshowProps {
 }
 
 const defaultImages = [
-  "/images/gallery/1.JPG",
-  "/images/gallery/2.JPG",
+  "/images/companypicc-cropped.png",
   "/images/gallery/3.JPG",
+  "/images/gallery/2.JPG",
 ];
 
 export function ImageSlideshow({
@@ -20,6 +20,7 @@ export function ImageSlideshow({
   interval = 4000,
 }: ImageSlideshowProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -31,6 +32,18 @@ export function ImageSlideshow({
     return () => clearInterval(timer);
   }, [images, interval]);
 
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element || typeof ResizeObserver === "undefined") return;
+
+    const observer = new ResizeObserver(() => {
+      // Force recalculation of container bounds on viewport / devtools resize
+    });
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
@@ -40,7 +53,10 @@ export function ImageSlideshow({
   };
 
   return (
-    <div className="relative w-full h-[380px] sm:h-[420px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-100 shadow-md group">
+    <div
+      ref={containerRef}
+      className="relative w-full h-[380px] sm:h-[420px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-100 shadow-md group"
+    >
       {images.map((src, index) => (
         <div
           key={src}
@@ -52,6 +68,7 @@ export function ImageSlideshow({
             src={src}
             alt={`928 Credit Concept Office Gallery ${index + 1}`}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover object-center rounded-2xl"
             priority={index === 0}
           />

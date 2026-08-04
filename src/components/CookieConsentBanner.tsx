@@ -12,17 +12,18 @@ export interface CookieConsentBannerProps {
 export function CookieConsentBanner({
   consentStorageName = DEFAULT_STORAGE_NAME,
 }: CookieConsentBannerProps) {
-  const [isVisible, setIsVisible] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
+  const [isVisible, setIsVisible] = useState(false);
+
+  React.useEffect(() => {
     try {
       const consent = localStorage.getItem(consentStorageName);
-      return !consent;
+      if (!consent) {
+        setIsVisible(true);
+      }
     } catch {
-      return true;
+      setIsVisible(true);
     }
-  });
+  }, [consentStorageName]);
 
   const handleAccept = () => {
     try {

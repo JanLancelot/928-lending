@@ -51,27 +51,33 @@ const DEFAULT_STATE: CalculatorState = {
 };
 
 export function LoanCalculatorWidget() {
-  const [state, setState] = useState<CalculatorState>(() => {
+  const [state, setState] = useState<CalculatorState>(DEFAULT_STATE);
+  const [showSummaryModal, setShowSummaryModal] = useState(false);
+  const isInitialMount = React.useRef(true);
+
+  useEffect(() => {
     try {
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        return {
+        setState({
           ...DEFAULT_STATE,
           ...parsed,
           isOpen: false,
           amount: Math.max(10000, Math.min(2000000, Number(parsed.amount) || 250000)),
           termMonths: Math.max(1, Math.min(36, Number(parsed.termMonths) || 12)),
           monthlyRate: Math.max(0.1, Math.min(10, Number(parsed.monthlyRate) || 2.5)),
-        };
+        });
       }
     } catch {
     }
-    return DEFAULT_STATE;
-  });
-  const [showSummaryModal, setShowSummaryModal] = useState(false);
+  }, []);
 
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     try {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
     } catch {
