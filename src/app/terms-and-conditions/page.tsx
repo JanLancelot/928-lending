@@ -29,7 +29,7 @@ const navItems = [
 
 export default function TermsAndConditionsPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen text-slate-900 flex flex-col font-sans">
       {/* Hero Header Banner */}
       <section className="relative bg-[#0B192C] text-white py-12 sm:py-16 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#E87722_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />

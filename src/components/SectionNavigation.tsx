@@ -17,26 +17,39 @@ export function SectionNavigation({ title, items }: SectionNavigationProps) {
   const [activeId, setActiveId] = useState<string>(items[0]?.id || "");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-15% 0px -65% 0px",
-        threshold: 0,
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const isAbsoluteBottom = scrollPosition >= document.documentElement.scrollHeight - 20;
+
+      if (isAbsoluteBottom && items.length > 0) {
+        setActiveId(items[items.length - 1].id);
+        return;
       }
-    );
 
-    items.forEach((item) => {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    });
+      const headerOffset = 140;
+      let currentSectionId = items[0]?.id || "";
 
-    return () => observer.disconnect();
+      for (const item of items) {
+        const el = document.getElementById(item.id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= headerOffset) {
+            currentSectionId = item.id;
+          }
+        }
+      }
+
+      if (currentSectionId) {
+        setActiveId(currentSectionId);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [items]);
 
   return (

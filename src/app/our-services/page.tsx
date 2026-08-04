@@ -57,16 +57,6 @@ export default function OurServicesPage() {
     <div className="w-full  overflow-hidden">
       <section className="relative w-full  pt-0 pb-4 sm:pb-6 lg:pb-8 min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 w-full my-auto">
-          <div className="absolute inset-y-0 left-0 sm:left-6 lg:left-8 right-0 sm:right-6 lg:right-8 pointer-events-none z-0 overflow-hidden opacity-30">
-            <Image
-              src="/images/bg.jpg"
-              alt="Background Pattern"
-              fill
-              className="object-cover object-left"
-              priority
-            />
-          </div>
-
           <div className="absolute inset-y-0 right-0 sm:right-6 lg:right-8 h-full pointer-events-none z-20 flex justify-end overflow-hidden">
             <Image
               src="/images/wholeoverlay.png"

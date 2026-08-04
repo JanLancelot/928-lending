@@ -29,8 +29,7 @@ const navItems = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
-      {/* Hero Header Banner */}
+    <div className="min-h-screen text-slate-900 flex flex-col font-sans">
       <section className="relative bg-[#0B192C] text-white py-12 sm:py-16 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#E87722_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,19 +62,15 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      {/* Main Content Layout */}
       <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* Quick Navigation Sidebar */}
           <aside className="hidden lg:block lg:col-span-4 space-y-6">
             <SectionNavigation title="Policy Navigation" items={navItems} />
           </aside>
 
-          {/* Detailed Content */}
           <div className="lg:col-span-8 space-y-8">
             
-            {/* Section 1 */}
             <section
               id="statement"
               className="scroll-mt-24 sm:scroll-mt-28 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4"
@@ -96,7 +91,6 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
 
-            {/* Section 2 */}
             <section
               id="information-collected"
               className="scroll-mt-24 sm:scroll-mt-28 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4"
@@ -140,7 +134,6 @@ export default function PrivacyPolicyPage() {
               </div>
             </section>
 
-            {/* Section 3 */}
             <section
               id="processing-purpose"
               className="scroll-mt-24 sm:scroll-mt-28 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4"
@@ -176,7 +169,6 @@ export default function PrivacyPolicyPage() {
               </div>
             </section>
 
-            {/* Section 4 */}
             <section
               id="security-measures"
               className="scroll-mt-24 sm:scroll-mt-28 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4"
@@ -207,7 +199,6 @@ export default function PrivacyPolicyPage() {
               </div>
             </section>
 
-            {/* Section 5 */}
             <section
               id="data-subject-rights"
               className="scroll-mt-24 sm:scroll-mt-28 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-4"
@@ -244,7 +235,6 @@ export default function PrivacyPolicyPage() {
               </div>
             </section>
 
-            {/* Section 6 - DPO Contact Card */}
             <section
               id="dpo-contact"
               className="scroll-mt-24 sm:scroll-mt-28 bg-[#0B192C] text-white rounded-2xl p-6 sm:p-8 shadow-md relative overflow-hidden"
