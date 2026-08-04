@@ -90,6 +90,6 @@ export function SECDisclosureFooter({
         </div>
 
       </div>
-    </div>
+    </footer>
   );
 }
