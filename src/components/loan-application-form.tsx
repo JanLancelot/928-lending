@@ -71,12 +71,20 @@ export function LoanApplicationForm() {
 
     setUploadedFiles(combined);
     validateFiles(combined);
+
+    if (submitError === "Please upload at least one valid government-issued ID to proceed.") {
+      setSubmitError(null);
+    }
   };
 
   const handleRemoveFile = (indexToRemove: number) => {
     const updated = uploadedFiles.filter((_, idx) => idx !== indexToRemove);
     setUploadedFiles(updated);
     validateFiles(updated);
+
+    if (updated.length > 0 && submitError === "Please upload at least one valid government-issued ID to proceed.") {
+      setSubmitError(null);
+    }
   };
 
   const form = useForm<LoanApplicationInput>({
@@ -99,7 +107,8 @@ export function LoanApplicationForm() {
     mode: "onTouched",
   });
 
-  const nextStep = async () => {
+  const nextStep = async (e?: React.MouseEvent) => {
+    e?.preventDefault();
     let fieldsToValidate: (keyof LoanApplicationInput)[] = [];
     if (currentStep === 1) {
       fieldsToValidate = ["requestedAmount", "purposeOfLoan"];
@@ -115,12 +124,19 @@ export function LoanApplicationForm() {
     }
   };
 
-  const prevStep = () => {
+  const prevStep = (e?: React.MouseEvent) => {
+    e?.preventDefault();
     setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
   async function onSubmit(values: LoanApplicationInput) {
     if (currentStep !== 4) return;
+
+    if (uploadedFiles.length === 0) {
+      setSubmitError("Please upload at least one valid government-issued ID to proceed.");
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError(null);
     
@@ -638,9 +654,9 @@ export function LoanApplicationForm() {
               </div>
             )}
 
-            <div className="flex justify-between items-center pt-8 mt-8 border-t border-slate-200">
+            <div className="flex flex-col-reverse sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-0 pt-8 mt-8 border-t border-slate-200">
               {currentStep > 1 ? (
-                <Button type="button" variant="outline" onClick={prevStep} className="h-11 px-7 text-[#0B192C] border-slate-300 hover:bg-slate-100 font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:-translate-y-0.5">
+                <Button type="button" variant="outline" onClick={prevStep} className="h-11 w-full sm:w-auto px-7 text-[#0B192C] border-slate-300 hover:bg-slate-100 font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:-translate-y-0.5">
                   ← Back
                 </Button>
               ) : (
@@ -648,13 +664,14 @@ export function LoanApplicationForm() {
               )}
               
               {currentStep < 4 ? (
-                <Button type="button" onClick={nextStep} className="h-11 px-8 bg-[#E87722] hover:bg-[#d46716] text-white font-bold rounded-md shadow-md text-xs sm:text-sm transition-all duration-300 transform hover:-translate-y-0.5">
+                <Button key="next-step-btn" type="button" onClick={nextStep} className="h-11 w-full sm:w-auto px-8 bg-[#E87722] hover:bg-[#d46716] text-white font-bold rounded-md shadow-md text-xs sm:text-sm transition-all duration-300 transform hover:-translate-y-0.5">
                   Next Step →
                 </Button>
               ) : (
                 <Button
+                  key="submit-application-btn"
                   type="submit"
-                  className="h-11 px-8 bg-[#E87722] hover:bg-[#d46716] text-white font-bold rounded-md shadow-md flex items-center text-xs sm:text-sm transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="h-11 w-full sm:w-auto px-8 bg-[#E87722] hover:bg-[#d46716] text-white font-bold rounded-md shadow-md flex items-center justify-center text-xs sm:text-sm transition-all duration-300 transform hover:-translate-y-0.5"
                   disabled={isSubmitting || !!uploadError}
                 >
                   {isSubmitting ? (

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Mail, MapPin, Building2, ShieldCheck, Phone } from "lucide-react";
+import { ArrowLeft, Mail, MapPin, Phone } from "lucide-react";
 import { SECDisclosureFooter } from "@/components/SECDisclosureFooter";
 
 const sections = [
