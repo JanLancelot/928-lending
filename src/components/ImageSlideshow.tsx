@@ -7,6 +7,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface ImageSlideshowProps {
   images?: string[];
   interval?: number;
+  className?: string;
+  fitMode?: "cover" | "contain";
 }
 
 const defaultImages = [
@@ -18,6 +20,8 @@ const defaultImages = [
 export function ImageSlideshow({
   images = defaultImages,
   interval = 4000,
+  className,
+  fitMode = "cover",
 }: ImageSlideshowProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -39,20 +43,35 @@ export function ImageSlideshow({
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
+  const containerStyle = className
+    ? className
+    : "relative w-full aspect-[4/3] sm:aspect-[5/4] rounded-2xl overflow-hidden border border-slate-100 shadow-md group bg-slate-950";
+
   return (
-    <div className="relative w-full h-[380px] sm:h-[420px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-100 shadow-md group">
+    <div className={containerStyle}>
       {images.map((src, index) => (
         <div
           key={src}
-          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out bg-slate-950 ${
             index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
           }`}
         >
+          {/* Blurred Background Filler for Adapting All Image Dimensions */}
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-cover blur-xl scale-110 opacity-30 pointer-events-none"
+          />
+
+          {/* Foreground Crisp Main Image */}
           <Image
             src={src}
             alt={`928 Credit Concept Office Gallery ${index + 1}`}
             fill
-            className="object-cover object-center rounded-2xl"
+            className={`${
+              fitMode === "contain" ? "object-contain p-2" : "object-cover object-center"
+            } rounded-2xl`}
             priority={index === 0}
           />
         </div>
@@ -80,7 +99,7 @@ export function ImageSlideshow({
 
       {/* Slide Indicators / Dots */}
       {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full">
           {images.map((_, index) => (
             <button
               key={index}

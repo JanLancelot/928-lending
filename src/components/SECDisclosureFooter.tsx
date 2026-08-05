@@ -20,7 +20,7 @@ export function SECDisclosureFooter({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-slate-800/80 text-sm">
           
           <div className="space-y-3">
-            <div className="text-base sm:text-lg font-black tracking-tight text-white leading-snug">
+            <div className="text-base sm:text-lg font-bold tracking-tight text-white leading-snug">
               928 Credit Concept <span className="text-[#E87722]">Lending Investor Corp.</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">

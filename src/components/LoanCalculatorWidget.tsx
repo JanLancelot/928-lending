@@ -205,7 +205,7 @@ export function LoanCalculatorWidget() {
                 </span>
               </div>
 
-              <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#0B192C]">
+              <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B192C]">
                 {formatPHPExact(calculations.installmentPerPeriod)}
               </div>
 

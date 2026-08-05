@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ImageSlideshow } from "@/components/ImageSlideshow";
 import { 
   ChevronRight, 
   Zap, 
@@ -11,6 +12,14 @@ import {
   FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const servicesGalleryImages = [
+  "/images/servicesgallery/1.jpg",
+  "/images/servicesgallery/2.jpg",
+  "/images/servicesgallery/3.png",
+  "/images/servicesgallery/4.jpg",
+  "/images/servicesgallery/5.png",
+];
 
 const advantages = [
   { icon: Zap, title: "Fast Approval", desc: "Quick turnaround times for business loan evaluations." },
@@ -72,7 +81,7 @@ export default function OurServicesPage() {
             
             <div className="col-span-7 lg:col-span-6 space-y-2 sm:space-y-3 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-center">
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B192C] leading-tight">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0B192C] leading-tight">
                   Business Loan Solutions
                 </h1>
               </div>
@@ -112,7 +121,7 @@ export default function OurServicesPage() {
           <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 lg:p-12 space-y-5 shadow-xl border border-slate-800">
             <div className="space-y-2">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Main Service</span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
                 Non-Collateralized Business Loan
               </h2>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
@@ -139,7 +148,7 @@ export default function OurServicesPage() {
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Advantages</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Why Businesses Choose Us</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Why Businesses Choose Us</h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
@@ -156,7 +165,7 @@ export default function OurServicesPage() {
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Step-by-Step</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Loan Process</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Loan Process</h2>
             </div>
 
             <div className="relative">
@@ -206,10 +215,27 @@ export default function OurServicesPage() {
             </div>
           </div>
 
+          {/* Services Photo Gallery Showcase */}
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
-              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Questions & Answers</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B192C] mt-1">Frequently Asked Questions</h2>
+              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Gallery &amp; Operations</span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Our Operations Gallery</h2>
+              <p className="text-xs text-slate-500">Take a look inside our business lending operations and office activity.</p>
+            </div>
+
+            <div className="max-w-3xl mx-auto">
+              <ImageSlideshow
+                images={servicesGalleryImages}
+                interval={4500}
+                className="relative w-full aspect-[4/3] sm:aspect-[5/4] max-h-[520px] rounded-2xl overflow-hidden border border-slate-100 shadow-xl group bg-slate-950"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-8">
+            <div className="text-center max-w-xl mx-auto space-y-1">
+              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Questions &amp; Answers</span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Frequently Asked Questions</h2>
             </div>
 
             <div className="max-w-3xl mx-auto divide-y divide-slate-200">
