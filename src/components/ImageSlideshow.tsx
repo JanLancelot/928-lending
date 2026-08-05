@@ -99,23 +99,44 @@ export function ImageSlideshow({
         </>
       )}
 
-      {/* Slide Indicators / Dots */}
-      {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "bg-[#E87722] w-6"
-                  : "bg-white/60 hover:bg-white w-2"
-              }`}
-            />
-          ))}
-        </div>
-      )}
+      {/* Compact 5-Dot Window Indicator */}
+      {images.length > 1 && (() => {
+        const total = images.length;
+        let visibleIndices: number[];
+        if (total <= 5) {
+          visibleIndices = Array.from({ length: total }, (_, i) => i);
+        } else if (currentIndex <= 2) {
+          visibleIndices = [0, 1, 2, 3, 4];
+        } else if (currentIndex >= total - 3) {
+          visibleIndices = [total - 5, total - 4, total - 3, total - 2, total - 1];
+        } else {
+          visibleIndices = [currentIndex - 2, currentIndex - 1, currentIndex, currentIndex + 1, currentIndex + 2];
+        }
+
+        return (
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
+            {visibleIndices.map((idx) => {
+              const isActive = idx === currentIndex;
+              const isEdge = (idx === visibleIndices[0] && idx > 0) || (idx === visibleIndices[4] && idx < total - 1);
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    isActive
+                      ? "bg-[#E87722] w-5 h-1.5"
+                      : isEdge
+                      ? "bg-white/40 w-1 h-1"
+                      : "bg-white/70 hover:bg-white w-1.5 h-1.5"
+                  }`}
+                />
+              );
+            })}
+          </div>
+        );
+      })()}
     </div>
   );
 }

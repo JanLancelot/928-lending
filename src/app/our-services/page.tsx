@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ImageSlideshow } from "@/components/ImageSlideshow";
 import { 
   ChevronRight, 
   Zap, 
@@ -12,20 +11,6 @@ import {
   FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const servicesGalleryImages = [
-  "/images/servicesgallery/1.jpg",
-  "/images/servicesgallery/2.jpg",
-  "/images/servicesgallery/3.png",
-  "/images/servicesgallery/4.jpg",
-  "/images/servicesgallery/5.png",
-  "/images/servicesgallery/6.JPG",
-  "/images/servicesgallery/7.JPG",
-  "/images/servicesgallery/8.jpg",
-  "/images/servicesgallery/9.jpg",
-  "/images/servicesgallery/10.jpg",
-  "/images/servicesgallery/11.jpg",
-];
 
 const advantages = [
   { icon: Zap, title: "Fast Approval", desc: "Quick turnaround times for business loan evaluations." },
@@ -221,21 +206,24 @@ export default function OurServicesPage() {
             </div>
           </div>
 
-          {/* Services Photo Gallery Showcase */}
-          <div className="space-y-8">
-            <div className="text-center max-w-xl mx-auto space-y-1">
-              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Gallery &amp; Operations</span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Our Operations Gallery</h2>
-              <p className="text-xs text-slate-500">Take a look inside our business lending operations and office activity.</p>
+          {/* Operations Gallery Callout */}
+          <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+            <div className="space-y-1 text-center sm:text-left">
+              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Office &amp; Activities</span>
+              <h3 className="text-xl font-bold text-[#0B192C]">Our Operations Gallery</h3>
+              <p className="text-xs text-slate-500 max-w-lg leading-relaxed">
+                Take a look inside 928 Credit Concept Lending business operations, corporate activities, and headquarters.
+              </p>
             </div>
-
-            <div className="max-w-3xl mx-auto">
-              <ImageSlideshow
-                images={servicesGalleryImages}
-                interval={4500}
-                className="relative w-full aspect-[4/3] sm:aspect-[5/4] max-h-[520px] rounded-2xl overflow-hidden border border-slate-100 shadow-xl group bg-slate-950"
-              />
-            </div>
+            <Button
+              asChild
+              variant="outline"
+              className="border-[#0B192C] text-[#0B192C] hover:bg-[#0B192C] hover:text-white font-bold text-xs px-6 py-2.5 rounded-md shrink-0 transition-colors bg-white"
+            >
+              <Link href="/operations-gallery" className="flex items-center gap-2">
+                View Full Gallery <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Button>
           </div>
 
           <div className="space-y-8">
