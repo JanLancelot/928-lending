@@ -19,6 +19,12 @@ const servicesGalleryImages = [
   "/images/servicesgallery/3.png",
   "/images/servicesgallery/4.jpg",
   "/images/servicesgallery/5.png",
+  "/images/servicesgallery/6.JPG",
+  "/images/servicesgallery/7.JPG",
+  "/images/servicesgallery/8.jpg",
+  "/images/servicesgallery/9.jpg",
+  "/images/servicesgallery/10.jpg",
+  "/images/servicesgallery/11.jpg",
 ];
 
 const advantages = [

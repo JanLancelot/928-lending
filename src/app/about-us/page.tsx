@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ImageSlideshow } from "@/components/ImageSlideshow";
 import { 
   Shield, 
   Award, 
@@ -98,7 +97,16 @@ export default function AboutUsPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             <div className="lg:col-span-5 flex">
-              <ImageSlideshow />
+              <div className="relative w-full aspect-[4/3] sm:aspect-[5/4] min-h-[260px] rounded-2xl overflow-hidden border border-slate-100 shadow-md bg-slate-950">
+                <Image
+                  src="/images/gallery/1.JPG"
+                  alt="928 Credit Concept Office"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                  className="object-cover object-center rounded-2xl"
+                  priority
+                />
+              </div>
             </div>
 
             <div className="lg:col-span-7 flex flex-col justify-between py-1 space-y-4 sm:space-y-5">
