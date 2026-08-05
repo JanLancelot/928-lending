@@ -17,38 +17,37 @@ export default function ApplyNowPage() {
             />
           </div>
 
-          <div className="grid grid-cols-12 gap-3 sm:gap-6 items-center relative z-10 px-0">
+          <div className="relative z-10 min-h-[160px] sm:min-h-[200px] lg:min-h-[240px] flex items-center">
+
+            {/* Masked Hero Background Image */}
+            <div 
+              className="absolute inset-y-0 right-0 w-3/5 sm:w-2/3 lg:w-7/12 z-0 overflow-hidden pointer-events-none"
+              style={{
+                WebkitMaskImage: "radial-gradient(circle at 80% 50%, black 30%, transparent 75%)",
+                maskImage: "radial-gradient(circle at 80% 50%, black 30%, transparent 75%)",
+              }}
+            >
+              <Image
+                src="/images/loanpicc.png"
+                alt="928 Credit Concept Lending Application Portal"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
             
-            <div className="col-span-7 lg:col-span-6 space-y-2 sm:space-y-3 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-center">
+            <div className="w-[57%] sm:w-[70%] lg:w-[60%] space-y-2 sm:space-y-3 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-center">
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0B192C] leading-tight">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0B192C] leading-tight [text-shadow:_0_0_4px_#ffffff,_0_0_4px_#ffffff]">
                   Loan Application
                 </h1>
               </div>
 
               <div className="w-12 h-1 bg-[#E87722] rounded-full"></div>
 
-              <p className="text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-900 max-w-md leading-relaxed [text-shadow:_0_0_4px_#ffffff,_0_0_4px_#ffffff]">
                 Fill out the form below to start your commercial loan application. Our team will review your information and get in touch as soon as possible.
               </p>
-            </div>
-
-            <div className="col-span-5 lg:col-span-6 relative min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch justify-end z-0 self-stretch">
-              <div 
-                className="absolute inset-0 z-5 overflow-hidden"
-                style={{
-                  WebkitMaskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
-                  maskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
-                }}
-              >
-                <Image
-                  src="/images/loanpicc.png"
-                  alt="928 Credit Concept Lending Application Portal"
-                  fill
-                  className="object-cover object-center"
-                  priority
-                />
-              </div>
             </div>
 
           </div>

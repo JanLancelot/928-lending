@@ -59,7 +59,7 @@ export function Navbar() {
               </svg>
             </div>
 
-            <nav className="flex items-center gap-1.5 sm:gap-3 md:gap-6 lg:gap-12 ml-auto mr-1.5 sm:mr-3 md:mr-6 lg:mr-8 min-w-0">
+            <nav className="flex items-center gap-3.5 sm:gap-4 md:gap-6 lg:gap-12 ml-auto mr-1.5 sm:mr-3 md:mr-6 lg:mr-8 min-w-0">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
