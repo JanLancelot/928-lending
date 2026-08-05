@@ -59,7 +59,7 @@ export function Navbar() {
               </svg>
             </div>
 
-            <nav className="flex items-center gap-3.5 sm:gap-4 md:gap-6 lg:gap-12 ml-auto mr-1.5 sm:mr-3 md:mr-6 lg:mr-8 min-w-0">
+            <nav className="flex items-center gap-2 sm:gap-4 md:gap-6 lg:gap-12 ml-auto mr-3 sm:mr-5 md:mr-6 lg:mr-8 min-w-0">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -92,7 +92,7 @@ export function Navbar() {
 
             <Button
               asChild
-              className="bg-[#E87722] hover:bg-[#d46716] text-white text-[10px] sm:text-xs md:text-sm lg:text-base font-bold px-2 sm:px-3 md:px-5 lg:px-6 py-1 sm:py-2.5 h-auto rounded-md shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] shrink-0 whitespace-nowrap"
+              className="bg-[#E87722] hover:bg-[#d46716] text-white text-[10px] sm:text-xs md:text-sm lg:text-base font-bold px-2 sm:px-3 md:px-5 lg:px-6 py-1 sm:py-2.5 h-auto rounded-md shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] shrink-0 whitespace-nowrap ml-3.5 sm:ml-4"
             >
               <Link href="/apply-now">Apply Now</Link>
             </Button>
