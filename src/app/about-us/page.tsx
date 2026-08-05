@@ -69,6 +69,7 @@ export default function AboutUsPage() {
                 src="/images/loanpicc.png"
                 alt="928 Credit Concept Lending Headquarters"
                 fill
+                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 66vw, 58vw"
                 className="object-cover object-center"
                 priority
               />
@@ -251,6 +252,7 @@ export default function AboutUsPage() {
                       src="/images/compliance/amlclogo.png"
                       alt="Anti-Money Laundering Council (AMLC)"
                       fill
+                      sizes="128px"
                       className="object-contain object-center sm:object-left"
                     />
                   </div>
@@ -269,6 +271,7 @@ export default function AboutUsPage() {
                       src="/images/compliance/cmaplogo.png"
                       alt="Credit Management Association of the Philippines (CMAP)"
                       fill
+                      sizes="80px"
                       className="object-contain object-center sm:object-left"
                     />
                   </div>

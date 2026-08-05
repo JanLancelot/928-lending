@@ -91,6 +91,7 @@ export default function OurServicesPage() {
                 src="/images/building.jpg"
                 alt="928 Credit Concept Financial Advisory Team"
                 fill
+                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 66vw, 58vw"
                 className="object-cover object-center"
                 priority
               />

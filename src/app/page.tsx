@@ -73,6 +73,7 @@ export default function Home() {
                 src="/images/companypicc.png"
                 alt="928 Credit Concept Lending Team Meeting"
                 fill
+                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 66vw, 58vw"
                 className="object-cover object-center scale-105"
                 priority
               />
