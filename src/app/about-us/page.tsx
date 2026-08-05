@@ -256,21 +256,20 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-            <div className="space-y-1 text-center sm:text-left">
-              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Regulatory Governance</span>
-              <h3 className="text-xl font-bold text-[#0B192C]">Compliance &amp; Memberships</h3>
-              <p className="text-xs text-slate-500 max-w-lg leading-relaxed">
-                Review our official SEC licensing, Anti-Money Laundering Council (AMLC) registration, and Credit Management Association (CMAP) accreditation details.
+          {/* Apply Now CTA Banner */}
+          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
+            <div className="space-y-2 text-center md:text-left">
+              <h3 className="text-2xl sm:text-3xl font-bold">Ready to Grow Your Business?</h3>
+              <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
+                Partner with 928 Credit Concept Lending. Access non-collateralized business loans tailored to support your enterprise growth.
               </p>
             </div>
             <Button
               asChild
-              variant="outline"
-              className="border-[#0B192C] text-[#0B192C] hover:bg-[#0B192C] hover:text-white font-bold text-xs px-6 py-2.5 rounded-md shrink-0 transition-colors bg-white"
+              className="bg-[#E87722] hover:bg-[#d46716] text-white font-bold text-sm px-8 py-3.5 rounded-md shadow-md shrink-0 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              <Link href="/compliance" className="flex items-center gap-2">
-                View Compliance <ChevronRight className="w-4 h-4" />
+              <Link href="/apply-now" className="flex items-center gap-2">
+                Apply Now <ChevronRight className="w-4 h-4" />
               </Link>
             </Button>
           </div>

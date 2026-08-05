@@ -213,26 +213,6 @@ export default function OurServicesPage() {
             </div>
           </div>
 
-          {/* Operations Gallery Callout */}
-          <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-            <div className="space-y-1 text-center sm:text-left">
-              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Office &amp; Activities</span>
-              <h3 className="text-xl font-bold text-[#0B192C]">Our Operations Gallery</h3>
-              <p className="text-xs text-slate-500 max-w-lg leading-relaxed">
-                Take a look inside 928 Credit Concept Lending business operations, corporate activities, and headquarters.
-              </p>
-            </div>
-            <Button
-              asChild
-              variant="outline"
-              className="border-[#0B192C] text-[#0B192C] hover:bg-[#0B192C] hover:text-white font-bold text-xs px-6 py-2.5 rounded-md shrink-0 transition-colors bg-white"
-            >
-              <Link href="/operations-gallery" className="flex items-center gap-2">
-                View Full Gallery <ChevronRight className="w-4 h-4" />
-              </Link>
-            </Button>
-          </div>
-
           <div className="space-y-8">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Questions &amp; Answers</span>
