@@ -139,7 +139,7 @@ export default function OperationsGalleryPage() {
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Operational Highlights</span>
               <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Corporate Facilities & Operations</h2>
-              <p className="text-xs text-slate-500">Official visual record of 928 Credit Concept's corporate headquarters, customer consultation areas, and loan processing operations.</p>
+              <p className="text-xs text-slate-500">Official visual record of 928 Credit Concept&apos;s corporate headquarters, customer consultation areas, and loan processing operations.</p>
             </div>
 
             <div className="max-w-4xl mx-auto">

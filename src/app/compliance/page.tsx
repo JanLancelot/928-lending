@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Shield, ShieldCheck, Award, Building2, CheckCircle2, ExternalLink, ChevronRight, FileCheck } from "lucide-react";
+import { Shield, ShieldCheck, Award, Building2, ExternalLink, ChevronRight, FileCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {

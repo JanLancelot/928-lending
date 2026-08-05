@@ -19,21 +19,6 @@ export const metadata: Metadata = {
     "Explore business loan solutions tailored for Micro, Small, and Medium Enterprises (MSMEs). Fast processing, minimal requirements, non-collateralized financing.",
 };
 
-
-const servicesGalleryImages = [
-  "/images/servicesgallery/1.jpg",
-  "/images/servicesgallery/2.jpg",
-  "/images/servicesgallery/3.png",
-  "/images/servicesgallery/4.jpg",
-  "/images/servicesgallery/5.png",
-  "/images/servicesgallery/6.JPG",
-  "/images/servicesgallery/7.JPG",
-  "/images/servicesgallery/8.jpg",
-  "/images/servicesgallery/9.jpg",
-  "/images/servicesgallery/10.jpg",
-  "/images/servicesgallery/11.jpg",
-];
-
 const advantages = [
   { icon: Zap, title: "Fast Approval", desc: "Quick turnaround times for business loan evaluations." },
   { icon: Users, title: "Professional Team", desc: "Dedicated specialists operating with full corporate standards." },
