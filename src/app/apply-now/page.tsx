@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { LoanApplicationForm } from "@/components/loan-application-form";
+
+export const metadata: Metadata = {
+  title: "Apply Now | Business Loan Application",
+  description:
+    "Apply for a non-collateralized business loan online with 928 Credit Concept Lending Investor Corp. Fast processing & simple requirements for MSMEs.",
+};
+
 
 export default function ApplyNowPage() {
   return (

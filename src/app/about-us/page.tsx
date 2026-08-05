@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -12,6 +13,13 @@ import {
   ChevronRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "About Us | 928 Credit Concept Lending Investor Corp.",
+  description:
+    "Learn about 928 Credit Concept Lending Investor Corp., a licensed SEC-registered financial institution empowering MSMEs across Luzon, Philippines since 2020.",
+};
+
 
 const timeline = [
   { year: "2020", title: "Company Incorporated", desc: "Official SEC registration CS202002431 on Feb 20, 2020." },

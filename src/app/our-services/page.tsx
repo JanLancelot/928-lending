@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -11,6 +12,27 @@ import {
   FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Our Services | Business Loan Solutions",
+  description:
+    "Explore business loan solutions tailored for Micro, Small, and Medium Enterprises (MSMEs). Fast processing, minimal requirements, non-collateralized financing.",
+};
+
+
+const servicesGalleryImages = [
+  "/images/servicesgallery/1.jpg",
+  "/images/servicesgallery/2.jpg",
+  "/images/servicesgallery/3.png",
+  "/images/servicesgallery/4.jpg",
+  "/images/servicesgallery/5.png",
+  "/images/servicesgallery/6.JPG",
+  "/images/servicesgallery/7.JPG",
+  "/images/servicesgallery/8.jpg",
+  "/images/servicesgallery/9.jpg",
+  "/images/servicesgallery/10.jpg",
+  "/images/servicesgallery/11.jpg",
+];
 
 const advantages = [
   { icon: Zap, title: "Fast Approval", desc: "Quick turnaround times for business loan evaluations." },
