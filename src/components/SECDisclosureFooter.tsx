@@ -32,16 +32,6 @@ export function SECDisclosureFooter({
             <h4 className="font-bold text-slate-200 text-xs uppercase tracking-wider">Legal &amp; Governance</h4>
             <ul className="space-y-2 text-xs text-slate-400 font-medium">
               <li>
-                <Link href="/compliance" className="hover:text-[#E87722] transition-colors">
-                  Compliance &amp; Memberships
-                </Link>
-              </li>
-              <li>
-                <Link href="/operations-gallery" className="hover:text-[#E87722] transition-colors">
-                  Operations Gallery
-                </Link>
-              </li>
-              <li>
                 <Link href="/privacy-policy" className="hover:text-[#E87722] transition-colors">
                   Privacy Policy
                 </Link>

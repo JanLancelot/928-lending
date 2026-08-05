@@ -90,30 +90,30 @@ export default function CompliancePage() {
       <section className="py-6 sm:py-8 lg:py-10">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-12">
           {/* Key Authority Badges */}
-          <div className="bg-white text-[#0B192C] rounded-2xl p-8 sm:p-10 shadow-sm border border-slate-200/80 space-y-6">
-            <div className="space-y-1.5">
+          <div className="space-y-6">
+            <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Primary Authorization</span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C]">SEC Registration &amp; Licensing</h2>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
-                928 Credit Concept Lending Investor Corporation is officially licensed by the Securities and Exchange Commission (SEC) under the Lending Company Regulation Act of 2007 (Republic Act No. 9474).
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">SEC Registration &amp; Licensing</h2>
+              <p className="text-xs text-slate-500 max-w-lg mx-auto leading-relaxed">
+                928 Credit Concept Lending Investor Corporation is officially licensed by the Securities and Exchange Commission (SEC) under Republic Act No. 9474.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
-              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200/80 space-y-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-1 text-center sm:text-left">
                 <div className="text-xs font-bold text-[#E87722] uppercase tracking-wider">SEC Registration No.</div>
                 <div className="text-xl sm:text-2xl font-bold text-[#0B192C]">CS202002431</div>
                 <div className="text-xs text-slate-500">Incorporated on February 20, 2020</div>
               </div>
 
-              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200/80 space-y-1">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-1 text-center sm:text-left">
                 <div className="text-xs font-bold text-[#E87722] uppercase tracking-wider">Certificate of Authority (COA)</div>
                 <div className="text-xl sm:text-2xl font-bold text-[#0B192C]">CA No. 3247</div>
                 <div className="text-xs text-slate-500">Authorized Lending Institution</div>
               </div>
             </div>
 
-            <div className="pt-1">
+            <div className="text-center pt-1">
               <a
                 href="https://www.sec.gov.ph"
                 target="_blank"
@@ -126,53 +126,51 @@ export default function CompliancePage() {
           </div>
 
           {/* Memberships & Compliance Cards */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div className="text-center max-w-xl mx-auto space-y-1">
               <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Institutional Accreditation</span>
               <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Regulatory Affiliations</h2>
               <p className="text-xs text-slate-500">Official memberships and regulatory compliance registrations.</p>
             </div>
 
-            <div className="border border-slate-300 rounded-2xl overflow-hidden shadow-sm bg-white">
-              <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-300">
-                {/* AMLC Card */}
-                <div className="flex flex-col sm:flex-row items-center gap-6 px-8 py-8 text-center sm:text-left">
-                  <div className="relative w-36 h-24 flex-shrink-0">
-                    <Image
-                      src="/images/compliance/amlclogo.png"
-                      alt="Anti-Money Laundering Council (AMLC)"
-                      fill
-                      sizes="144px"
-                      className="object-contain object-center sm:object-left"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className="text-xs font-bold text-[#E87722] uppercase tracking-[0.15em]">AMLC Registered</div>
-                    <h3 className="font-bold text-base text-[#0B192C]">Anti-Money Laundering Council</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      Registered with the Anti-Money Laundering Council, maintaining strict adherence to anti-money laundering protocols and financial transparency laws.
-                    </p>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* AMLC Card */}
+              <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                <div className="relative w-36 h-20 flex-shrink-0">
+                  <Image
+                    src="/images/compliance/amlclogo.png"
+                    alt="Anti-Money Laundering Council (AMLC)"
+                    fill
+                    sizes="144px"
+                    className="object-contain object-center sm:object-left"
+                  />
                 </div>
+                <div className="space-y-1.5">
+                  <div className="text-xs font-bold text-[#E87722] uppercase tracking-[0.15em]">AMLC Registered</div>
+                  <h3 className="font-bold text-base text-[#0B192C]">Anti-Money Laundering Council</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Registered with the Anti-Money Laundering Council, maintaining strict adherence to anti-money laundering protocols and financial transparency laws.
+                  </p>
+                </div>
+              </div>
 
-                {/* CMAP Card */}
-                <div className="flex flex-col sm:flex-row items-center gap-6 px-8 py-8 text-center sm:text-left">
-                  <div className="relative w-24 h-24 flex-shrink-0">
-                    <Image
-                      src="/images/compliance/cmaplogo.png"
-                      alt="Credit Management Association of the Philippines (CMAP)"
-                      fill
-                      sizes="96px"
-                      className="object-contain object-center sm:object-left"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className="text-xs font-bold text-[#E87722] uppercase tracking-[0.15em]">CMAP Active Member</div>
-                    <h3 className="font-bold text-base text-[#0B192C]">Credit Management Association of the Philippines</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      A proud corporate member of CMAP — the nation&apos;s leading credit management association established in 1932, committed to high credit governance standards.
-                    </p>
-                  </div>
+              {/* CMAP Card */}
+              <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                <div className="relative w-24 h-20 flex-shrink-0">
+                  <Image
+                    src="/images/compliance/cmaplogo.png"
+                    alt="Credit Management Association of the Philippines (CMAP)"
+                    fill
+                    sizes="96px"
+                    className="object-contain object-center sm:object-left"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <div className="text-xs font-bold text-[#E87722] uppercase tracking-[0.15em]">CMAP Active Member</div>
+                  <h3 className="font-bold text-base text-[#0B192C]">Credit Management Association</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    A proud corporate member of CMAP — the nation&apos;s leading credit management association established in 1932, committed to high credit governance standards.
+                  </p>
                 </div>
               </div>
             </div>
@@ -187,7 +185,7 @@ export default function CompliancePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {complianceHighlights.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="p-6 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                <div key={title} className="p-6 bg-white rounded-xl border border-slate-200/80 shadow-sm space-y-2">
                   <Icon className="w-6 h-6 text-[#E87722]" strokeWidth={1.5} />
                   <h4 className="font-bold text-sm text-[#0B192C]">{title}</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>

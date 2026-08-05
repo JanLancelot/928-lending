@@ -129,7 +129,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col text-slate-900 font-sans relative">
         <div
-          className="fixed inset-0 pointer-events-none -z-10 opacity-50"
+          className="fixed inset-0 pointer-events-none -z-10 opacity-35"
           style={{
             backgroundImage: "url('/images/bg.jpg')",
             backgroundSize: "cover",
