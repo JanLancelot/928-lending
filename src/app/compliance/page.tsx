@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Shield, ShieldCheck, Award, Building2, CheckCircle2, ExternalLink, ChevronRight, FileCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Regulatory Compliance & Licensing | SEC CS202002431 | CA No. 3247",
+  description:
+    "Official licensing and regulatory governance details of 928 Credit Concept Lending Investor Corp., including SEC Registration CS202002431, Certificate of Authority No. 3247, AMLC registration, and CMAP accreditation.",
+};
 
 const complianceHighlights = [
   {
