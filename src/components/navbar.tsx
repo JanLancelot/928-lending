@@ -27,7 +27,15 @@ export function Navbar() {
               alt="928 Credit Concept Lending"
               width={220}
               height={56}
-              className="h-8 sm:h-10 lg:h-12 w-auto object-contain my-auto transition-transform duration-300 group-hover:scale-[1.02]"
+              className="hidden sm:block h-8 sm:h-10 lg:h-12 w-auto object-contain my-auto transition-transform duration-300 group-hover:scale-[1.02]"
+              priority
+            />
+            <Image
+              src="/images/minilogo.png"
+              alt="928 Credit Concept Lending"
+              width={48}
+              height={48}
+              className="block sm:hidden h-8 sm:h-9 w-auto object-contain my-auto transition-transform duration-300 group-hover:scale-105"
               priority
             />
           </Link>

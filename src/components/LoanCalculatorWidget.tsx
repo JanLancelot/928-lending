@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useSyncExternalStore } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Calculator,
   X,
@@ -33,7 +33,6 @@ const PRESET_AMOUNTS = [50000, 100000, 250000, 500000, 1000000];
 const PRESET_TERMS = [3, 6, 12, 18, 24, 36];
 
 const LOCAL_STORAGE_KEY = "928_loan_calculator_state_v2";
-const emptySubscribe = () => () => {};
 
 interface CalculatorState {
   isOpen: boolean;
@@ -52,48 +51,32 @@ const DEFAULT_STATE: CalculatorState = {
 };
 
 export function LoanCalculatorWidget() {
+  const [state, setState] = useState<CalculatorState>(() => {
+    try {
+      const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          ...DEFAULT_STATE,
+          ...parsed,
+          isOpen: false,
+          amount: Math.max(10000, Math.min(2000000, Number(parsed.amount) || 250000)),
+          termMonths: Math.max(1, Math.min(36, Number(parsed.termMonths) || 12)),
+          monthlyRate: Math.max(0.1, Math.min(10, Number(parsed.monthlyRate) || 2.5)),
+        };
+      }
+    } catch {
+    }
+    return DEFAULT_STATE;
+  });
   const [showSummaryModal, setShowSummaryModal] = useState(false);
 
-  const storedStateJson = useSyncExternalStore(
-    emptySubscribe,
-    () => {
-      try {
-        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          return JSON.stringify({
-            ...DEFAULT_STATE,
-            ...parsed,
-            isOpen: false,
-            amount: Math.max(10000, Math.min(2000000, Number(parsed.amount) || 250000)),
-            termMonths: Math.max(1, Math.min(36, Number(parsed.termMonths) || 12)),
-            monthlyRate: Math.max(0.1, Math.min(10, Number(parsed.monthlyRate) || 2.5)),
-          });
-        }
-      } catch {
-      }
-      return JSON.stringify(DEFAULT_STATE);
-    },
-    () => JSON.stringify(DEFAULT_STATE)
-  );
-
-  const initialStoredState = useMemo<CalculatorState>(() => {
+  useEffect(() => {
     try {
-      return JSON.parse(storedStateJson);
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
     } catch {
-      return DEFAULT_STATE;
     }
-  }, [storedStateJson]);
-
-  const [localOverrides, setLocalOverrides] = useState<Partial<CalculatorState>>({});
-
-  const state = useMemo<CalculatorState>(
-    () => ({
-      ...initialStoredState,
-      ...localOverrides,
-    }),
-    [initialStoredState, localOverrides]
-  );
+  }, [state]);
 
   const calculations = useMemo(() => {
     const amount = Math.max(0, state.amount);
@@ -120,26 +103,14 @@ export function LoanCalculatorWidget() {
   }, [state]);
 
   const updateState = <K extends keyof CalculatorState>(key: K, value: CalculatorState[K]) => {
-    setLocalOverrides((prev) => {
-      const next = { ...prev, [key]: value };
-      try {
-        const merged = { ...initialStoredState, ...next };
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(merged));
-      } catch {
-      }
-      return next;
-    });
+    setState((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleReset = () => {
-    setLocalOverrides({
+    setState((prev) => ({
       ...DEFAULT_STATE,
-      isOpen: state.isOpen,
-    });
-    try {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ ...DEFAULT_STATE, isOpen: state.isOpen }));
-    } catch {
-    }
+      isOpen: prev.isOpen,
+    }));
   };
 
   const formatPHP = (val: number) => {
