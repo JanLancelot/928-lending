@@ -59,24 +59,42 @@ export default function Home() {
             />
           </div>
 
-          <div className="grid grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center relative z-10">
+          <div className="relative z-10 min-h-[220px] sm:min-h-[300px] lg:min-h-[380px] flex items-center">
+
+            {/* Masked Hero Background Image */}
+            <div 
+              className="absolute inset-y-0 right-0 w-3/5 sm:w-2/3 lg:w-7/12 z-0 overflow-hidden pointer-events-none"
+              style={{
+                WebkitMaskImage: "radial-gradient(circle at 80% 50%, black 30%, transparent 75%)",
+                maskImage: "radial-gradient(circle at 80% 50%, black 30%, transparent 75%)",
+              }}
+            >
+              <Image
+                src="/images/companypicc.png"
+                alt="928 Credit Concept Lending Team Meeting"
+                fill
+                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 66vw, 58vw"
+                className="object-cover object-center scale-105"
+                priority
+              />
+            </div>
             
-            <div className="col-span-7 lg:col-span-5 space-y-3 sm:space-y-5 z-30 relative px-4 sm:px-6 lg:px-10 pt-1 sm:pt-4 pb-3 sm:pb-6 flex flex-col justify-start">
+            <div className="w-[60%] sm:w-[70%] lg:w-[60%] space-y-3 sm:space-y-5 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-start">
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B192C] leading-none [text-shadow:_0_0_4px_#ffffff,_0_0_4px_#ffffff]">
                   We Listen
                 </h1>
-                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#E87722] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#E87722] leading-none [text-shadow:_0_0_4px_#ffffff,_0_0_4px_#ffffff]">
                   We Work
                 </h1>
-                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B192C] leading-none">
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B192C] leading-none [text-shadow:_0_0_4px_#ffffff,_0_0_4px_#ffffff]">
                   We Lend
                 </h1>
               </div>
 
               <div className="w-10 sm:w-14 h-1 bg-[#E87722] rounded-full"></div>
 
-              <p className="text-[11px] sm:text-sm text-slate-600 max-w-sm leading-relaxed">
+              <p className="text-[11px] sm:text-sm text-slate-900 max-w-sm leading-relaxed [text-shadow:_0_0_4px_#ffffff,_0_0_4px_#ffffff]">
                 Helping Small and Medium Enterprises across Luzon access fast, non-collateralized business financing through a streamlined and professional lending process.
               </p>
 
@@ -90,28 +108,10 @@ export default function Home() {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-slate-300 text-[#0B192C] hover:bg-slate-100 text-[10px] sm:text-sm font-bold px-2.5 sm:px-6 py-1.5 sm:py-3 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+                  className="border-slate-300 text-[#0B192C] hover:bg-slate-100 text-[10px] sm:text-sm font-bold px-2.5 sm:px-6 py-1.5 sm:py-3 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0 bg-white/80"
                 >
                   <Link href="/about-us">Learn More</Link>
                 </Button>
-              </div>
-            </div>
-
-            <div className="col-span-5 lg:col-span-7 relative min-h-[200px] sm:min-h-[380px] lg:min-h-[520px] flex items-center justify-end z-0">
-              <div 
-                className="absolute inset-0 z-5 overflow-hidden"
-                style={{
-                  WebkitMaskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
-                  maskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
-                }}
-              >
-                <Image
-                  src="/images/companypicc.png"
-                  alt="928 Credit Concept Lending Team Meeting"
-                  fill
-                  className="object-cover object-center scale-110 sm:scale-105"
-                  priority
-                />
               </div>
             </div>
 

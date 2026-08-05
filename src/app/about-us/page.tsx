@@ -55,38 +55,38 @@ export default function AboutUsPage() {
             />
           </div>
 
-          <div className="grid grid-cols-12 gap-3 sm:gap-6 items-center relative z-10 px-0">
+          <div className="relative z-10 min-h-[160px] sm:min-h-[200px] lg:min-h-[240px] flex items-center">
+
+            {/* Masked Hero Background Image */}
+            <div 
+              className="absolute inset-y-0 right-0 w-3/5 sm:w-2/3 lg:w-7/12 z-0 overflow-hidden pointer-events-none"
+              style={{
+                WebkitMaskImage: "radial-gradient(circle at 80% 50%, black 30%, transparent 75%)",
+                maskImage: "radial-gradient(circle at 80% 50%, black 30%, transparent 75%)",
+              }}
+            >
+              <Image
+                src="/images/loanpicc.png"
+                alt="928 Credit Concept Lending Headquarters"
+                fill
+                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 66vw, 58vw"
+                className="object-cover object-center"
+                priority
+              />
+            </div>
             
-            <div className="col-span-7 lg:col-span-6 space-y-2 sm:space-y-3 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-center">
+            <div className="w-[57%] sm:w-[70%] lg:w-[60%] space-y-2 sm:space-y-3 z-30 relative px-4 sm:px-6 lg:px-10 py-4 sm:py-6 my-auto flex flex-col justify-center">
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0B192C] leading-tight">
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0B192C] leading-tight [text-shadow:_0_0_4px_#ffffff,_0_0_4px_#ffffff]">
                   About 928 Credit Concept Lending
                 </h1>
               </div>
 
               <div className="w-12 h-1 bg-[#E87722] rounded-full"></div>
 
-              <p className="text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed">
-                Supporting Filipino businesses through responsible lending.
+              <p className="text-xs sm:text-sm text-slate-900 max-w-md leading-relaxed [text-shadow:_0_0_4px_#ffffff,_0_0_4px_#ffffff]">
+                SEC-registered since 2020, 928 Credit Concept Lending is a trusted financial partner for Philippine SMEs, built on integrity, quality, and accountability.
               </p>
-            </div>
-
-            <div className="col-span-5 lg:col-span-6 relative min-h-[150px] sm:min-h-[190px] lg:min-h-[240px] flex items-stretch justify-end z-0 self-stretch">
-              <div 
-                className="absolute inset-0 z-5 overflow-hidden"
-                style={{
-                  WebkitMaskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
-                  maskImage: "radial-gradient(circle at 60% 50%, black 25%, transparent 65%)",
-                }}
-              >
-                <Image
-                  src="/images/loanpicc.png"
-                  alt="928 Credit Concept Lending Headquarters"
-                  fill
-                  className="object-cover object-center"
-                  priority
-                />
-              </div>
             </div>
 
           </div>
@@ -234,6 +234,57 @@ export default function AboutUsPage() {
                   <span className="text-sm text-slate-200">{goal}</span>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="space-y-8">
+            <div className="text-center max-w-xl mx-auto space-y-1">
+              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Regulatory Compliance</span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Compliance &amp; Memberships</h2>
+            </div>
+
+            <div className="border border-slate-300 rounded-2xl overflow-hidden shadow-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-300">
+
+                <div className="flex flex-col sm:flex-row items-center sm:items-center gap-5 px-8 py-8 text-center sm:text-left">
+                  <div className="relative w-32 h-20 flex-shrink-0">
+                    <Image
+                      src="/images/compliance/amlclogo.png"
+                      alt="Anti-Money Laundering Council (AMLC)"
+                      fill
+                      sizes="128px"
+                      className="object-contain object-center sm:object-left"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-bold text-[#E87722] uppercase tracking-[0.15em]">AMLC Registered</div>
+                    <h4 className="font-bold text-sm text-[#0B192C]">Anti-Money Laundering Council</h4>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      Duly registered with the Anti-Money Laundering Council, ensuring full compliance with the Anti-Money Laundering Act and applicable financial regulations.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center sm:items-center gap-5 px-8 py-8 text-center sm:text-left">
+                  <div className="relative w-20 h-20 flex-shrink-0">
+                    <Image
+                      src="/images/compliance/cmaplogo.png"
+                      alt="Credit Management Association of the Philippines (CMAP)"
+                      fill
+                      sizes="80px"
+                      className="object-contain object-center sm:object-left"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-bold text-[#E87722] uppercase tracking-[0.15em]">CMAP Member</div>
+                    <h4 className="font-bold text-sm text-[#0B192C]">Credit Management Association of the Philippines</h4>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      A proud member of CMAP — the Philippines&apos; leading credit management organization since 1932, upholding ethical and professional credit practices.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
 

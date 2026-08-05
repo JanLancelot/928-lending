@@ -42,24 +42,24 @@ export function Navbar() {
         </div>
 
         <div className="relative flex-1 h-full flex items-center justify-end z-20 min-w-0">
-          <div className="relative flex items-center justify-between h-full w-full bg-[#0B192C] text-white pl-12 sm:pl-16 md:pl-24 lg:pl-32 pr-3 sm:pr-5 lg:pr-6 shadow-md rounded-none">
+          <div className="rounded-bl-[4px] relative flex items-center justify-between h-full w-full bg-[#0B192C] text-white pl-12 sm:pl-16 md:pl-24 lg:pl-32 pr-3 sm:pr-5 lg:pr-6 shadow-md rounded-none">
             
-            <div className="absolute -left-12 sm:-left-16 md:-left-24 lg:-left-32 top-0 h-full w-12 sm:w-16 md:w-24 lg:w-32 pointer-events-none">
+            <div className="absolute -left-12 sm:-left-16 md:-left-24 lg:-left-32 top-0 h-full w-[calc(3rem+4px)] sm:w-[calc(4rem+4px)] md:w-[calc(6rem+4px)] lg:w-[calc(8rem+4px)] pointer-events-none">
               <svg
-                viewBox="0 0 128 80"
+                viewBox="0 -10 128 90"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full h-full text-[#0B192C]"
                 preserveAspectRatio="none"
               >
                 <path
-                  d="M 0 0 C 36 24 72 80 112 80 L 128 80 L 128 0 Z"
+                  d="M 0 -10 L 128 -10 L 128 80 C 72 80 36 24 0 -10 Z"
                   fill="currentColor"
                 />
               </svg>
             </div>
 
-            <nav className="flex items-center gap-1.5 sm:gap-3 md:gap-6 lg:gap-12 ml-auto mr-1.5 sm:mr-3 md:mr-6 lg:mr-8 min-w-0">
+            <nav className="flex items-center gap-3.5 sm:gap-4 md:gap-6 lg:gap-12 ml-auto mr-1.5 sm:mr-3 md:mr-6 lg:mr-8 min-w-0">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
