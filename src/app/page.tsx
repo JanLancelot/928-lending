@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -9,6 +10,12 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "928 Credit Concept Lending Investor Corp | Non-Collateral Business Loans Philippines",
+  description:
+    "Empowering MSMEs across Luzon with fast, non-collateralized business financing solutions. SEC Registered CS202002431 | CA No. 3247.",
+};
 
 const whyChooseUs = [
   {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import { 
   Shield, 
@@ -8,8 +9,10 @@ import {
   Users,
   Target,
   TrendingUp,
-  HeartHandshake
+  HeartHandshake,
+  ChevronRight
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "About Us | 928 Credit Concept Lending Investor Corp.",
@@ -253,55 +256,23 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          <div className="space-y-8">
-            <div className="text-center max-w-xl mx-auto space-y-1">
-              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Regulatory Compliance</span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B192C] mt-1">Compliance &amp; Memberships</h2>
+          <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+            <div className="space-y-1 text-center sm:text-left">
+              <span className="text-[#E87722] font-bold text-xs uppercase tracking-[0.15em]">Regulatory Governance</span>
+              <h3 className="text-xl font-bold text-[#0B192C]">Compliance &amp; Memberships</h3>
+              <p className="text-xs text-slate-500 max-w-lg leading-relaxed">
+                Review our official SEC licensing, Anti-Money Laundering Council (AMLC) registration, and Credit Management Association (CMAP) accreditation details.
+              </p>
             </div>
-
-            <div className="border border-slate-300 rounded-2xl overflow-hidden shadow-sm">
-              <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-300">
-
-                <div className="flex flex-col sm:flex-row items-center sm:items-center gap-5 px-8 py-8 text-center sm:text-left">
-                  <div className="relative w-32 h-20 flex-shrink-0">
-                    <Image
-                      src="/images/compliance/amlclogo.png"
-                      alt="Anti-Money Laundering Council (AMLC)"
-                      fill
-                      sizes="128px"
-                      className="object-contain object-center sm:object-left"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-xs font-bold text-[#E87722] uppercase tracking-[0.15em]">AMLC Registered</div>
-                    <h4 className="font-bold text-sm text-[#0B192C]">Anti-Money Laundering Council</h4>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      Duly registered with the Anti-Money Laundering Council, ensuring full compliance with the Anti-Money Laundering Act and applicable financial regulations.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row items-center sm:items-center gap-5 px-8 py-8 text-center sm:text-left">
-                  <div className="relative w-20 h-20 flex-shrink-0">
-                    <Image
-                      src="/images/compliance/cmaplogo.png"
-                      alt="Credit Management Association of the Philippines (CMAP)"
-                      fill
-                      sizes="80px"
-                      className="object-contain object-center sm:object-left"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-xs font-bold text-[#E87722] uppercase tracking-[0.15em]">CMAP Member</div>
-                    <h4 className="font-bold text-sm text-[#0B192C]">Credit Management Association of the Philippines</h4>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      A proud member of CMAP — the Philippines&apos; leading credit management organization since 1932, upholding ethical and professional credit practices.
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+            <Button
+              asChild
+              variant="outline"
+              className="border-[#0B192C] text-[#0B192C] hover:bg-[#0B192C] hover:text-white font-bold text-xs px-6 py-2.5 rounded-md shrink-0 transition-colors bg-white"
+            >
+              <Link href="/compliance" className="flex items-center gap-2">
+                View Compliance <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Button>
           </div>
 
         </div>
