@@ -189,16 +189,16 @@ export default function OurServicesPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+          <div className="grid grid-cols-2 gap-4 sm:gap-10">
             <div className="space-y-3">
-              <div className="flex items-center gap-2.5 text-[#0B192C]">
-                <BadgeCheck className="w-4 h-4 text-[#E87722]" strokeWidth={1.5} />
-                <h3 className="text-lg font-bold text-[#0B192C]">Eligibility</h3>
+              <div className="flex items-center gap-2 sm:gap-2.5 text-[#0B192C]">
+                <BadgeCheck className="w-4 h-4 text-[#E87722] shrink-0" strokeWidth={1.5} />
+                <h3 className="text-base sm:text-lg font-bold text-[#0B192C]">Eligibility</h3>
               </div>
               <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
                 {eligibility.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="text-[#E87722]">—</span>
+                  <li key={item} className="flex gap-1.5 sm:gap-3">
+                    <span className="text-[#E87722] shrink-0">—</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -206,14 +206,14 @@ export default function OurServicesPage() {
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center gap-2.5 text-[#0B192C]">
-                <FileText className="w-4 h-4 text-[#E87722]" strokeWidth={1.5} />
-                <h3 className="text-lg font-bold text-[#0B192C]">Requirements</h3>
+              <div className="flex items-center gap-2 sm:gap-2.5 text-[#0B192C]">
+                <FileText className="w-4 h-4 text-[#E87722] shrink-0" strokeWidth={1.5} />
+                <h3 className="text-base sm:text-lg font-bold text-[#0B192C]">Requirements</h3>
               </div>
               <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
                 {requirements.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="text-[#E87722]">—</span>
+                  <li key={item} className="flex gap-1.5 sm:gap-3">
+                    <span className="text-[#E87722] shrink-0">—</span>
                     <span>{item}</span>
                   </li>
                 ))}
