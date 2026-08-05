@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ImageSlideshow } from "@/components/ImageSlideshow";
@@ -12,6 +13,13 @@ import {
   FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Our Services | Business Loan Solutions",
+  description:
+    "Explore business loan solutions tailored for Micro, Small, and Medium Enterprises (MSMEs). Fast processing, minimal requirements, non-collateralized financing.",
+};
+
 
 const servicesGalleryImages = [
   "/images/servicesgallery/1.jpg",
