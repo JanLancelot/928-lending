@@ -10,7 +10,8 @@ import {
   Target,
   TrendingUp,
   HeartHandshake,
-  ChevronRight
+  ChevronRight,
+  Briefcase
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -29,7 +30,7 @@ const timeline = [
 ];
 
 const mission = [
-  { icon: Target, title: "SMEs", desc: "Provide accessible financing through high-quality lending services." },
+  { icon: Briefcase, title: "SMEs", desc: "Provide accessible financing through high-quality lending services." },
   { icon: Users, title: "Employees", desc: "Create a competitive workplace with continuous professional growth." },
   { icon: TrendingUp, title: "Shareholders", desc: "Deliver sustainable returns through transparency and responsible management." },
   { icon: HeartHandshake, title: "Communities", desc: "Support business development and economic growth." },
@@ -189,14 +190,23 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-200">
-              {mission.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="py-5 first:pt-0 lg:py-4 lg:px-6 lg:first:pl-0 lg:last:pr-0">
-                  <Icon className="w-5 h-5 text-[#0B192C] mb-2.5" strokeWidth={1.5} />
-                  <h4 className="font-bold text-sm text-[#0B192C] mb-1">{title}</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
-                </div>
-              ))}
+            <div className="bg-[#0B192C] text-white p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl space-y-6">
+              <div className="flex items-center gap-2.5 text-[#E87722]">
+                <Target className="w-4 h-4" strokeWidth={1.5} />
+                <h3 className="text-xs font-bold uppercase tracking-[0.15em]">Our Mission</h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-1">
+                {mission.map(({ icon: Icon, title, desc }) => (
+                  <div key={title} className="space-y-1.5">
+                    <div className="flex items-center gap-2 text-[#E87722]">
+                      <Icon className="w-4 h-4" strokeWidth={1.5} />
+                      <h4 className="font-bold text-sm text-white">{title}</h4>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed">{desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

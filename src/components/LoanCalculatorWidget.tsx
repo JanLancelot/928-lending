@@ -205,18 +205,18 @@ export function LoanCalculatorWidget() {
                 </span>
               </div>
 
-              <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B192C]">
+              <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#E87722]">
                 {formatPHPExact(calculations.installmentPerPeriod)}
               </div>
 
               <div className="mt-3 pt-3 border-t border-slate-200/80 grid grid-cols-2 gap-2 text-[11px]">
                 <div>
                   <span className="text-slate-500">Principal Amount:</span>
-                  <p className="font-bold text-slate-800">{formatPHP(calculations.amount)}</p>
+                  <p className="font-bold text-[#E87722]">{formatPHP(calculations.amount)}</p>
                 </div>
                 <div>
                   <span className="text-slate-500">Total Repayment:</span>
-                  <p className="font-bold text-slate-800">{formatPHP(calculations.totalRepayment)}</p>
+                  <p className="font-bold text-[#E87722]">{formatPHP(calculations.totalRepayment)}</p>
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@ export function LoanCalculatorWidget() {
                     step="5000"
                     value={state.amount}
                     onChange={(e) => updateState("amount", Number(e.target.value))}
-                    className="w-28 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-slate-900 text-xs focus:outline-none focus:border-slate-400"
+                    className="w-28 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-[#E87722] text-xs focus:outline-none focus:border-[#E87722]"
                   />
                 </div>
 
@@ -283,7 +283,7 @@ export function LoanCalculatorWidget() {
                     step="1"
                     value={state.termMonths}
                     onChange={(e) => updateState("termMonths", Number(e.target.value))}
-                    className="w-20 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-slate-900 text-xs focus:outline-none focus:border-slate-400"
+                    className="w-20 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-[#E87722] text-xs focus:outline-none focus:border-[#E87722]"
                   />
                 </div>
 
@@ -330,7 +330,7 @@ export function LoanCalculatorWidget() {
                     step="0.1"
                     value={state.monthlyRate}
                     onChange={(e) => updateState("monthlyRate", Number(e.target.value))}
-                    className="w-20 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-slate-900 text-xs focus:outline-none focus:border-slate-400"
+                    className="w-20 text-right bg-slate-50 border border-slate-200 rounded px-2 py-0.5 font-bold text-[#E87722] text-xs focus:outline-none focus:border-[#E87722]"
                   />
                 </div>
 
@@ -389,15 +389,15 @@ export function LoanCalculatorWidget() {
                 <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-2 text-[11px] text-slate-600">
                   <div className="flex justify-between">
                     <span className="text-slate-500">Requested Principal:</span>
-                    <span className="font-bold text-slate-900">{formatPHP(calculations.amount)}</span>
+                    <span className="font-bold text-[#E87722]">{formatPHP(calculations.amount)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-500">Total Interest ({calculations.monthlyRate}% x {calculations.termMonths} mos):</span>
-                    <span className="font-bold text-slate-900">+{formatPHP(calculations.totalInterest)}</span>
+                    <span className="font-bold text-[#E87722]">+{formatPHP(calculations.totalInterest)}</span>
                   </div>
                   <div className="pt-2 border-t border-slate-200 flex justify-between font-bold">
                     <span className="text-slate-700">Total Amount Repaid:</span>
-                    <span className="text-[#0B192C]">{formatPHP(calculations.totalRepayment)}</span>
+                    <span className="text-[#E87722]">{formatPHP(calculations.totalRepayment)}</span>
                   </div>
                 </div>
               )}
