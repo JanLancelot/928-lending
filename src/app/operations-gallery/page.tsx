@@ -31,6 +31,8 @@ const galleryImages = [
   "/images/servicesgallery/12.jpg",
   "/images/servicesgallery/13.jpg",
   "/images/servicesgallery/14.jpg",
+  "/images/servicesgallery/15.JPG",
+  "/images/servicesgallery/16.JPG",
 ];
 
 const PREVIEW_COUNT = 4; // Show exactly 4 photos in the Fandom-style collage grid

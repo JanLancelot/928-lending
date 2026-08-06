@@ -160,9 +160,9 @@ export function LoanCalculatorWidget() {
       </div>
 
       {state.isOpen && (
-        <div className="fixed bottom-20 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[420px] max-h-[85vh] z-50 bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200/90 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+        <div className="fixed bottom-16 sm:bottom-20 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[420px] max-h-[calc(100dvh-5.5rem)] sm:max-h-[calc(100vh-6.5rem)] z-50 bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200/90 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           
-          <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-white">
+          <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-white shrink-0">
             <div className="flex items-center space-x-2.5">
               <div className="p-2 bg-slate-100 text-[#0B192C] rounded-lg">
                 <Calculator className="w-5 h-5" />
