@@ -228,8 +228,13 @@ export default function OurServicesPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
+      {/* Apply Now CTA Banner */}
+      <section className="py-6 sm:py-8 lg:py-10">
+        <div className="max-w-6xl mx-auto px-0 sm:px-10 lg:px-12">
+          <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border-x-0 sm:border border-slate-800 px-4 sm:px-10">
             <div className="space-y-2 text-center md:text-left">
               <h3 className="text-2xl sm:text-3xl font-bold">Need Financing?</h3>
               <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
@@ -245,7 +250,6 @@ export default function OurServicesPage() {
               </Link>
             </Button>
           </div>
-
         </div>
       </section>
     </div>

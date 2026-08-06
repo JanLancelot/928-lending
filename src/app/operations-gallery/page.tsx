@@ -216,9 +216,13 @@ export default function OperationsGalleryPage() {
               })}
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* CTA Card */}
-          <div className="bg-[#0B192C] text-white rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800">
+      {/* CTA Card */}
+      <section className="py-6 sm:py-8 lg:py-10">
+        <div className="max-w-6xl mx-auto px-0 sm:px-10 lg:px-12">
+          <div className="bg-[#0B192C] text-white rounded-none sm:rounded-2xl p-6 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 border-x-0 sm:border border-slate-800 px-4 sm:px-10">
             <div className="space-y-2 text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2 text-[#E87722]">
                 <Building2 className="w-5 h-5" />
