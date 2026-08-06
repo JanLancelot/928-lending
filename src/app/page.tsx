@@ -66,7 +66,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="relative z-10 min-h-[220px] sm:min-h-[300px] lg:min-h-[380px] flex items-center">
+          <div className="relative min-h-[220px] sm:min-h-[300px] lg:min-h-[380px] flex items-center">
 
             {/* Masked Hero Background Image */}
             <div 
