@@ -157,7 +157,7 @@ export default function PrivacyPolicyPage() {
               <div className="bg-slate-50 p-5 rounded-lg border border-slate-200 space-y-1 text-xs text-slate-700">
                 <p className="font-bold text-[#0B192C] text-sm">928 Credit Concept Lending Investor Corporation</p>
                 <p>Unit E 2nd Floor, Violago Plaza, Pagala, Baliwag City, Bulacan 3006</p>
-                <p>Telephone: (044) 792-2913</p>
+                <p>Telephone: (044) 792 2913</p>
                 <p className="pt-1">Email: <a href="mailto:928creditconcept@gmail.com" className="text-[#E87722] font-semibold hover:underline">928creditconcept@gmail.com</a></p>
               </div>
             </section>
