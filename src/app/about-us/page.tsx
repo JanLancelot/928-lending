@@ -113,7 +113,7 @@ export default function AboutUsPage() {
                   src="/images/gallery/1.JPG"
                   alt="928 Credit Concept Office"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                  sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-cover object-center rounded-2xl"
                   priority
                 />
