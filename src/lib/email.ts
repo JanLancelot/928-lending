@@ -14,7 +14,7 @@ export async function sendAdminNotification(refId: string, encryptedPdfBuffer: B
     from: SENDER_EMAIL,
     to: ADMIN_EMAIL,
     ...(ADMIN_CC_EMAIL ? { cc: ADMIN_CC_EMAIL } : {}),
-    subject: `New Commercial Loan Application: ${refId}`,
+    subject: `New Loan Application: ${refId}`,
     attachments: [
       {
         filename: `application_${refId}.pdf`,
