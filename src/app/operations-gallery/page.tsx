@@ -24,7 +24,7 @@ const galleryImages = [
   "/images/servicesgallery/5.png",
   "/images/servicesgallery/6.JPG",
   "/images/servicesgallery/7.JPG",
-  "/images/servicesgallery/8.jpg",
+  "/images/servicesgallery/8.JPG",
   "/images/servicesgallery/9.jpg",
   "/images/servicesgallery/10.jpg",
   "/images/servicesgallery/11.jpg",
@@ -274,7 +274,7 @@ export default function OperationsGalleryPage() {
                 src={galleryImages[selectedIndex]}
                 alt={`928 Credit Concept Photo ${selectedIndex + 1}`}
                 fill
-                sizes="100vw"
+                sizes="(max-width: 1024px) 100vw, 1024px"
                 className="object-contain p-2 select-none"
                 priority
               />

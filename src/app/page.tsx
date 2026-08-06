@@ -154,6 +154,7 @@ export default function Home() {
                   src="/images/building.jpg"
                   alt="928 Credit Concept Lending Storefront Unit E"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-cover object-center rounded-2xl"
                   priority
                 />

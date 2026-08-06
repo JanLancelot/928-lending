@@ -61,7 +61,7 @@ export function ImageSlideshow({
             src={src}
             alt=""
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+            sizes="(max-width: 1024px) 100vw, 896px"
             className="object-cover blur-xl scale-110 opacity-30 pointer-events-none"
           />
 
@@ -70,7 +70,7 @@ export function ImageSlideshow({
             src={src}
             alt={`928 Credit Concept Office Gallery ${index + 1}`}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+            sizes="(max-width: 1024px) 100vw, 896px"
             className={`${
               fitMode === "contain" ? "object-contain p-2" : "object-cover object-center"
             } rounded-2xl`}

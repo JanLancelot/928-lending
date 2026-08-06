@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 export const metadata: Metadata = {
   title: "Data Privacy Policy | 928 Credit Concept Lending Investor Corp.",
   description:
-    "Data Privacy Policy of 928 Credit Concept Lending Investor Corp. compliant with Philippine Republic Act No. 10173 (Data Privacy Act of 2012) and National Privacy Commission (NPC) regulations.",
+    "Data Privacy Policy of 928 Credit Concept Lending Investor Corp. compliant with Philippine Republic Act No. 10173 (Data Privacy Act of 2012).",
 };
 
 const navItems = [
@@ -15,7 +15,7 @@ const navItems = [
   { id: "processing-purpose", label: "3. Purpose of Processing" },
   { id: "security-measures", label: "4. Security & Retention" },
   { id: "data-subject-rights", label: "5. Rights of the Data Subject" },
-  { id: "dpo-contact", label: "6. Data Protection Officer" },
+  { id: "privacy-contact", label: "6. Privacy Contact & Inquiries" },
 ];
 
 export default function PrivacyPolicyPage() {
@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
                 1. Statement of Policy
               </h2>
               <p>
-                <strong>928 Credit Concept Lending Investor Corporation</strong> (&quot;928 Lending&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) respects your right to privacy and is committed to ensuring that all personal data collected from applicants, borrowers, and users is processed in accordance with the principles of transparency, legitimate purpose, and proportionality under Republic Act No. 10173, otherwise known as the Data Privacy Act of 2012 (DPA), its Implementing Rules and Regulations (IRR), and applicable issuances of the National Privacy Commission (NPC).
+                <strong>928 Credit Concept Lending Investor Corporation</strong> (&quot;928 Lending&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) respects your right to privacy and is committed to ensuring that all personal data collected from applicants, borrowers, and users is processed in accordance with the principles of transparency, legitimate purpose, and proportionality under Republic Act No. 10173, otherwise known as the Data Privacy Act of 2012 (DPA), its Implementing Rules and Regulations (IRR), and applicable Philippine data privacy regulations.
               </p>
             </section>
 
@@ -142,23 +142,23 @@ export default function PrivacyPolicyPage() {
                 <li><strong>Right to Access:</strong> To request reasonable access to your personal data held in our system.</li>
                 <li><strong>Right to Rectification:</strong> To request correction of inaccurate, erroneous, or outdated records.</li>
                 <li><strong>Right to Erasure or Blocking:</strong> To suspend, withdraw, or order the removal of your personal data, subject to legal and statutory retention constraints.</li>
-                <li><strong>Right to File a Complaint:</strong> To lodge a complaint with the National Privacy Commission (NPC) if your privacy rights have been violated.</li>
+                <li><strong>Right to File a Complaint:</strong> To lodge a complaint if your privacy rights have been violated, subject to statutory guidelines.</li>
               </ul>
             </section>
 
             {/* Section 6 */}
-            <section id="dpo-contact" className="scroll-mt-24 sm:scroll-mt-28 space-y-3">
+            <section id="privacy-contact" className="scroll-mt-24 sm:scroll-mt-28 space-y-3">
               <h2 className="text-lg font-bold text-[#0B192C] border-b border-slate-200 pb-2">
-                6. Data Protection Officer Contact
+                6. Privacy Contact &amp; Inquiries
               </h2>
               <p>
-                If you have questions, inquiries, or wish to exercise your rights regarding your personal data, please direct your communication to our Data Protection Officer:
+                If you have questions, inquiries, or wish to exercise your rights regarding your personal data, please direct your communication to our company privacy team:
               </p>
               <div className="bg-slate-50 p-5 rounded-lg border border-slate-200 space-y-1 text-xs text-slate-700">
-                <p className="font-bold text-[#0B192C] text-sm">Data Protection Officer</p>
-                <p>928 Credit Concept Lending Investor Corporation</p>
+                <p className="font-bold text-[#0B192C] text-sm">928 Credit Concept Lending Investor Corporation</p>
                 <p>Unit E 2nd Floor, Violago Plaza, Pagala, Baliwag City, Bulacan 3006</p>
-                <p className="pt-1">Email: <a href="mailto:dpo@928lending.com" className="text-[#E87722] font-semibold hover:underline">dpo@928lending.com</a></p>
+                <p>Telephone: (044) 792-2913</p>
+                <p className="pt-1">Email: <a href="mailto:928creditconcept@gmail.com" className="text-[#E87722] font-semibold hover:underline">928creditconcept@gmail.com</a></p>
               </div>
             </section>
 
